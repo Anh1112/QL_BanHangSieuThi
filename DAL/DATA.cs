@@ -8,8 +8,6 @@ namespace DAL
 {
     public class DATA
     {
-
-        //
         #region khachhang
         #endregion
 
