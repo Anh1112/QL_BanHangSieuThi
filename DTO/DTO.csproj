@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChiTietHoaDon.cs" />
+    <Compile Include="chitietxuatkho.cs" />
     <Compile Include="Connect.cs" />
     <Compile Include="HoaDon.cs" />
     <Compile Include="KhachHang.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="NhanVien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuayHang.cs" />
+    <Compile Include="xuatkho.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

@@ -166,9 +166,71 @@ namespace DAL
         #endregion
 
         #region xuatkho
+        public static int them_xuatkho(string ma, DateTime ngayxuat,decimal tongtien,string nhanvienma)
+        {
+            SqlParameter[] para = new SqlParameter[]
+            {
+                new SqlParameter("@ma",ma),
+                new SqlParameter("@ngayxuat",ngayxuat),
+                new SqlParameter("@ten",(tongtien>0)?(object)tongtien:DBNull.Value),
+                new SqlParameter("@nhanvienma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
+            };
+            return DBConnect.ExecuteNonQuery("ADD_XuatKho", para);
+        }
+        public static int sua_xuatkho(string ma, DateTime ngayxuat, decimal tongtien, string nhanvienma)
+
+        {
+            SqlParameter[] para = new SqlParameter[]
+            {
+                 new SqlParameter("@ma",ma),
+                new SqlParameter("@ngayxuat",ngayxuat),
+                new SqlParameter("@tongtien",(tongtien>0)?(object)tongtien:DBNull.Value),
+                new SqlParameter("@nhanvienma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
+      };
+            return DBConnect.ExecuteNonQuery("Change_xuatkho", para);
+        }
+        public static int xoa_xuatkho(string ma)
+        {
+            SqlParameter[] para = new SqlParameter[]
+           {
+                 new SqlParameter("@ma",ma)
+           };
+            return DBConnect.ExecuteNonQuery("delete_xuatkho", para);
+        }
         #endregion
 
         #region chitietxuatkho
+        public static int them_chitietxuatkho(string mamh, string maxk, float sl, decimal gn)
+        {
+            SqlParameter[] para = new SqlParameter[]
+            {
+                new SqlParameter("@mamh",mamh),
+                new SqlParameter("@maxk",maxk),
+                new SqlParameter("@sl",(sl>0)?(object)sl:DBNull.Value),
+                new SqlParameter("@gn",(gn>0 ?(object)gn:DBNull.Value))
+            };
+            return DBConnect.ExecuteNonQuery("ADD_chitietXuatKho", para);
+        }
+        public static int sua_xuatkho(string mamh, string maxk, float sl, decimal gn)
+        {
+            SqlParameter[] para = new SqlParameter[]
+            {
+                new SqlParameter("@mamh",mamh),
+                new SqlParameter("@maxk",maxk),
+                new SqlParameter("@sl",(sl>0)?(object)sl:DBNull.Value),
+                new SqlParameter("@gn",(gn>0 ?(object)gn:DBNull.Value))
+            };
+            return DBConnect.ExecuteNonQuery("Change_chitietxuatkho", para);
+        }
+        public static int xoa_chitietxuatkho(string mamh,string maxk)
+        {
+            SqlParameter[] para = new SqlParameter[]
+           {
+                 new SqlParameter("@mamh",mamh),
+                  new SqlParameter("@maxk",maxk)
+           };
+            return DBConnect.ExecuteNonQuery("delete_chitietxuatkho", para);
+        }
         #endregion
 
         #region mathang
