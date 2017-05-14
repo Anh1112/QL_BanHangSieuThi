@@ -70,9 +70,91 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UC\QLBH\LayoutQLBH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\QLBH\LayoutQLBH.Designer.cs">
+      <DependentUpon>LayoutQLBH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\QLHH\LayoutQLHH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\QLHH\LayoutQLHH.Designer.cs">
+      <DependentUpon>LayoutQLHH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\QLNH\LayoutQLNH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\QLNH\LayoutQLNH.Designer.cs">
+      <DependentUpon>LayoutQLNH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\QLNL\Layout_QLNL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\QLNL\Layout_QLNL.Designer.cs">
+      <DependentUpon>Layout_QLNL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\ThongKe\LayoutThongKe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\ThongKe\LayoutThongKe.Designer.cs">
+      <DependentUpon>LayoutThongKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\TimKiem\LayoutTimKiem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\TimKiem\LayoutTimKiem.Designer.cs">
+      <DependentUpon>LayoutTimKiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\TroGiup\LayoutTroGiup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\TroGiup\LayoutTroGiup.Designer.cs">
+      <DependentUpon>LayoutTroGiup.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UC\" />
+    <Folder Include="UC\QLBH\Detail\" />
+    <Folder Include="UC\QLHH\Detail\" />
+    <Folder Include="UC\QLNH\Detail\" />
+    <Folder Include="UC\QLNL\Detail\" />
+    <Folder Include="UC\ThongKe\Detail\" />
+    <Folder Include="UC\TimKiem\Detail\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\QLBH\LayoutQLBH.resx">
+      <DependentUpon>LayoutQLBH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\QLHH\LayoutQLHH.resx">
+      <DependentUpon>LayoutQLHH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\QLNH\LayoutQLNH.resx">
+      <DependentUpon>LayoutQLNH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\QLNL\Layout_QLNL.resx">
+      <DependentUpon>Layout_QLNL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\ThongKe\LayoutThongKe.resx">
+      <DependentUpon>LayoutThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\TimKiem\LayoutTimKiem.resx">
+      <DependentUpon>LayoutTimKiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\TroGiup\LayoutTroGiup.resx">
+      <DependentUpon>LayoutTroGiup.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
