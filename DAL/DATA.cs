@@ -133,10 +133,10 @@ namespace DAL
         #endregion
 
         #region quayhang
-        //public static DataTable get_quayhang()
-        //{
-        //    return DBConnect.GetData("get_quayhang");
-        //}
+        public static DataTable get_quayhang()
+        {
+            return DBConnect.GetData("get_quayhang");
+        }
         public static int them_quayhang(string ma, string ten)
         {
             SqlParameter[] para = new SqlParameter[]
@@ -238,7 +238,7 @@ namespace DAL
         {
             return DBConnect.GetData("get_mathang");
         }
-        public static DataTable get_mathang(string mamh)
+        public static DataTable get_mathang1(string mamh)
         {
             return DBConnect.GetData("get_mathang '" + mamh + "'");
         }

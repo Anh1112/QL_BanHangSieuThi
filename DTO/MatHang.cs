@@ -136,13 +136,13 @@ namespace DTO
             }
         }
 
-        public static DataTable Get_mathang()
+        public  DataTable Get_mathang()
         {
             return DAL.DATA.get_mathang();
         }
-        public static DataTable Get_mathang(string mamh)
+        public  DataTable Get_mathang1(string mamh)
         {
-            return DAL.DATA.get_mathang(mamh);
+            return DAL.DATA.get_mathang1(mamh);
         }
         public int Them()
         {
@@ -152,7 +152,7 @@ namespace DTO
         {
             return DAL.DATA.sua_mathang(ma, ten, hangsanxuat, donvitinh, gianhap, giaban, soluongtrongquay, soluongtrongkho, quayma);
         }
-        public static int Xoa(string mamh)
+        public int Xoa(string mamh)
         {
             return DAL.DATA.xoa_mathang(mamh);
         }
