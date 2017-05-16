@@ -38,10 +38,10 @@ namespace DTO
                 ten = value;
             }
         }
-        //public DataTable get_quayhang()
-        //{
-        //    return DATA.get_quayhang();
-        //}
+        public DataTable get_quayhang()
+        {
+            return DATA.get_quayhang();
+        }
 
         public int them_quayhang()
         {
