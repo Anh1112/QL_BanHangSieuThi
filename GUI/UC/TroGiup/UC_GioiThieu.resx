@@ -117,17 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="OpenProj_App_Icon_by_marc2o" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OpenProj_App_Icon_by_marc2o.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1 (431)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1 (431).ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Globe_win7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Globe_win7.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="help2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\help2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>LHAProject là phần mềm ứng dụng hỗ trợ quản lý bán hàng trong siêu thị, quản lý nhân lực,
+quản lý kho hàng cho các đơn vị hoạt động kinh doanh trong lĩnh vực thương mại và dịch vụ. 
+Phần mềm giúp nắm bắt thông tin về lượng hàng trong kho, theo dõi lưu lượng bán ra, 
+thanh toán nhanh cho khách hàng để giải phóng hàng đợi thanh toán, bán hàng chính xác giá ,
+không nhầm lẫn giá cả, quản lý nhân viên từ xa khi không có mặt tại cửa hàng, nâng cao hình ảnh thương hiệu của shop,… 
+LHAProject có thể áp dụng đối với những cửa hàng, minimart hay siêu thị quy mô đơn lẻ hoặc mô hình chuỗi cửa hàng.</value>
   </data>
 </root>

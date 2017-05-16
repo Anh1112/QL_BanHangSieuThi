@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
 namespace DTO
 {
-    class xuatkho
+   public class NhapKho
     {
         private string ma { get; set; }
-        private DateTime ngayxuat { get; set; }
+        private DateTime ngaynhap { get; set; }
         private decimal tongtien { get; set; }
         private string nhanvienma { get; set; }
+
+        public static DataTable Get_nhapkho()
+        {
+            return DAL.DATA.get_nhapkho();
+        }
+
     }
 }

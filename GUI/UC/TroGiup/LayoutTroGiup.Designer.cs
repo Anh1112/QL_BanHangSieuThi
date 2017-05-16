@@ -31,6 +31,7 @@
             this.ToolBar = new System.Windows.Forms.Panel();
             this.btnGioiThieu = new GUI.Class.btnSimple();
             this.btnTroGiup = new GUI.Class.btnSimple();
+            this.RenderBody = new System.Windows.Forms.Panel();
             this.ToolBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +62,7 @@
             this.btnGioiThieu.TabStop = false;
             this.btnGioiThieu.Text = "Giới thiệu";
             this.btnGioiThieu.UseActived = true;
+            this.btnGioiThieu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnGioiThieu_MouseClick);
             // 
             // btnTroGiup
             // 
@@ -78,11 +80,20 @@
             this.btnTroGiup.TabStop = false;
             this.btnTroGiup.Text = "Trợ giúp";
             this.btnTroGiup.UseActived = true;
+            this.btnTroGiup.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnTroGiup_MouseClick);
+            // 
+            // RenderBody
+            // 
+            this.RenderBody.Location = new System.Drawing.Point(3, 32);
+            this.RenderBody.Name = "RenderBody";
+            this.RenderBody.Size = new System.Drawing.Size(763, 475);
+            this.RenderBody.TabIndex = 3;
             // 
             // LayoutTroGiup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.RenderBody);
             this.Controls.Add(this.ToolBar);
             this.Name = "LayoutTroGiup";
             this.Size = new System.Drawing.Size(769, 510);
@@ -96,5 +107,6 @@
         private System.Windows.Forms.Panel ToolBar;
         private Class.btnSimple btnGioiThieu;
         private Class.btnSimple btnTroGiup;
+        private System.Windows.Forms.Panel RenderBody;
     }
 }

@@ -99,7 +99,7 @@
             // 
             this.panel3.Location = new System.Drawing.Point(384, 35);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(378, 472);
+            this.panel3.Size = new System.Drawing.Size(382, 472);
             this.panel3.TabIndex = 4;
             // 
             // LayoutQLBH

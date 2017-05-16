@@ -66,6 +66,10 @@ namespace DTO
             }
         }
 
+        public static DataTable Get_chitietbansanpham(string maHD, string mhma)
+        {
+            return DAL.DATA.get_chitietbansanpham(maHD, mhma);
+        }
         public static DataTable Get_chitiethoadon(string maHD)
         {
             return DAL.DATA.get_chitiethoadon(maHD);
