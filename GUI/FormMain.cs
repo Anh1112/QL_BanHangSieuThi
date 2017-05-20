@@ -119,5 +119,10 @@ namespace GUI
                 AddControl(new UC.TroGiup.LayoutTroGiup());
             }
         }
+
+        private void RenderBody_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

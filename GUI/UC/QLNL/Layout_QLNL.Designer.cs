@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.ToolBar = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnKhachHang = new GUI.Class.btnSimple();
             this.btnNhanVien = new GUI.Class.btnSimple();
             this.ToolBar.SuspendLayout();
@@ -43,7 +44,14 @@
             this.ToolBar.Location = new System.Drawing.Point(0, 0);
             this.ToolBar.Name = "ToolBar";
             this.ToolBar.Size = new System.Drawing.Size(769, 26);
-            this.ToolBar.TabIndex = 1;
+            this.ToolBar.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(0, 25);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(769, 482);
+            this.panel2.TabIndex = 19;
             // 
             // btnKhachHang
             // 
@@ -61,6 +69,7 @@
             this.btnKhachHang.TabStop = false;
             this.btnKhachHang.Text = "Khách hàng";
             this.btnKhachHang.UseActived = true;
+            this.btnKhachHang.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnKhachHang_MouseClick);
             // 
             // btnNhanVien
             // 
@@ -78,14 +87,17 @@
             this.btnNhanVien.TabStop = false;
             this.btnNhanVien.Text = "Nhân viên";
             this.btnNhanVien.UseActived = true;
+            this.btnNhanVien.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnNhanVien_MouseClick);
             // 
             // Layout_QLNL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.ToolBar);
             this.Name = "Layout_QLNL";
             this.Size = new System.Drawing.Size(769, 510);
+            this.Load += new System.EventHandler(this.Layout_QLNL_Load);
             this.ToolBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Panel ToolBar;
         private Class.btnSimple btnKhachHang;
         private Class.btnSimple btnNhanVien;
+        private System.Windows.Forms.Panel panel2;
     }
 }

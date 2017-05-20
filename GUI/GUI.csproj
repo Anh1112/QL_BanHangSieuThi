@@ -100,6 +100,18 @@
     <Compile Include="UC\QLNL\Layout_QLNL.Designer.cs">
       <DependentUpon>Layout_QLNL.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC\QLNL\UC_KhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\QLNL\UC_KhachHang.Designer.cs">
+      <DependentUpon>UC_KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\QLNL\UC_NhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\QLNL\UC_NhanVien.Designer.cs">
+      <DependentUpon>UC_NhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC\ThongKe\Detail\UC_ChiTietLLNhap.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -181,6 +193,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC\QLNL\Layout_QLNL.resx">
       <DependentUpon>Layout_QLNL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\QLNL\UC_KhachHang.resx">
+      <DependentUpon>UC_KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\QLNL\UC_NhanVien.resx">
+      <DependentUpon>UC_NhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC\ThongKe\Detail\UC_ChiTietLLNhap.resx">
       <DependentUpon>UC_ChiTietLLNhap.cs</DependentUpon>

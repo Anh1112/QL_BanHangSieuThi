@@ -36,8 +36,10 @@
             this.btnMaximize = new GUI.Class.btnSimple();
             this.btnClose = new GUI.Class.btnSimple();
             this.pnlLeft = new System.Windows.Forms.Panel();
-            this.btnTroGiup = new GUI.Class.btnImage();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.pnlPicture = new System.Windows.Forms.Panel();
+            this.RenderBody = new System.Windows.Forms.Panel();
+            this.btnTroGiup = new GUI.Class.btnImage();
             this.btnTK = new GUI.Class.btnImage();
             this.btnQLNL = new GUI.Class.btnImage();
             this.btnQLBH = new GUI.Class.btnImage();
@@ -45,9 +47,7 @@
             this.btnQLHH = new GUI.Class.btnImage();
             this.btnTimKiem = new GUI.Class.btnImage();
             this.btnMenu = new GUI.Class.btnImage();
-            this.pnlPicture = new System.Windows.Forms.Panel();
             this.picLogo = new System.Windows.Forms.PictureBox();
-            this.RenderBody = new System.Windows.Forms.Panel();
             this.ToolBar.SuspendLayout();
             this.pnlLeft.SuspendLayout();
             this.pnlMenu.SuspendLayout();
@@ -160,6 +160,41 @@
             this.pnlLeft.Size = new System.Drawing.Size(191, 510);
             this.pnlLeft.TabIndex = 2;
             // 
+            // pnlMenu
+            // 
+            this.pnlMenu.Controls.Add(this.btnTroGiup);
+            this.pnlMenu.Controls.Add(this.btnTK);
+            this.pnlMenu.Controls.Add(this.btnQLNL);
+            this.pnlMenu.Controls.Add(this.btnQLBH);
+            this.pnlMenu.Controls.Add(this.btnQLNH);
+            this.pnlMenu.Controls.Add(this.btnQLHH);
+            this.pnlMenu.Controls.Add(this.btnTimKiem);
+            this.pnlMenu.Controls.Add(this.btnMenu);
+            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMenu.Location = new System.Drawing.Point(0, 80);
+            this.pnlMenu.Name = "pnlMenu";
+            this.pnlMenu.Size = new System.Drawing.Size(191, 390);
+            this.pnlMenu.TabIndex = 1;
+            // 
+            // pnlPicture
+            // 
+            this.pnlPicture.Controls.Add(this.picLogo);
+            this.pnlPicture.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlPicture.Location = new System.Drawing.Point(0, 0);
+            this.pnlPicture.Name = "pnlPicture";
+            this.pnlPicture.Size = new System.Drawing.Size(191, 80);
+            this.pnlPicture.TabIndex = 0;
+            // 
+            // RenderBody
+            // 
+            this.RenderBody.BackColor = System.Drawing.Color.White;
+            this.RenderBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RenderBody.Location = new System.Drawing.Point(191, 30);
+            this.RenderBody.Name = "RenderBody";
+            this.RenderBody.Size = new System.Drawing.Size(769, 510);
+            this.RenderBody.TabIndex = 3;
+            this.RenderBody.Paint += new System.Windows.Forms.PaintEventHandler(this.RenderBody_Paint);
+            // 
             // btnTroGiup
             // 
             this.btnTroGiup.BackColor = System.Drawing.Color.Transparent;
@@ -185,22 +220,6 @@
             this.btnTroGiup.TextColorMouseLeave = System.Drawing.Color.Black;
             this.btnTroGiup.UseActived = true;
             this.btnTroGiup.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnTroGiup_MouseClick);
-            // 
-            // pnlMenu
-            // 
-            this.pnlMenu.Controls.Add(this.btnTroGiup);
-            this.pnlMenu.Controls.Add(this.btnTK);
-            this.pnlMenu.Controls.Add(this.btnQLNL);
-            this.pnlMenu.Controls.Add(this.btnQLBH);
-            this.pnlMenu.Controls.Add(this.btnQLNH);
-            this.pnlMenu.Controls.Add(this.btnQLHH);
-            this.pnlMenu.Controls.Add(this.btnTimKiem);
-            this.pnlMenu.Controls.Add(this.btnMenu);
-            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 80);
-            this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(191, 390);
-            this.pnlMenu.TabIndex = 1;
             // 
             // btnTK
             // 
@@ -384,15 +403,6 @@
             this.btnMenu.UseActived = false;
             this.btnMenu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnMenu_MouseClick);
             // 
-            // pnlPicture
-            // 
-            this.pnlPicture.Controls.Add(this.picLogo);
-            this.pnlPicture.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlPicture.Location = new System.Drawing.Point(0, 0);
-            this.pnlPicture.Name = "pnlPicture";
-            this.pnlPicture.Size = new System.Drawing.Size(191, 80);
-            this.pnlPicture.TabIndex = 0;
-            // 
             // picLogo
             // 
             this.picLogo.BackColor = System.Drawing.Color.Transparent;
@@ -403,15 +413,6 @@
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picLogo.TabIndex = 19;
             this.picLogo.TabStop = false;
-            // 
-            // RenderBody
-            // 
-            this.RenderBody.BackColor = System.Drawing.Color.White;
-            this.RenderBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RenderBody.Location = new System.Drawing.Point(191, 30);
-            this.RenderBody.Name = "RenderBody";
-            this.RenderBody.Size = new System.Drawing.Size(769, 510);
-            this.RenderBody.TabIndex = 3;
             // 
             // FormMain
             // 

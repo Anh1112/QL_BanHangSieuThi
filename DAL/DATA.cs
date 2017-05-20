@@ -11,10 +11,10 @@ namespace DAL
     public class DATA
     {
         #region khachhang
-        //public static DataTable get_khachhang()
-        //{
-        //    return DBConnect.GetData("get_khachhang");//
-        //}
+        public static DataTable get_khachhang()
+        {
+            return DBConnect.GetData("get_khachhang");
+        }
         public static int them_khachhang(string ma, string ten, string diachi, string sdt)
         {
             SqlParameter[] para = new SqlParameter[]
@@ -87,10 +87,10 @@ namespace DAL
         #endregion
 
         #region nhanvien
-        //public static DataTable get_nhanvien()
-        //{
-        //    return DBConnect.GetData("get_nhanvien");
-        //}
+        public static DataTable get_nhanvien()
+        {
+            return DBConnect.GetData("get_nhanvien");
+        }
         public static int them_nhanvien(string ma, string ten, string diachi, string sdt, string chucvu, DateTime ngaysinh, decimal luong, string quayma)
         {
             SqlParameter[] para = new SqlParameter[]
