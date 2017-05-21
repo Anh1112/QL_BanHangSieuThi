@@ -36,7 +36,7 @@ namespace GUI.UC.QLNL
         {
             if (e.Button == MouseButtons.Left)
             {
-                AddControl(new UC_NhanVien());
+                AddControl(new UC.QLNL.UC_NhanVien());
             }
         }
 
@@ -44,7 +44,7 @@ namespace GUI.UC.QLNL
         {
             if(e.Button == MouseButtons.Left)
             {
-                AddControl(new UC_KhachHang());
+                AddControl(new UC.QLNL.UC_KhachHang());
             }
         }
     }
