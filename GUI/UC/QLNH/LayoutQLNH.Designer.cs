@@ -29,22 +29,19 @@
         private void InitializeComponent()
         {
             this.pnl_CTnhapkho = new System.Windows.Forms.Panel();
-            this.dgv_CTnhapkho = new System.Windows.Forms.DataGridView();
-            this.mathang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gianhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_nhapkho = new System.Windows.Forms.Panel();
             this.dgv_nhapkho = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnChiTietNhapKho = new GUI.Class.btnSimple();
             this.ToolBar = new System.Windows.Forms.Panel();
             this.btnNhapKho = new GUI.Class.btnSimple();
+            this.dgv_CTnhapkho = new System.Windows.Forms.DataGridView();
             this.pnl_CTnhapkho.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_CTnhapkho)).BeginInit();
             this.pnl_nhapkho.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_nhapkho)).BeginInit();
             this.panel1.SuspendLayout();
             this.ToolBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_CTnhapkho)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_CTnhapkho
@@ -54,38 +51,6 @@
             this.pnl_CTnhapkho.Name = "pnl_CTnhapkho";
             this.pnl_CTnhapkho.Size = new System.Drawing.Size(348, 472);
             this.pnl_CTnhapkho.TabIndex = 8;
-            // 
-            // dgv_CTnhapkho
-            // 
-            this.dgv_CTnhapkho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_CTnhapkho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mathang,
-            this.soluong,
-            this.gianhap});
-            this.dgv_CTnhapkho.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_CTnhapkho.Location = new System.Drawing.Point(0, 0);
-            this.dgv_CTnhapkho.Name = "dgv_CTnhapkho";
-            this.dgv_CTnhapkho.Size = new System.Drawing.Size(348, 472);
-            this.dgv_CTnhapkho.TabIndex = 0;
-            // 
-            // mathang
-            // 
-            this.mathang.FillWeight = 50F;
-            this.mathang.HeaderText = "Mặt Hàng";
-            this.mathang.Name = "mathang";
-            this.mathang.Width = 120;
-            // 
-            // soluong
-            // 
-            this.soluong.HeaderText = "Số Lượng";
-            this.soluong.Name = "soluong";
-            this.soluong.Width = 70;
-            // 
-            // gianhap
-            // 
-            this.gianhap.HeaderText = "Giá Nhập";
-            this.gianhap.Name = "gianhap";
-            this.gianhap.Width = 120;
             // 
             // pnl_nhapkho
             // 
@@ -103,6 +68,7 @@
             this.dgv_nhapkho.Name = "dgv_nhapkho";
             this.dgv_nhapkho.Size = new System.Drawing.Size(408, 472);
             this.dgv_nhapkho.TabIndex = 1;
+            this.dgv_nhapkho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nhapkho_CellClick);
             this.dgv_nhapkho.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nhapkho_CellEndEdit);
             // 
             // panel1
@@ -155,6 +121,15 @@
             this.btnNhapKho.Text = "Nhập kho";
             this.btnNhapKho.UseActived = true;
             // 
+            // dgv_CTnhapkho
+            // 
+            this.dgv_CTnhapkho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_CTnhapkho.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_CTnhapkho.Location = new System.Drawing.Point(0, 0);
+            this.dgv_CTnhapkho.Name = "dgv_CTnhapkho";
+            this.dgv_CTnhapkho.Size = new System.Drawing.Size(348, 472);
+            this.dgv_CTnhapkho.TabIndex = 0;
+            // 
             // LayoutQLNH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,11 +142,11 @@
             this.Size = new System.Drawing.Size(769, 510);
             this.Load += new System.EventHandler(this.LayoutQLNH_Load);
             this.pnl_CTnhapkho.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_CTnhapkho)).EndInit();
             this.pnl_nhapkho.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_nhapkho)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ToolBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_CTnhapkho)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -184,10 +159,7 @@
         private Class.btnSimple btnChiTietNhapKho;
         private System.Windows.Forms.Panel ToolBar;
         private Class.btnSimple btnNhapKho;
-        private System.Windows.Forms.DataGridView dgv_CTnhapkho;
         private System.Windows.Forms.DataGridView dgv_nhapkho;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mathang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soluong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gianhap;
+        private System.Windows.Forms.DataGridView dgv_CTnhapkho;
     }
 }

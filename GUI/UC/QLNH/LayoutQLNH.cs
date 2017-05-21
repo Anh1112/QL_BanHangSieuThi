@@ -21,7 +21,7 @@ namespace GUI.UC.QLNH
         private void LayoutQLNH_Load(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            dt = DBConnect.GetData("select * from nhapkho");
+            dt = DATA.get_nhapkho();
             
            
             dgv_nhapkho.DataSource = dt;
@@ -59,7 +59,21 @@ namespace GUI.UC.QLNH
             ngaynhap = DateTime.Parse(dgv_nhapkho.Rows[e.RowIndex].Cells[1].Value.ToString());
             tongtien = decimal.Parse(dgv_nhapkho.Rows[e.RowIndex].Cells[2].Value.ToString());
             nhanvienma = dgv_nhapkho.Rows[e.RowIndex].Cells[3].Value.ToString();
-            DATA.sua_xuatkho(ma, ngaynhap, tongtien, nhanvienma);
+            DATA.sua_nhapkho(ma, ngaynhap, tongtien, nhanvienma);
+        }
+
+        private void dgv_nhapkho_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+          string ma=  dgv_nhapkho.CurrentRow.Cells[0].Value.ToString();
+            dgv_CTnhapkho.DataSource = DATA.get_chitietnhapkho(ma);
+            dgv_CTnhapkho.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv_CTnhapkho.Columns[0].Visible=false;
+            dgv_CTnhapkho.Columns[1].HeaderText = "Ngày Nhập";
+            dgv_CTnhapkho.Columns[1].Width = 100;
+            dgv_CTnhapkho.Columns[2].HeaderText = "Tổng Tiền";
+            dgv_CTnhapkho.Columns[2].Width = 120;
+            dgv_CTnhapkho.Columns[3].HeaderText = "Nhân viên";
+            dgv_CTnhapkho.Columns[3].Width = 85;
         }
     }
 }
