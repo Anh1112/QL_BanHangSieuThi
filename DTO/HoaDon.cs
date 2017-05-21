@@ -8,7 +8,7 @@ using System.Data;
 
 namespace DTO
 {
-    class HoaDon
+    public class HoaDon
     {
         private string ma;
         private DateTime ngaylap;
@@ -79,6 +79,11 @@ namespace DTO
             {
                 khachhangma = value;
             }
+        }
+
+        public static DataTable Get_hoadon()
+        {
+            return DAL.DATA.get_hoadon();
         }
     }
 }

@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             this.ToolBar = new System.Windows.Forms.Panel();
+            this.btnNhap = new GUI.Class.btnSimple();
             this.btnTKBan = new GUI.Class.btnSimple();
             this.btnHangTrongKho = new GUI.Class.btnSimple();
-            this.btnNhap = new GUI.Class.btnSimple();
-            this.btnSimple2 = new GUI.Class.btnSimple();
+            this.RenderBody = new System.Windows.Forms.Panel();
             this.ToolBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // ToolBar
             // 
             this.ToolBar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ToolBar.Controls.Add(this.btnSimple2);
             this.ToolBar.Controls.Add(this.btnNhap);
             this.ToolBar.Controls.Add(this.btnTKBan);
             this.ToolBar.Controls.Add(this.btnHangTrongKho);
@@ -48,40 +47,6 @@
             this.ToolBar.Name = "ToolBar";
             this.ToolBar.Size = new System.Drawing.Size(769, 26);
             this.ToolBar.TabIndex = 1;
-            // 
-            // btnTKBan
-            // 
-            this.btnTKBan.Alignment = System.Drawing.StringAlignment.Center;
-            this.btnTKBan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnTKBan.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this.btnTKBan.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this.btnTKBan.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnTKBan.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnTKBan.ForeColor = System.Drawing.Color.White;
-            this.btnTKBan.Location = new System.Drawing.Point(97, 0);
-            this.btnTKBan.Name = "btnTKBan";
-            this.btnTKBan.Size = new System.Drawing.Size(113, 26);
-            this.btnTKBan.TabIndex = 1;
-            this.btnTKBan.TabStop = false;
-            this.btnTKBan.Text = "Mức tiêu thụ";
-            this.btnTKBan.UseActived = true;
-            // 
-            // btnHangTrongKho
-            // 
-            this.btnHangTrongKho.Alignment = System.Drawing.StringAlignment.Center;
-            this.btnHangTrongKho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnHangTrongKho.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this.btnHangTrongKho.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this.btnHangTrongKho.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnHangTrongKho.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnHangTrongKho.ForeColor = System.Drawing.Color.White;
-            this.btnHangTrongKho.Location = new System.Drawing.Point(0, 0);
-            this.btnHangTrongKho.Name = "btnHangTrongKho";
-            this.btnHangTrongKho.Size = new System.Drawing.Size(97, 26);
-            this.btnHangTrongKho.TabIndex = 0;
-            this.btnHangTrongKho.TabStop = false;
-            this.btnHangTrongKho.Text = "Hàng trong kho";
-            this.btnHangTrongKho.UseActived = true;
             // 
             // btnNhap
             // 
@@ -99,28 +64,56 @@
             this.btnNhap.TabStop = false;
             this.btnNhap.Text = "Lưu lượng nhập";
             this.btnNhap.UseActived = true;
+            this.btnNhap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnNhap_MouseClick);
             // 
-            // btnSimple2
+            // btnTKBan
             // 
-            this.btnSimple2.Alignment = System.Drawing.StringAlignment.Center;
-            this.btnSimple2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnSimple2.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this.btnSimple2.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this.btnSimple2.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnSimple2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnSimple2.ForeColor = System.Drawing.Color.White;
-            this.btnSimple2.Location = new System.Drawing.Point(323, 0);
-            this.btnSimple2.Name = "btnSimple2";
-            this.btnSimple2.Size = new System.Drawing.Size(113, 26);
-            this.btnSimple2.TabIndex = 3;
-            this.btnSimple2.TabStop = false;
-            this.btnSimple2.Text = "Chi tiết LL nhập";
-            this.btnSimple2.UseActived = true;
+            this.btnTKBan.Alignment = System.Drawing.StringAlignment.Center;
+            this.btnTKBan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnTKBan.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
+            this.btnTKBan.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
+            this.btnTKBan.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnTKBan.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnTKBan.ForeColor = System.Drawing.Color.White;
+            this.btnTKBan.Location = new System.Drawing.Point(97, 0);
+            this.btnTKBan.Name = "btnTKBan";
+            this.btnTKBan.Size = new System.Drawing.Size(113, 26);
+            this.btnTKBan.TabIndex = 1;
+            this.btnTKBan.TabStop = false;
+            this.btnTKBan.Text = "Mức tiêu thụ";
+            this.btnTKBan.UseActived = true;
+            this.btnTKBan.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnTKBan_MouseClick);
+            // 
+            // btnHangTrongKho
+            // 
+            this.btnHangTrongKho.Alignment = System.Drawing.StringAlignment.Center;
+            this.btnHangTrongKho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnHangTrongKho.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
+            this.btnHangTrongKho.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
+            this.btnHangTrongKho.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnHangTrongKho.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnHangTrongKho.ForeColor = System.Drawing.Color.White;
+            this.btnHangTrongKho.Location = new System.Drawing.Point(0, 0);
+            this.btnHangTrongKho.Name = "btnHangTrongKho";
+            this.btnHangTrongKho.Size = new System.Drawing.Size(97, 26);
+            this.btnHangTrongKho.TabIndex = 0;
+            this.btnHangTrongKho.TabStop = false;
+            this.btnHangTrongKho.Text = "Hàng trong kho";
+            this.btnHangTrongKho.UseActived = true;
+            this.btnHangTrongKho.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnHangTrongKho_MouseClick);
+            // 
+            // RenderBody
+            // 
+            this.RenderBody.Location = new System.Drawing.Point(4, 32);
+            this.RenderBody.Name = "RenderBody";
+            this.RenderBody.Size = new System.Drawing.Size(762, 475);
+            this.RenderBody.TabIndex = 4;
             // 
             // LayoutThongKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.RenderBody);
             this.Controls.Add(this.ToolBar);
             this.Name = "LayoutThongKe";
             this.Size = new System.Drawing.Size(769, 510);
@@ -134,7 +127,7 @@
         private System.Windows.Forms.Panel ToolBar;
         private Class.btnSimple btnTKBan;
         private Class.btnSimple btnHangTrongKho;
-        private Class.btnSimple btnSimple2;
         private Class.btnSimple btnNhap;
+        private System.Windows.Forms.Panel RenderBody;
     }
 }

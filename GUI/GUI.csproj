@@ -40,6 +40,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -99,6 +100,42 @@
     <Compile Include="UC\QLNL\Layout_QLNL.Designer.cs">
       <DependentUpon>Layout_QLNL.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC\QLNL\UC_KhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\QLNL\UC_KhachHang.Designer.cs">
+      <DependentUpon>UC_KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\QLNL\UC_NhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\QLNL\UC_NhanVien.Designer.cs">
+      <DependentUpon>UC_NhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\ThongKe\Detail\UC_ChiTietLLNhap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\ThongKe\Detail\UC_ChiTietLLNhap.Designer.cs">
+      <DependentUpon>UC_ChiTietLLNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\ThongKe\Detail\UC_HangTrongKho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\ThongKe\Detail\UC_HangTrongKho.Designer.cs">
+      <DependentUpon>UC_HangTrongKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\ThongKe\Detail\UC_LuuLuongNhap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\ThongKe\Detail\UC_LuuLuongNhap.Designer.cs">
+      <DependentUpon>UC_LuuLuongNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\ThongKe\Detail\UC_MucTieuThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\ThongKe\Detail\UC_MucTieuThu.Designer.cs">
+      <DependentUpon>UC_MucTieuThu.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC\ThongKe\LayoutThongKe.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -117,13 +154,24 @@
     <Compile Include="UC\TroGiup\LayoutTroGiup.Designer.cs">
       <DependentUpon>LayoutTroGiup.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC\TroGiup\UC_GioiThieu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\TroGiup\UC_GioiThieu.Designer.cs">
+      <DependentUpon>UC_GioiThieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\TroGiup\UC_TroGiup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\TroGiup\UC_TroGiup.Designer.cs">
+      <DependentUpon>UC_TroGiup.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UC\QLBH\Detail\" />
     <Folder Include="UC\QLHH\Detail\" />
     <Folder Include="UC\QLNH\Detail\" />
     <Folder Include="UC\QLNL\Detail\" />
-    <Folder Include="UC\ThongKe\Detail\" />
     <Folder Include="UC\TimKiem\Detail\" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +194,24 @@
     <EmbeddedResource Include="UC\QLNL\Layout_QLNL.resx">
       <DependentUpon>Layout_QLNL.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC\QLNL\UC_KhachHang.resx">
+      <DependentUpon>UC_KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\QLNL\UC_NhanVien.resx">
+      <DependentUpon>UC_NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\ThongKe\Detail\UC_ChiTietLLNhap.resx">
+      <DependentUpon>UC_ChiTietLLNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\ThongKe\Detail\UC_HangTrongKho.resx">
+      <DependentUpon>UC_HangTrongKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\ThongKe\Detail\UC_LuuLuongNhap.resx">
+      <DependentUpon>UC_LuuLuongNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\ThongKe\Detail\UC_MucTieuThu.resx">
+      <DependentUpon>UC_MucTieuThu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC\ThongKe\LayoutThongKe.resx">
       <DependentUpon>LayoutThongKe.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +221,24 @@
     <EmbeddedResource Include="UC\TroGiup\LayoutTroGiup.resx">
       <DependentUpon>LayoutTroGiup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC\TroGiup\UC_GioiThieu.resx">
+      <DependentUpon>UC_GioiThieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\TroGiup\UC_TroGiup.resx">
+      <DependentUpon>UC_TroGiup.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OpenProj_App_Icon_by_marc2o.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1 %28431%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Globe_win7.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

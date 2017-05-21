@@ -11,10 +11,10 @@ namespace DAL
     public class DATA
     {
         #region khachhang
-        //public static DataTable get_khachhang()
-        //{
-        //    return DBConnect.GetData("get_khachhang");//
-        //}
+        public static DataTable get_khachhang()
+        {
+            return DBConnect.GetData("get_khachhang");
+        }
         public static int them_khachhang(string ma, string ten, string diachi, string sdt)
         {
             SqlParameter[] para = new SqlParameter[]
@@ -48,10 +48,10 @@ namespace DAL
         #endregion
 
         #region hoadon
-        //public static DataTable get_hoadon()
-        //{
-        //    return DBConnect.GetData("get_hoadon");
-        //}
+        public static DataTable get_hoadon()
+        {
+            return DBConnect.GetData("get_hoadon");
+        }
         public static int them_hoadon(string ma, DateTime ngaylap, decimal tongtien, string nhanvienma, string khachhangma)
         {
             SqlParameter[] para = new SqlParameter[]
@@ -87,10 +87,10 @@ namespace DAL
         #endregion
 
         #region nhanvien
-        //public static DataTable get_nhanvien()
-        //{
-        //    return DBConnect.GetData("get_nhanvien");
-        //}
+        public static DataTable get_nhanvien()
+        {
+            return DBConnect.GetData("get_nhanvien");
+        }
         public static int them_nhanvien(string ma, string ten, string diachi, string sdt, string chucvu, DateTime ngaysinh, decimal luong, string quayma)
         {
             SqlParameter[] para = new SqlParameter[]
@@ -166,70 +166,86 @@ namespace DAL
         #endregion
 
         #region nhapkho
-        public static int them_xuatkho(string ma, DateTime ngayxuat,decimal tongtien,string nhanvienma)
+        public static DataTable get_nhapkho()
+        {
+            return DBConnect.GetData("get_nhapkho");
+        }
+
+        public static int them_nhapkho(string ma, DateTime ngaynhap, decimal tongtien, string nhanvienma)
         {
             SqlParameter[] para = new SqlParameter[]
             {
                 new SqlParameter("@ma",ma),
-                new SqlParameter("@ngayxuat",ngayxuat),
+                new SqlParameter("@ngaynhap",ngaynhap),
                 new SqlParameter("@ten",(tongtien>0)?(object)tongtien:DBNull.Value),
                 new SqlParameter("@nhanvienma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
             };
-            return DBConnect.ExecuteNonQuery("ADD_XuatKho", para);
+            return DBConnect.ExecuteNonQuery("them_nhapkho", para);
         }
-        public static int sua_xuatkho(string ma, DateTime ngayxuat, decimal tongtien, string nhanvienma)
+        public static int sua_nhapkho(string ma, DateTime ngaynhap, decimal tongtien, string nhanvienma)
 
         {
             SqlParameter[] para = new SqlParameter[]
             {
                  new SqlParameter("@ma",ma),
-                new SqlParameter("@ngayxuat",ngayxuat),
+                new SqlParameter("@ngaynhap",ngaynhap),
                 new SqlParameter("@tongtien",(tongtien>0)?(object)tongtien:DBNull.Value),
                 new SqlParameter("@nhanvienma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
       };
-            return DBConnect.ExecuteNonQuery("Change_xuatkho", para);
+            return DBConnect.ExecuteNonQuery("sua_nhapkho", para);
         }
-        public static int xoa_xuatkho(string ma)
+        public static int xoa_nhapkho(string ma)
         {
             SqlParameter[] para = new SqlParameter[]
            {
                  new SqlParameter("@ma",ma)
            };
-            return DBConnect.ExecuteNonQuery("delete_xuatkho", para);
+            return DBConnect.ExecuteNonQuery("xoa_nhapkho", para);
         }
         #endregion
 
-        #region chitietxuatkho
-        public static int them_chitietxuatkho(string mamh, string maxk, float sl, decimal gn)
+        #region chitietnhapkho
+        // thong ke luu luong nhap hang cua tat ca cac loai hang hoa
+        public static DataTable get_chitietnhapkho(string ma)
+        {
+            return DBConnect.GetData("get_chitietnhapkho '" + ma + "'");
+        }
+
+        // thong ke luu luong nhap cua tung hang hoa
+        public static DataTable get_chitietnhapsanpham(string nhapkhoma, string mathangma)
+        {
+            return DBConnect.GetData("get_chitietnhapsanpham '" + nhapkhoma + "'" + "'" + mathangma + "'");
+        }
+        public static int them_chitietnhapkho(string mamh, string mank, float sl, decimal gn)
         {
             SqlParameter[] para = new SqlParameter[]
             {
                 new SqlParameter("@mamh",mamh),
-                new SqlParameter("@maxk",maxk),
+                new SqlParameter("@mank",mank),
                 new SqlParameter("@sl",(sl>0)?(object)sl:DBNull.Value),
                 new SqlParameter("@gn",(gn>0 ?(object)gn:DBNull.Value))
             };
-            return DBConnect.ExecuteNonQuery("ADD_chitietXuatKho", para);
+            return DBConnect.ExecuteNonQuery("them_chitietnhapkho", para);
         }
-        public static int sua_xuatkho(string mamh, string maxk, float sl, decimal gn)
+        public static int sua_chitietnhapkho(string mamh, string mank, float sl, decimal gn)
         {
             SqlParameter[] para = new SqlParameter[]
             {
                 new SqlParameter("@mamh",mamh),
-                new SqlParameter("@maxk",maxk),
+                new SqlParameter("@mank",mank),
                 new SqlParameter("@sl",(sl>0)?(object)sl:DBNull.Value),
                 new SqlParameter("@gn",(gn>0 ?(object)gn:DBNull.Value))
             };
-            return DBConnect.ExecuteNonQuery("Change_chitietxuatkho", para);
+            return DBConnect.ExecuteNonQuery("sua_chitietnhapkho", para);
         }
-        public static int xoa_chitietxuatkho(string mamh,string maxk)
+        public static int xoa_chitietnhapkho(string mamh, string mank)
         {
             SqlParameter[] para = new SqlParameter[]
            {
                  new SqlParameter("@mamh",mamh),
-                  new SqlParameter("@maxk",maxk)
+                  new SqlParameter("@mank",mank)
            };
-            return DBConnect.ExecuteNonQuery("delete_chitietxuatkho", para);
+            return DBConnect.ExecuteNonQuery("xoa_chitietnhapkho", para);
         }
         #endregion
 
@@ -303,6 +319,12 @@ namespace DAL
         #endregion
 
         #region chitiethoadon
+        // thong ke luong hang ban ra cua moi mot san pham nhat dinh
+        public static DataTable get_chitietbansanpham(string mahoadon, string mathangma)
+        {
+            return DBConnect.GetData("get_chitietbansanpham '" + mahoadon + "'" + "'" + mathangma + "'");
+        }
+        // thong ke luong hang ban ra cua tung san pham
         public static DataTable get_chitiethoadon(string mahoadon)
         {
             return DBConnect.GetData("get_chitiethoadon '" + mahoadon + "'");

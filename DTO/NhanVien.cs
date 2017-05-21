@@ -122,10 +122,10 @@ namespace DTO
                 quayma = value;
             }
         }
-        //public DataTable get_nhanvien()
-        //{
-        //    return DATA.get_nhanvien();
-        //}
+        public DataTable get_nhanvien()
+        {
+            return DATA.get_nhanvien();
+        }
 
         public int them_nhanvien()
         {
