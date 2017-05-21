@@ -23,7 +23,7 @@ namespace DAL
             {
                 conn = null;
                 //  string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strconn + ";Integrated Security=True;Connect Timeout=30";
-                string sql = @"Data Source=DESKTOP-3KHGO1B;Initial Catalog=SieuThi;Integrated Security=True";
+                string sql = @"Data Source=SOCK9X;Initial Catalog=SieuThi;Integrated Security=True";
                 SqlConnection con = new SqlConnection(sql);
                 con.Open();
                 conn = con;

@@ -165,7 +165,7 @@ namespace DAL
         }
         #endregion
 
-        #region xuatkho
+        #region nhapkho
         public static int them_xuatkho(string ma, DateTime ngayxuat,decimal tongtien,string nhanvienma)
         {
             SqlParameter[] para = new SqlParameter[]
