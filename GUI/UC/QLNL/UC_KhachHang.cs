@@ -21,6 +21,9 @@ namespace GUI.UC.QLNL
 
         KhachHang kh = new KhachHang();
         bool ThemMoi;
+
+        public KhachHang Kh { get => kh; set => kh = value; }
+
         void KhoaDieuKhien()
         {
             txtMa.Enabled = false;
@@ -55,7 +58,7 @@ namespace GUI.UC.QLNL
 
         void HienThi()
         {
-            DataTable dt = kh.get_khachhang();
+            DataTable dt = Kh.get_khachhang();
             dgvKhachHang.DataSource = dt;
         }
         private void btnThem_Click(object sender, EventArgs e)
@@ -83,8 +86,8 @@ namespace GUI.UC.QLNL
 
             try
             {
-                kh.Ma = txtMa.Text;
-                kh.xoa(kh.Ma);
+                Kh.Ma = txtMa.Text;
+                Kh.xoa(Kh.Ma);
                 MessageBox.Show("Đã xóa thành công!");
                 KhoaDieuKhien();
                 SetNull();
@@ -102,11 +105,11 @@ namespace GUI.UC.QLNL
             {
                 try
                 {
-                    kh.Ma = txtMa.Text;
-                    kh.Ten = txtTen.Text;
-                    kh.Diachi = txtDiaChi.Text;
-                    kh.Sdt = txtSDT.Text;
-                    kh.them();
+                    Kh.Ma = txtMa.Text;
+                    Kh.Ten = txtTen.Text;
+                    Kh.Diachi = txtDiaChi.Text;
+                    Kh.Sdt = txtSDT.Text;
+                    Kh.them();
                     MessageBox.Show("Đã thêm thành công!");
                 }
                 catch
@@ -119,11 +122,11 @@ namespace GUI.UC.QLNL
             {
                 try
                 {
-                    kh.Ma = txtMa.Text;
-                    kh.Ten = txtTen.Text;
-                    kh.Diachi = txtDiaChi.Text;
-                    kh.Sdt = txtSDT.Text;
-                    kh.sua();
+                    Kh.Ma = txtMa.Text;
+                    Kh.Ten = txtTen.Text;
+                    Kh.Diachi = txtDiaChi.Text;
+                    Kh.Sdt = txtSDT.Text;
+                    Kh.sua();
                     MessageBox.Show("Đã sửa thành công!");
                 }
                 catch

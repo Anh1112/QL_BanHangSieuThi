@@ -211,6 +211,7 @@ namespace DAL
             return DBConnect.GetData("get_chitietnhapkho '" + ma + "'");
         }
 
+
         // thong ke luu luong nhap cua tung hang hoa
         public static DataTable get_chitietnhapsanpham(string nhapkhoma, string mathangma)
         {
