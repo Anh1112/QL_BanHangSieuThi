@@ -67,13 +67,13 @@ namespace GUI.UC.QLNH
           string ma=  dgv_nhapkho.CurrentRow.Cells[0].Value.ToString();
             dgv_CTnhapkho.DataSource = DATA.get_chitietnhapkho(ma);
             dgv_CTnhapkho.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgv_CTnhapkho.Columns[0].Visible=false;
-            dgv_CTnhapkho.Columns[1].HeaderText = "Ngày Nhập";
-            dgv_CTnhapkho.Columns[1].Width = 100;
-            dgv_CTnhapkho.Columns[2].HeaderText = "Tổng Tiền";
-            dgv_CTnhapkho.Columns[2].Width = 120;
-            dgv_CTnhapkho.Columns[3].HeaderText = "Nhân viên";
-            dgv_CTnhapkho.Columns[3].Width = 85;
+            dgv_CTnhapkho.Columns[1].Visible=false;
+            dgv_CTnhapkho.Columns[0].HeaderText = "Mặt hàng mã";
+            dgv_CTnhapkho.Columns[0].Width = 120;
+            dgv_CTnhapkho.Columns[2].HeaderText = "Số lượng";
+            dgv_CTnhapkho.Columns[2].Width = 70;
+            dgv_CTnhapkho.Columns[3].HeaderText = "Giá Nhập";
+            dgv_CTnhapkho.Columns[3].Width = 120;
         }
     }
 }
