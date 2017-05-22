@@ -13,6 +13,24 @@ namespace GUI.UC.QLNH
 {
     public partial class LayoutQLNH : UserControl
     {
+        private bool fullCT = false;
+        private void fulltableCT()
+        {
+            if(fullCT==false)
+            {
+                pnl_nhapkho.Visible = false;
+                pnl_CTnhapkho.Dock = DockStyle.Fill;
+                fullCT = true;
+            }
+            else
+            {
+                pnl_nhapkho.Visible = true;
+                pnl_CTnhapkho.Dock = DockStyle.None;
+                fullCT = false;
+            }
+            btnNhapKho.Actived = false;
+            btnChiTietNhapKho.Actived = false;
+        }
         public LayoutQLNH()
         {
             InitializeComponent();
@@ -68,12 +86,27 @@ namespace GUI.UC.QLNH
             dgv_CTnhapkho.DataSource = DATA.get_chitietnhapkho(ma);
             dgv_CTnhapkho.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgv_CTnhapkho.Columns[1].Visible=false;
-            dgv_CTnhapkho.Columns[0].HeaderText = "Mặt hàng mã";
-            dgv_CTnhapkho.Columns[0].Width = 120;
-            dgv_CTnhapkho.Columns[2].HeaderText = "Số lượng";
-            dgv_CTnhapkho.Columns[2].Width = 70;
-            dgv_CTnhapkho.Columns[3].HeaderText = "Giá Nhập";
-            dgv_CTnhapkho.Columns[3].Width = 120;
+            dgv_CTnhapkho.Columns[0].Width = 130;
+            dgv_CTnhapkho.Columns[2].Width = 130;
+            dgv_CTnhapkho.Columns[3].Width = 100;
+            dgv_CTnhapkho.Columns[4].Width = 95;
+            dgv_CTnhapkho.Columns[5].Width = 120;
+            dgv_CTnhapkho.Columns[6].Width = 130;
+        }
+
+        private void btnNhapKho_MouseClick(object sender, MouseEventArgs e)
+        {
+            fulltableCT();
+            btnNhapKho.Enabled = true;
+        }
+
+        private void btnChiTietNhapKho_MouseClick(object sender, MouseEventArgs e)
+        {
+            fulltableCT();
+            btnNhapKho.Visible = false;
+
+            btnNhapKho.Visible = true;
+
         }
     }
 }

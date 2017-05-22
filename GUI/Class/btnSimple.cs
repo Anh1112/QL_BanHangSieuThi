@@ -13,6 +13,7 @@ namespace GUI.Class
         private Color clrME = Color.FromArgb(0, 122, 204);
         private Color clrML;
         private bool actived = false;
+        
         private bool useActived = false;
 
         public btnSimple() : base()
@@ -25,6 +26,7 @@ namespace GUI.Class
             this.MouseEnter += btnSimple_MouseEnter;
             this.MouseLeave += btnSimple_MouseLeave;
             this.MouseUp += btnSimple_MouseUp;
+            this.actived = false;
         }
 
         private void btnSimple_MouseUp(object sender, MouseEventArgs e)
@@ -46,7 +48,8 @@ namespace GUI.Class
 
         private void btnSimple_MouseEnter(object sender, System.EventArgs e)
         {
-            if (!useActived || !actived) this.BackColor = clrME;
+            if (!useActived || !actived)
+                this.BackColor = clrME;
         }
 
         private void btnSimple_MouseDown(object sender, MouseEventArgs e)
