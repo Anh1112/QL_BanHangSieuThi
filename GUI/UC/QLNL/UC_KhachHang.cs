@@ -112,7 +112,7 @@ namespace GUI.UC.QLNL
                 {
                     kh.Ma = txtMa.Text;
                     kh.Ten = txtTen.Text;
-                    kh.Diachi = txtDiaChi.Text;
+                    kh.Diachi = cboDiaChi.Text;
                     kh.Sdt = txtSDT.Text;
                     kh.them();
                     MessageBox.Show("Đã thêm thành công!");
@@ -129,7 +129,7 @@ namespace GUI.UC.QLNL
                 {
                     kh.Ma = txtMa.Text;
                     kh.Ten = txtTen.Text;
-                    kh.Diachi = txtDiaChi.Text;
+                    kh.Diachi = cboDiaChi.Text;
                     kh.Sdt = txtSDT.Text;
                     kh.sua();
                     MessageBox.Show("Đã sửa thành công!");
@@ -165,13 +165,23 @@ namespace GUI.UC.QLNL
         void TimKiem()
         {
             DataTable dt = new DataTable();
-            dt = DAL.DBConnect.GetData(@"select ma as [Mã Khách Hàng], ten as [Tên Nhân Viên],  diachi as [Địa Chỉ], sdt as [Số Điện Thoại]from khachhang where ten like '%" + txtSearch.Text.Trim() + "%' or ma like '%" + txtSearch.Text.Trim() + "%'");
+            dt = DAL.DBConnect.GetData(@"select ma as [Mã Khách Hàng], ten as [Tên Khách Hàng],  diachi as [Địa Chỉ], sdt as [Số Điện Thoại] from khachhang where ten like '%" + txtSearch.Text.Trim() + "%' or ma like '%" + txtSearch.Text.Trim() + "%'");
             dgvKhachHang.DataSource = dt;
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             TimKiem();
+        }
+
+        private void txtMa_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtTen_TextChanged(object sender, EventArgs e)
+        {
+            txtMa.Text = "" + DateTime.Now.Day.ToString().Trim() + "" + DateTime.Now.Hour.ToString().Trim() + "" + DateTime.Now.Minute.ToString().Trim() + "" + DateTime.Now.Millisecond.ToString().Trim() + "";
         }
     }
 }

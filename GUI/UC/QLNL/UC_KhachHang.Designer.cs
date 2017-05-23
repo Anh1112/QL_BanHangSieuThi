@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlSearch = new System.Windows.Forms.Panel();
+            this.labSearch = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -43,13 +46,10 @@
             this.txtMa = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cboDiaChi = new System.Windows.Forms.ComboBox();
-            this.pnlSearch = new System.Windows.Forms.Panel();
-            this.labSearch = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.pnlSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -61,8 +61,42 @@
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(754, 37);
+            this.panel1.Size = new System.Drawing.Size(727, 37);
             this.panel1.TabIndex = 20;
+            // 
+            // pnlSearch
+            // 
+            this.pnlSearch.BackColor = System.Drawing.Color.White;
+            this.pnlSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSearch.Controls.Add(this.labSearch);
+            this.pnlSearch.Controls.Add(this.txtSearch);
+            this.pnlSearch.Location = new System.Drawing.Point(355, 10);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Size = new System.Drawing.Size(372, 24);
+            this.pnlSearch.TabIndex = 5;
+            // 
+            // labSearch
+            // 
+            this.labSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labSearch.AutoSize = true;
+            this.labSearch.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labSearch.Location = new System.Drawing.Point(346, 5);
+            this.labSearch.Name = "labSearch";
+            this.labSearch.Size = new System.Drawing.Size(20, 13);
+            this.labSearch.TabIndex = 1;
+            this.labSearch.Text = "";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSearch.Location = new System.Drawing.Point(8, 6);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(332, 13);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TabStop = false;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnLuu
             // 
@@ -110,6 +144,7 @@
             // 
             // dgvKhachHang
             // 
+            this.dgvKhachHang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvKhachHang.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKhachHang.Location = new System.Drawing.Point(0, 191);
@@ -167,6 +202,7 @@
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(200, 20);
             this.txtTen.TabIndex = 31;
+            this.txtTen.TextChanged += new System.EventHandler(this.txtTen_TextChanged);
             // 
             // txtMa
             // 
@@ -174,6 +210,7 @@
             this.txtMa.Name = "txtMa";
             this.txtMa.Size = new System.Drawing.Size(200, 20);
             this.txtMa.TabIndex = 32;
+            this.txtMa.TextChanged += new System.EventHandler(this.txtMa_TextChanged);
             // 
             // groupBox1
             // 
@@ -187,50 +224,52 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(3, 46);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(754, 139);
+            this.groupBox1.Size = new System.Drawing.Size(727, 139);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             // 
             // cboDiaChi
             // 
+            this.cboDiaChi.Items.AddRange(new object[] {
+            "An Giang",
+            "Bà Rịa - Vũng Tàu",
+            "Bắc Giang",
+            "Bắc Kan",
+            "Bạc Liêu",
+            "Bắc Ninh",
+            "Bến Tre ",
+            "Bình Định",
+            "Bình Dương ",
+            "Bình Phước ",
+            "Bình Thuận",
+            "Cà Mau",
+            "Cao Bằng",
+            "Đắc Lắc",
+            "Hà Nội",
+            "Đắc Nông ",
+            "Điện Biên",
+            "Đồng Nai",
+            "Đồng Tháp",
+            "Gia Lai",
+            "Hà Giang",
+            "Hà Nam",
+            "Hải Dương",
+            "Hà Tĩnh ",
+            "Hậu Giang",
+            "Hòa Bình",
+            "Hưng Yên",
+            "Khánh Hòa ",
+            "Kiên Giang ",
+            "Kon Tum",
+            "Hải Phòng",
+            "Thanh Hóa",
+            "Nghệ An",
+            "Thừa Thiên Huế",
+            "Nam Định"});
             this.cboDiaChi.Location = new System.Drawing.Point(506, 29);
             this.cboDiaChi.Name = "cboDiaChi";
             this.cboDiaChi.Size = new System.Drawing.Size(200, 21);
             this.cboDiaChi.TabIndex = 0;
-            // 
-            // pnlSearch
-            // 
-            this.pnlSearch.BackColor = System.Drawing.Color.White;
-            this.pnlSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlSearch.Controls.Add(this.labSearch);
-            this.pnlSearch.Controls.Add(this.txtSearch);
-            this.pnlSearch.Location = new System.Drawing.Point(355, 10);
-            this.pnlSearch.Name = "pnlSearch";
-            this.pnlSearch.Size = new System.Drawing.Size(372, 24);
-            this.pnlSearch.TabIndex = 5;
-            // 
-            // labSearch
-            // 
-            this.labSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labSearch.AutoSize = true;
-            this.labSearch.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labSearch.Location = new System.Drawing.Point(346, 5);
-            this.labSearch.Name = "labSearch";
-            this.labSearch.Size = new System.Drawing.Size(20, 13);
-            this.labSearch.TabIndex = 1;
-            this.labSearch.Text = "";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSearch.Location = new System.Drawing.Point(8, 6);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(332, 13);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.TabStop = false;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // UC_KhachHang
             // 
@@ -240,14 +279,14 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvKhachHang);
             this.Name = "UC_KhachHang";
-            this.Size = new System.Drawing.Size(759, 468);
+            this.Size = new System.Drawing.Size(740, 468);
             this.Load += new System.EventHandler(this.UC_KhachHang_Load);
             this.panel1.ResumeLayout(false);
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.pnlSearch.ResumeLayout(false);
-            this.pnlSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -334,5 +334,10 @@ namespace GUI.UC.QLHH
                 e.Handled = true;
             }
         }
+
+        private void txtMa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
