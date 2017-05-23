@@ -18,13 +18,13 @@ namespace GUI.UC.ThongKe.Detail
         {
             InitializeComponent();
         }
-        MatHang mathang = new MatHang();
+      //  MatHang mathang = new MatHang();
         private void UC_HangTrongKho_Load(object sender, EventArgs e)
         {
-            dgvCTHangTrongKho.DataSource = mathang.Get_mathang();/*DTO.MatHang.Get_mathang();*/
+           dgvCTHangTrongKho.DataSource = DTO.MatHang.Get_mathang();
             this.ChartHangTrongKho.Series["Mặt hàng"].XValueMember = "ten";
             this.ChartHangTrongKho.Series["Mặt hàng"].YValueMembers = "soluongtrongkho";
-            ChartHangTrongKho.DataSource = mathang.Get_mathang();/*DTO.MatHang.Get_mathang();*/
+            ChartHangTrongKho.DataSource = DTO.MatHang.Get_mathang();
             ChartHangTrongKho.DataBind();
         }
     }

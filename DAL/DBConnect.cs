@@ -22,8 +22,7 @@ namespace DAL
             try
             {
                 conn = null;
-                  string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strconn + ";Integrated Security=True;Connect Timeout=30";
-               // string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\school\QL_BanHangSieuThi\GUI\data\SieuThi.mdf;Integrated Security=True;Connect Timeout=30";
+                string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strconn + ";Integrated Security=True;Connect Timeout=30";
                 SqlConnection con = new SqlConnection(sql);
                 con.Open();
                 conn = con;
@@ -56,8 +55,8 @@ namespace DAL
         //thuc hien thu tuc
         public static int ExecuteNonQuery(string proc, SqlParameter[] para)
         {
-            //try
-            //{
+            try
+            {
             if (conn == null || conn.State == ConnectionState.Closed) Connect();
             if (conn == null) return 0;
             Connect();
@@ -71,11 +70,11 @@ namespace DAL
             int val = cmd.ExecuteNonQuery();
             //conn.Close();
             return val;
-            //}
-            //catch (SqlException)
-            //{
-            //    return 0;
-            //}
+            }
+            catch (SqlException)
+            {
+                return 0;
+            }
         }
     }
 }

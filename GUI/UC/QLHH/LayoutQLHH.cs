@@ -91,7 +91,8 @@ namespace GUI.UC.QLHH
         }
         void HienThi_MatHang()
         {
-            DataTable dt = mh.Get_mathang();
+            // DataTable dt = mh.Get_mathang();
+            DataTable dt = DTO.MatHang.Get_mathang();
             dgvMatHang.DataSource = dt;
         }
 
@@ -332,6 +333,11 @@ namespace GUI.UC.QLHH
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtMa_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

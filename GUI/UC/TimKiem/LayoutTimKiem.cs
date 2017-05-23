@@ -22,7 +22,8 @@ namespace GUI.UC.TimKiem
 
         void HienThi_MatHang()
         {
-            DataTable dt = mh.Get_mathang();
+            // DataTable dt = mh.Get_mathang();
+            DataTable dt = DTO.MatHang.Get_mathang();
             dgvTimKiem.DataSource = dt;
         }
 

@@ -136,11 +136,11 @@ namespace DTO
             }
         }
 
-        public  DataTable Get_mathang()
+        public  static DataTable Get_mathang()
         {
             return DAL.DATA.get_mathang();
         }
-        public  DataTable Get_mathang1(string mamh)
+        public  static DataTable Get_mathang1(string mamh)
         {
             return DAL.DATA.get_mathang1(mamh);
         }
