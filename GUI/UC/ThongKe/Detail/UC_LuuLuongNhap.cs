@@ -19,6 +19,7 @@ namespace GUI.UC.ThongKe.Detail
             InitializeComponent();
         }
 
+        //
         private void UC_LuuLuongNhap_Load(object sender, EventArgs e)
         {
             //dgvCTHangTrongKho.DataSource = DTO.MatHang.Get_mathang();

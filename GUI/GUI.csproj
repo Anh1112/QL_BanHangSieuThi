@@ -171,7 +171,6 @@
     <Folder Include="UC\QLBH\Detail\" />
     <Folder Include="UC\QLHH\Detail\" />
     <Folder Include="UC\QLNH\Detail\" />
-    <Folder Include="UC\QLNL\Detail\" />
     <Folder Include="UC\TimKiem\Detail\" />
   </ItemGroup>
   <ItemGroup>
