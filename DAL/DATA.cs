@@ -173,12 +173,14 @@ namespace DAL
 
         public static int them_nhapkho(string ma, DateTime ngaynhap, decimal tongtien, string nhanvienma)
         {
+            string temp =ngaynhap.ToShortDateString();
+
             SqlParameter[] para = new SqlParameter[]
             {
                 new SqlParameter("@ma",ma),
-                new SqlParameter("@ngaynhap",ngaynhap),
-                new SqlParameter("@ten",(tongtien>0)?(object)tongtien:DBNull.Value),
-                new SqlParameter("@nhanvienma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
+                new SqlParameter("@ngayxuat",ngaynhap),
+                new SqlParameter("@tongtien",(tongtien>0)?(object)tongtien:DBNull.Value),
+                new SqlParameter("@nvma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
             };
             return DBConnect.ExecuteNonQuery("them_nhapkho", para);
         }
@@ -187,10 +189,11 @@ namespace DAL
         {
             SqlParameter[] para = new SqlParameter[]
             {
+               
                  new SqlParameter("@ma",ma),
-                new SqlParameter("@ngaynhap",ngaynhap),
+                new SqlParameter("@ngayxuat","'"+ngaynhap+"'"),
                 new SqlParameter("@tongtien",(tongtien>0)?(object)tongtien:DBNull.Value),
-                new SqlParameter("@nhanvienma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
+                new SqlParameter("@nvma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
       };
             return DBConnect.ExecuteNonQuery("sua_nhapkho", para);
         }
