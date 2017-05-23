@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.ChartHangTrongKho = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvCTHangTrongKho = new System.Windows.Forms.DataGridView();
@@ -60,6 +61,12 @@
             this.ChartHangTrongKho.Size = new System.Drawing.Size(354, 369);
             this.ChartHangTrongKho.TabIndex = 0;
             this.ChartHangTrongKho.Text = "Hàng trong kho";
+            title1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.ForeColor = System.Drawing.Color.Red;
+            title1.Name = "Title1";
+            title1.Text = "Thống kê hàng hóa trong kho";
+            this.ChartHangTrongKho.Titles.Add(title1);
             // 
             // panel1
             // 

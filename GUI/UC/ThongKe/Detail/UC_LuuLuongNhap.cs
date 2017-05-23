@@ -28,12 +28,13 @@ namespace GUI.UC.ThongKe.Detail
             cbbMaNhapKho.ValueMember = "Mã";
             dgvLuuLuongNhapHang.DataSource = DTO.ChiTietNhapKho.Get_chitietnhapkho(cbbMaNhapKho.Text);            
         }
-        MatHang mathang = new MatHang();
+     //   MatHang mathang = new MatHang();
         private void btnLoad_MouseClick(object sender, MouseEventArgs e)
         {
             this.ChartHangTrongKho.Series["Mặt hàng"].XValueMember = "ten";
             this.ChartHangTrongKho.Series["Mặt hàng"].YValueMembers = "soluongtrongkho";
-            ChartHangTrongKho.DataSource = mathang.Get_mathang();
+            //  ChartHangTrongKho.DataSource = mathang.Get_mathang();
+            ChartHangTrongKho.DataSource = DTO.MatHang.Get_mathang1(cbbMaNhapKho.Text);
             ChartHangTrongKho.DataBind();
         }
     }

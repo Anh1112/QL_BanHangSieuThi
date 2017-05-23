@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using DAL;
 using DTO;
 
@@ -193,21 +192,14 @@ namespace GUI.UC.QLNL
 
             }
         }
-        void TimKiem()
+
+        private void dgvNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt = DAL.DBConnect.GetData(@"select ma as [Mã Nhân Viên], ten as [Tên Nhân Viên],ngaysinh as [Ngày Sinh], sdt as [Số Điện Thoại], diachi as [Địa Chỉ], chucvu as [Chức Vụ], luong as [Lương], quayma as [Mã Quầy] from nhanvien where ten like '%" + txtSearch.Text.Trim() + "%' or ma like '%" + txtSearch.Text.Trim() + "%'");
-            dgvNhanVien.DataSource = dt;
-        }
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            TimKiem();
+
         }
 
-        private void cboMaQuay_SelectedIndexChanged(object sender, EventArgs e)
+        private void labSearch_Click(object sender, EventArgs e)
         {
-            SqlCommand com = new SqlCommand("select ma from quayhang'" + cboMaQuay.Text + "'");
-           
         }
     }
 }

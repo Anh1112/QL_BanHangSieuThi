@@ -69,6 +69,7 @@
             this.dgvNhanVien.Size = new System.Drawing.Size(744, 224);
             this.dgvNhanVien.TabIndex = 0;
             this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
+            this.dgvNhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellContentClick);
             // 
             // groupBox1
             // 
@@ -152,7 +153,6 @@
             this.cboMaQuay.Name = "cboMaQuay";
             this.cboMaQuay.Size = new System.Drawing.Size(200, 21);
             this.cboMaQuay.TabIndex = 33;
-            this.cboMaQuay.SelectedIndexChanged += new System.EventHandler(this.cboMaQuay_SelectedIndexChanged);
             // 
             // txtMa
             // 
@@ -338,6 +338,7 @@
             this.labSearch.Size = new System.Drawing.Size(20, 13);
             this.labSearch.TabIndex = 1;
             this.labSearch.Text = "";
+            this.labSearch.Click += new System.EventHandler(this.labSearch_Click);
             // 
             // txtSearch
             // 
@@ -349,7 +350,6 @@
             this.txtSearch.Size = new System.Drawing.Size(332, 13);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TabStop = false;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // UC_NhanVien
             // 

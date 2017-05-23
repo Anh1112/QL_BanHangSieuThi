@@ -22,7 +22,8 @@ namespace GUI.UC.TimKiem
 
         void HienThi_MatHang()
         {
-            DataTable dt = mh.Get_mathang();
+            // DataTable dt = mh.Get_mathang();
+            DataTable dt = DTO.MatHang.Get_mathang();
             dgvTimKiem.DataSource = dt;
         }
 
@@ -35,7 +36,6 @@ namespace GUI.UC.TimKiem
 			donvitinh as [Đơn vị],
 			gianhap as [Giá nhập],
 			giaban as [Giá bán],
-			soluongtrongquay as [Số lượng tại quầy],
 			soluongtrongkho as [Số lượng trong kho],
 			quayma as [Mã quầy] from mathang where ten like '%" + txtSearch.Text.Trim() + "%' or hangsanxuat like '%"+ txtSearch.Text.Trim() + "%' or giaban like  '%" + txtSearch.Text.Trim() + "%'");
             dgvTimKiem.DataSource = dt;      

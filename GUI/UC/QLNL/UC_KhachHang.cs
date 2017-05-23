@@ -22,7 +22,12 @@ namespace GUI.UC.QLNL
         KhachHang kh = new KhachHang();
         bool ThemMoi;
 
-        public KhachHang Kh { get => kh; set => kh = value; }
+     // public KhachHang Kh { get => kh; set => kh = value; }
+     public KhachHang  Kh
+        {
+            get { return kh; }
+            set { kh = value; }
+        }
 
         void KhoaDieuKhien()
         {
@@ -107,7 +112,7 @@ namespace GUI.UC.QLNL
                 {
                     kh.Ma = txtMa.Text;
                     kh.Ten = txtTen.Text;
-                    kh.Diachi = txtDiaChi.Text;
+                    kh.Diachi = cboDiaChi.Text;
                     kh.Sdt = txtSDT.Text;
                     kh.them();
                     MessageBox.Show("Đã thêm thành công!");
@@ -124,7 +129,7 @@ namespace GUI.UC.QLNL
                 {
                     kh.Ma = txtMa.Text;
                     kh.Ten = txtTen.Text;
-                    kh.Diachi = txtDiaChi.Text;
+                    kh.Diachi = cboDiaChi.Text;
                     kh.Sdt = txtSDT.Text;
                     kh.sua();
                     MessageBox.Show("Đã sửa thành công!");

@@ -18,14 +18,26 @@ namespace GUI.UC.ThongKe.Detail
         {
             InitializeComponent();
         }
-        MatHang mathang = new MatHang();
+      //  MatHang mathang = new MatHang();
         private void UC_HangTrongKho_Load(object sender, EventArgs e)
         {
-            dgvCTHangTrongKho.DataSource = mathang.Get_mathang();/*DTO.MatHang.Get_mathang();*/
-            this.ChartHangTrongKho.Series["Mặt hàng"].XValueMember = "ten";
-            this.ChartHangTrongKho.Series["Mặt hàng"].YValueMembers = "soluongtrongkho";
-            ChartHangTrongKho.DataSource = mathang.Get_mathang();/*DTO.MatHang.Get_mathang();*/
-            ChartHangTrongKho.DataBind();
+          try
+            {
+                dgvCTHangTrongKho.DataSource = DTO.MatHang.Get_mathang();
+                ChartHangTrongKho.DataSource = DTO.MatHang.Get_mathang();
+                this.ChartHangTrongKho.Series["Mặt hàng"].XValueMember = "ten";
+                this.ChartHangTrongKho.Series["Mặt hàng"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+                this.ChartHangTrongKho.Series["Mặt hàng"].YValueMembers = "soluongtrongkho";
+                this.ChartHangTrongKho.Series["Mặt hàng"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Kho rỗng");
+            }
+
+
+           // ChartHangTrongKho.DataBind();
         }
     }
 }
