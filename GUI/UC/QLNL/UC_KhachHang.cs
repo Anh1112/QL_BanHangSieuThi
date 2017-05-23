@@ -22,7 +22,12 @@ namespace GUI.UC.QLNL
         KhachHang kh = new KhachHang();
         bool ThemMoi;
 
-        public KhachHang Kh { get => kh; set => kh = value; }
+     // public KhachHang Kh { get => kh; set => kh = value; }
+     public KhachHang  Kh
+        {
+            get { return kh; }
+            set { kh = value; }
+        }
 
         void KhoaDieuKhien()
         {
