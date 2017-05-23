@@ -33,7 +33,7 @@ namespace GUI.UC.QLNL
         {
             txtMa.Enabled = false;
             txtTen.Enabled = false;
-            txtDiaChi.Enabled = false;
+            cboDiaChi.Enabled = false;
             txtSDT.Enabled = false;
             btnThem.Enabled = true;
             btnSua.Enabled = true;
@@ -45,7 +45,7 @@ namespace GUI.UC.QLNL
         {
             txtMa.Enabled = false;
             txtTen.Enabled = true;
-            txtDiaChi.Enabled = true;
+            cboDiaChi.Enabled = true;
             txtSDT.Enabled = true;
             btnThem.Enabled = false;
             btnSua.Enabled = false;
@@ -57,7 +57,7 @@ namespace GUI.UC.QLNL
         {
             txtMa.Text = "";
             txtTen.Text = "";
-            txtDiaChi.Text = "";
+            cboDiaChi.Text = "";
             txtSDT.Text = "";
         }
 
@@ -110,11 +110,11 @@ namespace GUI.UC.QLNL
             {
                 try
                 {
-                    Kh.Ma = txtMa.Text;
-                    Kh.Ten = txtTen.Text;
-                    Kh.Diachi = txtDiaChi.Text;
-                    Kh.Sdt = txtSDT.Text;
-                    Kh.them();
+                    kh.Ma = txtMa.Text;
+                    kh.Ten = txtTen.Text;
+                    kh.Diachi = txtDiaChi.Text;
+                    kh.Sdt = txtSDT.Text;
+                    kh.them();
                     MessageBox.Show("Đã thêm thành công!");
                 }
                 catch
@@ -127,11 +127,11 @@ namespace GUI.UC.QLNL
             {
                 try
                 {
-                    Kh.Ma = txtMa.Text;
-                    Kh.Ten = txtTen.Text;
-                    Kh.Diachi = txtDiaChi.Text;
-                    Kh.Sdt = txtSDT.Text;
-                    Kh.sua();
+                    kh.Ma = txtMa.Text;
+                    kh.Ten = txtTen.Text;
+                    kh.Diachi = txtDiaChi.Text;
+                    kh.Sdt = txtSDT.Text;
+                    kh.sua();
                     MessageBox.Show("Đã sửa thành công!");
                 }
                 catch
@@ -154,12 +154,24 @@ namespace GUI.UC.QLNL
                 int Row_Index = e.RowIndex;
                 txtMa.Text = dgvKhachHang.Rows[Row_Index].Cells[0].Value.ToString();
                 txtTen.Text = dgvKhachHang.Rows[Row_Index].Cells[1].Value.ToString();
-                txtDiaChi.Text = dgvKhachHang.Rows[Row_Index].Cells[2].Value.ToString();
+                cboDiaChi.Text = dgvKhachHang.Rows[Row_Index].Cells[2].Value.ToString();
+                txtSDT.Text = dgvKhachHang.Rows[Row_Index].Cells[3].Value.ToString();
             }
             catch
             {
 
             }
+        }
+        void TimKiem()
+        {
+            DataTable dt = new DataTable();
+            dt = DAL.DBConnect.GetData(@"select ma as [Mã Khách Hàng], ten as [Tên Nhân Viên],  diachi as [Địa Chỉ], sdt as [Số Điện Thoại]from khachhang where ten like '%" + txtSearch.Text.Trim() + "%' or ma like '%" + txtSearch.Text.Trim() + "%'");
+            dgvKhachHang.DataSource = dt;
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            TimKiem();
         }
     }
 }
