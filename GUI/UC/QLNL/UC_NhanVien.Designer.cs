@@ -99,10 +99,10 @@
             // 
             this.cboChucVu.FormattingEnabled = true;
             this.cboChucVu.Items.AddRange(new object[] {
-            "Giám đốc",
-            "Quản Lý",
-            "Thu Ngân",
-            "Nhân Viên"});
+            "Nhân Viên",
+            "Phó phòng",
+            "Trưởng phòng",
+            "Trưởng quầy"});
             this.cboChucVu.Location = new System.Drawing.Point(507, 8);
             this.cboChucVu.Name = "cboChucVu";
             this.cboChucVu.Size = new System.Drawing.Size(200, 21);
