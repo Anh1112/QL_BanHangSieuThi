@@ -201,7 +201,7 @@ namespace GUI.UC.QLNL
         void TimKiem()
         {
             DataTable dt = new DataTable();
-            dt = DAL.DBConnect.GetData(@"select ma as [Mã Nhân Viên], ten as [Tên Nhân Viên], ngaysinh as [Ngày sinh], sdt as [Số Điện Thoại],  diachi as [Địa Chỉ],chuchvu as [Chức vụ],luong as [Lương], quayma as [Mã quầy] from nhanvien where ten like '%" + txtSearch.Text.Trim() + "%' or ma like '%" + txtSearch.Text.Trim() + "%'");
+            dt = DAL.DBConnect.GetData(@"select * from nhanvien where ten like '%" + txtSearch.Text.Trim() + "%' or ma like '%" + txtSearch.Text.Trim() + "%'");
             dgvNhanVien.DataSource = dt;
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
