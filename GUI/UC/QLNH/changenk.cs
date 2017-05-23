@@ -28,6 +28,12 @@ namespace GUI.UC.QLNH
             //cbb_nvma.DataSource = dtv.Columns[0];
             cbb_nvma.DropDownStyle = ComboBoxStyle.DropDownList;
             lbl_chedo.Text = "Thêm";
+            DataTable dt = new DataTable();
+            dt = DBConnect.GetData("select ma from nhanvien");
+            if (dt != null)
+                cbb_nvma.DataSource = dt;
+            cbb_nvma.DisplayMember = "ma";
+            cbb_nvma.ValueMember = "ma";
         }
         public changenk(NhapKho nk)
         {
@@ -38,35 +44,59 @@ namespace GUI.UC.QLNH
             txt_money.Text = nk.Tongtien.ToString();
             cbb_nvma.Enabled = false;
             lbl_chedo.Text = "Sửa";
+            cbb_nvma.Text = nk.NhanVienMa;
+           
         }
-
+        private string layma()
+        {
+            DataTable dt = new DataTable();
+            string check;
+            do
+            {
+                Random rd = new Random();
+                int temp = rd.Next(99999999);
+                check = "NK" + temp.ToString();
+                dt = DBConnect.GetData("select 1 from nhapkho where ma ='" + check + "'");
+            } while (dt == null);
+            return check;
+        }
         private void changenk_Load(object sender, EventArgs e)
         {
-            if(change==true)
-            {
+           
                 txt_ma.Enabled = false;
-            }
+            txt_ma.Text=layma();
             btn_luu.Click += btncliclk;
         }
 
         private void btncliclk(object sender, EventArgs e)
         {
+            NhapKho nk = new NhapKho();
+            nk.Ma = txt_ma.Text;
+            nk.NgayNhap = time_ngaynhap.Value;
+            if (txt_money.Text != "")
+                nk.Tongtien = decimal.Parse(txt_money.Text);
+            else
+                nk.Tongtien = 0;
+            if (cbb_nvma.Text != "")
+                nk.NhanVienMa = cbb_nvma.Text;
+            else
+                nk.NhanVienMa = "notDL";
+
             if (change == false)
             {
-               // for(var i in d)
-                if(txt_ma.Text.Trim() != "")
-                {
-                    DATA.them_nhapkho(txt_ma.Text, DateTime.Parse(time_ngaynhap.Value.ToShortDateString()), decimal.Parse(txt_money.Text), cbb_nvma.Text);
-                }
-               
+                nk.them();
             }
             else
             {
-                DATA.sua_nhapkho(txt_ma.Text, DateTime.Parse(time_ngaynhap.Value.ToShortDateString()), decimal.Parse(txt_money.Text), cbb_nvma.Text);
+                nk.sua();
             }
             btn_luu.Actived = false;
             if (saveclick!=null)
-            saveclick();
+            {
+                saveclick();
+                txt_ma.Text = layma();
+            }
+           
         }
 
         private void btnSimple1_MouseClick(object sender, MouseEventArgs e)

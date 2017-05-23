@@ -75,27 +75,6 @@ namespace GUI.UC.QLNH
             adddlnk();
         }
 
-        private void dgv_nhapkho_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            string ma;
-            DateTime ngaynhap;
-            decimal tongtien;
-            string nhanvienma;
-            
-                if (dgv_nhapkho.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()=="" || dgv_nhapkho.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == null)
-                {
-                    MessageBox.Show("Không được để trống "+ dgv_nhapkho.Columns[e.ColumnIndex].HeaderText);
-                    dgv_nhapkho.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = lasttext;
-                    return;
-                }
-            
-            ma = dgv_nhapkho.Rows[e.RowIndex].Cells[0].Value.ToString();
-            ngaynhap = DateTime.Parse( dgv_nhapkho.Rows[e.RowIndex].Cells[1].Value.ToString());
-            tongtien = decimal.Parse(dgv_nhapkho.Rows[e.RowIndex].Cells[2].Value.ToString());
-            nhanvienma = dgv_nhapkho.Rows[e.RowIndex].Cells[3].Value.ToString();
-            DATA.sua_nhapkho(ma, ngaynhap, tongtien, nhanvienma);
-        }
-
         private void dgv_nhapkho_CellClick(object sender, DataGridViewCellEventArgs e)
         {
           string ma=  dgv_nhapkho.CurrentRow.Cells[0].Value.ToString();
@@ -123,17 +102,12 @@ namespace GUI.UC.QLNH
         {
             fulltableCT();
         }
-
-        private void dgv_nhapkho_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            if (dgv_nhapkho.Rows[e.RowIndex].Cells[e.ColumnIndex] != null)
-                lasttext = dgv_nhapkho.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-        }
         private NhapKho adddl()
         {
             NhapKho nk = new NhapKho();
             nk.Ma = dgv_nhapkho.CurrentRow.Cells[0].Value.ToString();
             nk.NgayNhap = DateTime.Parse(dgv_nhapkho.CurrentRow.Cells[1].Value.ToString());
+            if(dgv_nhapkho.CurrentRow.Cells[2].Value.ToString()!="")
             nk.Tongtien = decimal.Parse(dgv_nhapkho.CurrentRow.Cells[2].Value.ToString());
             if (dgv_nhapkho.CurrentRow.Cells[3].Value.ToString() != "")
             {
@@ -171,8 +145,8 @@ namespace GUI.UC.QLNH
                 if(result== DialogResult.Yes)
                 {
                     DATA.xoa_nhapkho(dgv_nhapkho.CurrentRow.Cells[0].Value.ToString());
+                    adddlnk();
                 }
-                adddlnk();
             }
         }
 

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using DAL;
+
 namespace DTO
 {
    public class NhapKho
@@ -63,6 +65,13 @@ namespace DTO
         {
             return DAL.DATA.get_nhapkho();
         }
-
+        public void them()
+        {
+            DATA.them_nhapkho(ma,ngaynhap, tongtien, nhanvienma);
+        }
+        public void sua()
+        {
+            DATA.sua_nhapkho(ma, ngaynhap, tongtien, nhanvienma);
+        }
     }
 }
