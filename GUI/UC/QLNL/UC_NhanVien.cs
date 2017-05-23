@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 using DAL;
 using DTO;
 
@@ -24,9 +25,9 @@ namespace GUI.UC.QLNL
         {
             txtMa.Enabled = false;
             txtTen.Enabled = false;
-            txtDiaChi.Enabled = false;
+            cboDiaChi.Enabled = false;
             txtSDT.Enabled = false;
-            txtChucVu.Enabled = false;
+            cboChucVu.Enabled = false;
             txtLuong.Enabled = false;
             cboMaQuay.Enabled = false;
             btnThem.Enabled = true;
@@ -39,9 +40,9 @@ namespace GUI.UC.QLNL
         {
             txtMa.Enabled = false;
             txtTen.Enabled = true;
-            txtDiaChi.Enabled = true;
+            cboDiaChi.Enabled = true;
             txtSDT.Enabled = true;
-            txtChucVu.Enabled = true;
+            cboChucVu.Enabled = true;
             txtLuong.Enabled = true;
             cboMaQuay.Enabled = true;
             btnThem.Enabled = false;
@@ -54,10 +55,10 @@ namespace GUI.UC.QLNL
         {
             txtMa.Text = "";
             txtTen.Text = "";
-            txtDiaChi.Text = "";
+            cboDiaChi.Text = "";
             txtSDT.Text = "";
             txtLuong.Text = "";
-            txtChucVu.Text = "";
+            cboChucVu.Text = "";
             cboMaQuay.Text = "";
         }
 
@@ -124,9 +125,9 @@ namespace GUI.UC.QLNL
                     DateTime b;
                     nv.Ma = txtMa.Text;
                     nv.Ten = txtTen.Text;
-                    nv.Diachi = txtDiaChi.Text;
+                    nv.Diachi = cboDiaChi.Text;
                     nv.Sdt = txtSDT.Text;
-                    nv.Chucvu = txtChucVu.Text;
+                    nv.Chucvu = cboChucVu.Text;
                     decimal.TryParse(txtLuong.Text, out a);
                     nv.Luong = a;
                     DateTime.TryParse(dtpNgaySinh.Text, out b);
@@ -150,9 +151,9 @@ namespace GUI.UC.QLNL
                     DateTime b;
                     nv.Ma = txtMa.Text;
                     nv.Ten = txtTen.Text;
-                    nv.Diachi = txtDiaChi.Text;
+                    nv.Diachi = cboDiaChi.Text;
                     nv.Sdt = txtSDT.Text;
-                    nv.Chucvu = txtChucVu.Text;
+                    nv.Chucvu = cboChucVu.Text;
                     decimal.TryParse(txtLuong.Text, out a);
                     nv.Luong = a;
                     DateTime.TryParse(dtpNgaySinh.Text, out b);
@@ -182,8 +183,8 @@ namespace GUI.UC.QLNL
                 txtTen.Text = dgvNhanVien.Rows[Row_Index].Cells[1].Value.ToString();
                 dtpNgaySinh.Text = dgvNhanVien.Rows[Row_Index].Cells[2].Value.ToString();
                 txtSDT.Text = dgvNhanVien.Rows[Row_Index].Cells[3].Value.ToString();
-                txtDiaChi.Text = dgvNhanVien.Rows[Row_Index].Cells[4].Value.ToString();
-                txtChucVu.Text = dgvNhanVien.Rows[Row_Index].Cells[5].Value.ToString();
+                cboDiaChi.Text = dgvNhanVien.Rows[Row_Index].Cells[4].Value.ToString();
+                cboChucVu.Text = dgvNhanVien.Rows[Row_Index].Cells[5].Value.ToString();
                 txtLuong.Text = dgvNhanVien.Rows[Row_Index].Cells[6].Value.ToString();
                 cboMaQuay.Text = dgvNhanVien.Rows[Row_Index].Cells[7].Value.ToString();
             }
@@ -191,6 +192,22 @@ namespace GUI.UC.QLNL
             {
 
             }
+        }
+        void TimKiem()
+        {
+            DataTable dt = new DataTable();
+            dt = DAL.DBConnect.GetData(@"select ma as [Mã Nhân Viên], ten as [Tên Nhân Viên],ngaysinh as [Ngày Sinh], sdt as [Số Điện Thoại], diachi as [Địa Chỉ], chucvu as [Chức Vụ], luong as [Lương], quayma as [Mã Quầy] from nhanvien where ten like '%" + txtSearch.Text.Trim() + "%' or ma like '%" + txtSearch.Text.Trim() + "%'");
+            dgvNhanVien.DataSource = dt;
+        }
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            TimKiem();
+        }
+
+        private void cboMaQuay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlCommand com = new SqlCommand("select ma from quayhang'" + cboMaQuay.Text + "'");
+           
         }
     }
 }
