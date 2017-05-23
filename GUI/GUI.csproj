@@ -36,6 +36,8 @@
     <Reference Include="DTO">
       <HintPath>..\DTO\bin\Debug\DTO.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -47,6 +49,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\btnImage.cs">
@@ -87,6 +90,12 @@
     </Compile>
     <Compile Include="UC\QLHH\LayoutQLHH.Designer.cs">
       <DependentUpon>LayoutQLHH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\QLNH\changenk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC\QLNH\changenk.Designer.cs">
+      <DependentUpon>changenk.cs</DependentUpon>
     </Compile>
     <Compile Include="UC\QLNH\LayoutQLNH.cs">
       <SubType>UserControl</SubType>
@@ -186,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC\QLHH\LayoutQLHH.resx">
       <DependentUpon>LayoutQLHH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\QLNH\changenk.resx">
+      <DependentUpon>changenk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC\QLNH\LayoutQLNH.resx">
       <DependentUpon>LayoutQLNH.cs</DependentUpon>
