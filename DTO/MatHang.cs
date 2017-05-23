@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
 
 namespace DTO
 {
@@ -15,7 +16,6 @@ namespace DTO
         private string donvitinh;
         private decimal gianhap;
         private decimal giaban;
-        private float soluongtrongquay;
         private float soluongtrongkho;
         private string quayma;
 
@@ -97,19 +97,6 @@ namespace DTO
             }
         }
 
-        public float Soluongtrongquay
-        {
-            get
-            {
-                return soluongtrongquay;
-            }
-
-            set
-            {
-                soluongtrongquay = value;
-            }
-        }
-
         public float Soluongtrongkho
         {
             get
@@ -135,26 +122,25 @@ namespace DTO
                 quayma = value;
             }
         }
-
-        public  static DataTable Get_mathang()
+        public static DataTable Get_mathang()
         {
             return DAL.DATA.get_mathang();
         }
-        public  static DataTable Get_mathang1(string mamh)
+        public static DataTable Get_mathang1(string mamh)
         {
             return DAL.DATA.get_mathang1(mamh);
         }
         public int Them()
         {
-            return DAL.DATA.them_mathang(ma, ten, hangsanxuat, donvitinh, gianhap, giaban, soluongtrongquay, soluongtrongkho, quayma);
+            return DATA.them_mathang(ma, ten, hangsanxuat, donvitinh, gianhap, giaban, soluongtrongkho, quayma);
         }
-        public int Sua()
+        public void Sua()
         {
-            return DAL.DATA.sua_mathang(ma, ten, hangsanxuat, donvitinh, gianhap, giaban, soluongtrongquay, soluongtrongkho, quayma);
+            DATA.sua_mathang(ma, ten, hangsanxuat, donvitinh, gianhap, giaban, soluongtrongkho, quayma);
         }
         public int Xoa(string mamh)
         {
-            return DAL.DATA.xoa_mathang(mamh);
+            return DATA.xoa_mathang(mamh);
         }
     }
 }

@@ -49,8 +49,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtSLkho = new System.Windows.Forms.TextBox();
             this.hbs = new System.Windows.Forms.Label();
-            this.txtSLquay = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.txtGiaBan = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtGiaNhap = new System.Windows.Forms.TextBox();
@@ -221,6 +219,7 @@
             this.btnThemqh.Text = "Thêm";
             this.btnThemqh.UseVisualStyleBackColor = false;
             this.btnThemqh.Click += new System.EventHandler(this.btnThemqh_Click);
+            this.btnThemqh.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnThemqh_MouseClick);
             // 
             // tabPage1
             // 
@@ -269,8 +268,6 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.txtSLkho);
             this.panel2.Controls.Add(this.hbs);
-            this.panel2.Controls.Add(this.txtSLquay);
-            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.txtGiaBan);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txtGiaNhap);
@@ -291,7 +288,7 @@
             // cboQuayMa
             // 
             this.cboQuayMa.FormattingEnabled = true;
-            this.cboQuayMa.Location = new System.Drawing.Point(547, 84);
+            this.cboQuayMa.Location = new System.Drawing.Point(572, 54);
             this.cboQuayMa.Name = "cboQuayMa";
             this.cboQuayMa.Size = new System.Drawing.Size(100, 21);
             this.cboQuayMa.TabIndex = 19;
@@ -302,9 +299,9 @@
             this.btnCapNhat.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
             this.btnCapNhat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCapNhat.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.btnCapNhat.Location = new System.Drawing.Point(653, 104);
+            this.btnCapNhat.Location = new System.Drawing.Point(572, 97);
             this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(75, 23);
+            this.btnCapNhat.Size = new System.Drawing.Size(100, 23);
             this.btnCapNhat.TabIndex = 18;
             this.btnCapNhat.Text = "Cập nhật";
             this.btnCapNhat.UseVisualStyleBackColor = false;
@@ -314,7 +311,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label7.Location = new System.Drawing.Point(483, 93);
+            this.label7.Location = new System.Drawing.Point(508, 63);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 13);
             this.label7.TabIndex = 16;
@@ -322,7 +319,7 @@
             // 
             // txtSLkho
             // 
-            this.txtSLkho.Location = new System.Drawing.Point(547, 46);
+            this.txtSLkho.Location = new System.Drawing.Point(572, 16);
             this.txtSLkho.Name = "txtSLkho";
             this.txtSLkho.Size = new System.Drawing.Size(100, 20);
             this.txtSLkho.TabIndex = 15;
@@ -332,33 +329,15 @@
             // 
             this.hbs.AutoSize = true;
             this.hbs.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.hbs.Location = new System.Drawing.Point(483, 53);
+            this.hbs.Location = new System.Drawing.Point(508, 23);
             this.hbs.Name = "hbs";
             this.hbs.Size = new System.Drawing.Size(41, 13);
             this.hbs.TabIndex = 14;
             this.hbs.Text = "SL kho";
             // 
-            // txtSLquay
-            // 
-            this.txtSLquay.Location = new System.Drawing.Point(547, 6);
-            this.txtSLquay.Name = "txtSLquay";
-            this.txtSLquay.Size = new System.Drawing.Size(100, 20);
-            this.txtSLquay.TabIndex = 13;
-            this.txtSLquay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaNhap_KeyPress);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label9.Location = new System.Drawing.Point(483, 13);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "SL quầy";
-            // 
             // txtGiaBan
             // 
-            this.txtGiaBan.Location = new System.Drawing.Point(296, 86);
+            this.txtGiaBan.Location = new System.Drawing.Point(321, 97);
             this.txtGiaBan.Name = "txtGiaBan";
             this.txtGiaBan.Size = new System.Drawing.Size(100, 20);
             this.txtGiaBan.TabIndex = 11;
@@ -368,7 +347,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label4.Location = new System.Drawing.Point(232, 93);
+            this.label4.Location = new System.Drawing.Point(257, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 10;
@@ -376,7 +355,7 @@
             // 
             // txtGiaNhap
             // 
-            this.txtGiaNhap.Location = new System.Drawing.Point(296, 46);
+            this.txtGiaNhap.Location = new System.Drawing.Point(321, 57);
             this.txtGiaNhap.Name = "txtGiaNhap";
             this.txtGiaNhap.Size = new System.Drawing.Size(100, 20);
             this.txtGiaNhap.TabIndex = 9;
@@ -386,7 +365,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label5.Location = new System.Drawing.Point(232, 53);
+            this.label5.Location = new System.Drawing.Point(257, 64);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 8;
@@ -394,7 +373,7 @@
             // 
             // txtDonViTinh
             // 
-            this.txtDonViTinh.Location = new System.Drawing.Point(296, 6);
+            this.txtDonViTinh.Location = new System.Drawing.Point(321, 17);
             this.txtDonViTinh.Name = "txtDonViTinh";
             this.txtDonViTinh.Size = new System.Drawing.Size(100, 20);
             this.txtDonViTinh.TabIndex = 7;
@@ -403,7 +382,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label6.Location = new System.Drawing.Point(232, 13);
+            this.label6.Location = new System.Drawing.Point(257, 24);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 6;
@@ -411,7 +390,7 @@
             // 
             // txtHangSX
             // 
-            this.txtHangSX.Location = new System.Drawing.Point(80, 86);
+            this.txtHangSX.Location = new System.Drawing.Point(105, 97);
             this.txtHangSX.Name = "txtHangSX";
             this.txtHangSX.Size = new System.Drawing.Size(100, 20);
             this.txtHangSX.TabIndex = 5;
@@ -420,7 +399,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label3.Location = new System.Drawing.Point(16, 93);
+            this.label3.Location = new System.Drawing.Point(41, 104);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 4;
@@ -428,7 +407,7 @@
             // 
             // txtTen
             // 
-            this.txtTen.Location = new System.Drawing.Point(80, 46);
+            this.txtTen.Location = new System.Drawing.Point(105, 57);
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(100, 20);
             this.txtTen.TabIndex = 3;
@@ -438,7 +417,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label2.Location = new System.Drawing.Point(16, 53);
+            this.label2.Location = new System.Drawing.Point(41, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 2;
@@ -446,7 +425,7 @@
             // 
             // txtMa
             // 
-            this.txtMa.Location = new System.Drawing.Point(80, 6);
+            this.txtMa.Location = new System.Drawing.Point(105, 17);
             this.txtMa.Name = "txtMa";
             this.txtMa.Size = new System.Drawing.Size(100, 20);
             this.txtMa.TabIndex = 1;
@@ -456,7 +435,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label1.Location = new System.Drawing.Point(16, 13);
+            this.label1.Location = new System.Drawing.Point(41, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(22, 13);
             this.label1.TabIndex = 0;
@@ -515,6 +494,7 @@
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            this.btnThem.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnThem_MouseClick);
             // 
             // tabControl1
             // 
@@ -525,6 +505,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(750, 510);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.LayoutQLHH_Load);
             // 
             // LayoutQLHH
             // 
@@ -567,8 +548,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSLkho;
         private System.Windows.Forms.Label hbs;
-        private System.Windows.Forms.TextBox txtSLquay;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtGiaBan;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtGiaNhap;

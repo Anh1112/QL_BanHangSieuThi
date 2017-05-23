@@ -266,7 +266,6 @@ namespace DAL
             string donvitinh,
             decimal gianhap,
             decimal giaban,
-            float soluongtrongquay,
             float soluongtrongkho,
             string quayma)
         {
@@ -278,9 +277,8 @@ namespace DAL
                 new SqlParameter("@donvitinh", donvitinh),
                 new SqlParameter("@gianhap", gianhap),
                 new SqlParameter("@giaban", giaban),
-                new SqlParameter("@soluongtrongquay", soluongtrongquay),
-                new SqlParameter("@soluongtrongkho", soluongtrongkho),
-                new SqlParameter("@quayma", quayma)
+                new SqlParameter("@soluongtrongkho",(soluongtrongkho>0)?(object)soluongtrongkho:DBNull.Value),
+                new SqlParameter("@quayma",(quayma!=null && quayma.Trim()!="")?(object)quayma:DBNull.Value)
             };
             return DBConnect.ExecuteNonQuery("them_mathang", para);
         }
@@ -291,7 +289,6 @@ namespace DAL
             string donvitinh,
             decimal gianhap,
             decimal giaban,
-            float soluongtrongquay,
             float soluongtrongkho,
             string quayma)
         {
@@ -303,9 +300,9 @@ namespace DAL
                 new SqlParameter("@donvitinh", donvitinh),
                 new SqlParameter("@gianhap", gianhap),
                 new SqlParameter("@giaban", giaban),
-                new SqlParameter("@soluongtrongquay", soluongtrongquay),
-                new SqlParameter("@soluongtrongkho", soluongtrongkho),
-                new SqlParameter("@quayma", quayma)
+                new SqlParameter("@soluongtrongkho",(soluongtrongkho>0)?(object)soluongtrongkho:DBNull.Value),             
+                new SqlParameter("@quayma",(quayma!=null && quayma.Trim()!="")?(object)quayma:DBNull.Value)
+               
             };
             return DBConnect.ExecuteNonQuery("sua_mathang", para);
         }
