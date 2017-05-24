@@ -192,14 +192,22 @@ namespace GUI.UC.QLNL
 
             }
         }
-
-        private void dgvNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        void TimKiem()
         {
-
+            DataTable dt = new DataTable();
+            dt = DAL.DBConnect.GetData(@"select * from nhanvien where ten like '%" + txtSearch.Text.Trim() + "%' or ma like '%" + txtSearch.Text.Trim() + "%'");
+            dgvNhanVien.DataSource = dt;
         }
 
         private void labSearch_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void txtTen_TextChanged(object sender, EventArgs e)
+        {
+            txtMa.Text = "" + DateTime.Now.Day.ToString().Trim() + "" + DateTime.Now.Hour.ToString().Trim() + "" + DateTime.Now.Minute.ToString().Trim() + "" + DateTime.Now.Millisecond.ToString().Trim() + "";
+
         }
     }
 }

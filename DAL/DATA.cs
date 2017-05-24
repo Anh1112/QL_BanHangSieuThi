@@ -97,10 +97,10 @@ namespace DAL
             {
                 new SqlParameter("@ma",ma),
                 new SqlParameter("@ten",(ten!=null && ten.Trim()!="")?(object)ten:DBNull.Value),
-                new SqlParameter("@diachi",(diachi!=null && diachi.Trim()!="")?(object)diachi:DBNull.Value),
-                new SqlParameter("@sdt",(sdt!=null && sdt.Trim()!="")?(object)sdt:DBNull.Value),
-                new SqlParameter("@chucvu",(chucvu!=null && chucvu.Trim()!="")?(object)chucvu:DBNull.Value),
                 new SqlParameter("@ngaysinh",(ngaysinh!=null && ngaysinh.Year>1800)?(object)ngaysinh:DBNull.Value),
+                new SqlParameter("@sdt",(sdt!=null && sdt.Trim()!="")?(object)sdt:DBNull.Value),
+                new SqlParameter("@diachi",(diachi!=null && diachi.Trim()!="")?(object)diachi:DBNull.Value),
+                new SqlParameter("@chucvu",(chucvu!=null && chucvu.Trim()!="")?(object)chucvu:DBNull.Value),
                 new SqlParameter("@luong",(luong>0)?(object)luong:DBNull.Value),
                 new SqlParameter("@quayma",(quayma!=null && quayma.Trim()!="")?(object)quayma:DBNull.Value),
             };
@@ -110,12 +110,12 @@ namespace DAL
         {
             SqlParameter[] para = new SqlParameter[]
             {
-                new SqlParameter("@ma",ma),
+                 new SqlParameter("@ma",ma),
                 new SqlParameter("@ten",(ten!=null && ten.Trim()!="")?(object)ten:DBNull.Value),
-                new SqlParameter("@diachi",(diachi!=null && diachi.Trim()!="")?(object)diachi:DBNull.Value),
-                new SqlParameter("@sdt",(sdt!=null && sdt.Trim()!="")?(object)sdt:DBNull.Value),
-                new SqlParameter("@chucvu",(chucvu!=null && chucvu.Trim()!="")?(object)chucvu:DBNull.Value),
                 new SqlParameter("@ngaysinh",(ngaysinh!=null && ngaysinh.Year>1800)?(object)ngaysinh:DBNull.Value),
+                new SqlParameter("@sdt",(sdt!=null && sdt.Trim()!="")?(object)sdt:DBNull.Value),
+                new SqlParameter("@diachi",(diachi!=null && diachi.Trim()!="")?(object)diachi:DBNull.Value),
+                new SqlParameter("@chucvu",(chucvu!=null && chucvu.Trim()!="")?(object)chucvu:DBNull.Value),
                 new SqlParameter("@luong",(luong>0)?(object)luong:DBNull.Value),
                 new SqlParameter("@quayma",(quayma!=null && quayma.Trim()!="")?(object)quayma:DBNull.Value),
             };
@@ -173,12 +173,14 @@ namespace DAL
 
         public static int them_nhapkho(string ma, DateTime ngaynhap, decimal tongtien, string nhanvienma)
         {
+            string temp =ngaynhap.ToShortDateString();
+
             SqlParameter[] para = new SqlParameter[]
             {
                 new SqlParameter("@ma",ma),
-                new SqlParameter("@ngaynhap",ngaynhap),
-                new SqlParameter("@ten",(tongtien>0)?(object)tongtien:DBNull.Value),
-                new SqlParameter("@nhanvienma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
+                new SqlParameter("@ngayxuat",ngaynhap),
+                new SqlParameter("@tongtien",(tongtien>0)?(object)tongtien:DBNull.Value),
+                new SqlParameter("@nvma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
             };
             return DBConnect.ExecuteNonQuery("them_nhapkho", para);
         }
@@ -187,10 +189,11 @@ namespace DAL
         {
             SqlParameter[] para = new SqlParameter[]
             {
+               
                  new SqlParameter("@ma",ma),
-                new SqlParameter("@ngaynhap",ngaynhap),
+                new SqlParameter("@ngayxuat","'"+ngaynhap+"'"),
                 new SqlParameter("@tongtien",(tongtien>0)?(object)tongtien:DBNull.Value),
-                new SqlParameter("@nhanvienma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
+                new SqlParameter("@nvma",(nhanvienma!=null && nhanvienma.Trim()!="")?(object)nhanvienma:DBNull.Value)
       };
             return DBConnect.ExecuteNonQuery("sua_nhapkho", para);
         }

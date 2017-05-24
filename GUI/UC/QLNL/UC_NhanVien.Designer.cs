@@ -89,7 +89,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(3, 46);
+            this.groupBox1.Location = new System.Drawing.Point(3, 43);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(752, 173);
             this.groupBox1.TabIndex = 18;
@@ -99,10 +99,10 @@
             // 
             this.cboChucVu.FormattingEnabled = true;
             this.cboChucVu.Items.AddRange(new object[] {
-            "Giám đốc",
-            "Quản Lý",
-            "Thu Ngân",
-            "Nhân Viên"});
+            "Nhân Viên",
+            "Phó phòng",
+            "Trưởng phòng",
+            "Trưởng quầy"});
             this.cboChucVu.Location = new System.Drawing.Point(507, 8);
             this.cboChucVu.Name = "cboChucVu";
             this.cboChucVu.Size = new System.Drawing.Size(200, 21);
@@ -126,6 +126,7 @@
             "Cà Mau",
             "Cao Bằng",
             "Đắc Lắc",
+            "Hà Nội",
             "Đắc Nông ",
             "Điện Biên",
             "Đồng Nai",
@@ -140,7 +141,12 @@
             "Hưng Yên",
             "Khánh Hòa ",
             "Kiên Giang ",
-            "Kon Tum"});
+            "Kon Tum",
+            "Hải Phòng",
+            "Thanh Hóa",
+            "Nghệ An",
+            "Thừa Thiên Huế",
+            "Nam Định"});
             this.cboDiaChi.Location = new System.Drawing.Point(159, 99);
             this.cboDiaChi.Name = "cboDiaChi";
             this.cboDiaChi.Size = new System.Drawing.Size(200, 21);
@@ -148,11 +154,11 @@
             // 
             // cboMaQuay
             // 
-            this.cboMaQuay.FormattingEnabled = true;
-            this.cboMaQuay.Location = new System.Drawing.Point(507, 142);
+            this.cboMaQuay.Location = new System.Drawing.Point(507, 141);
             this.cboMaQuay.Name = "cboMaQuay";
             this.cboMaQuay.Size = new System.Drawing.Size(200, 21);
-            this.cboMaQuay.TabIndex = 33;
+            this.cboMaQuay.TabIndex = 36;
+            this.cboMaQuay.SelectedIndexChanged += new System.EventHandler(this.cboMaQuay_SelectedIndexChanged);
             // 
             // txtMa
             // 
@@ -167,6 +173,7 @@
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(200, 20);
             this.txtTen.TabIndex = 31;
+            this.txtTen.TextChanged += new System.EventHandler(this.txtTen_TextChanged);
             // 
             // txtSDT
             // 

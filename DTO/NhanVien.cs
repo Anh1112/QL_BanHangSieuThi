@@ -133,7 +133,7 @@ namespace DTO
         }
         public int sua_nhanvien()
         {
-            return DATA.sua_nhanvien(ma, ten, diachi, sdt, chucvu, ngaysinh, luong, quayma);
+            return DATA.sua_nhanvien(ma, ten, diachi, sdt, chucvu, ngaysinh,  luong, quayma);
         }
         public int xoa_nhanvien(string ma)
         {
