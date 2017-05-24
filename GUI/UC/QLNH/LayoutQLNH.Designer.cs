@@ -179,10 +179,8 @@
             this.dgv_nhapkho.Name = "dgv_nhapkho";
             this.dgv_nhapkho.Size = new System.Drawing.Size(408, 457);
             this.dgv_nhapkho.TabIndex = 1;
-            this.dgv_nhapkho.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgv_nhapkho_CellBeginEdit);
             this.dgv_nhapkho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nhapkho_CellClick);
             this.dgv_nhapkho.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nhapkho_CellDoubleClick);
-            this.dgv_nhapkho.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nhapkho_CellEndEdit);
             this.dgv_nhapkho.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgv_nhapkho_KeyUp);
             // 
             // LayoutQLNH

@@ -29,7 +29,6 @@ namespace GUI.UC.QLHH
             txtDonViTinh.Enabled = false; 
             txtGiaNhap.Enabled = false;
             txtGiaBan.Enabled = false;
-            txtSLquay.Enabled = false;
             txtSLkho.Enabled = false;
             cboQuayMa.Enabled = false;
             txtmaquay.Enabled = false;
@@ -51,7 +50,6 @@ namespace GUI.UC.QLHH
             txtDonViTinh.Enabled = true;
             txtGiaNhap.Enabled =true;
             txtGiaBan.Enabled = true;
-            txtSLquay.Enabled = true;
             txtSLkho.Enabled = true;
             cboQuayMa.Enabled = true;
             txtmaquay.Enabled = false;
@@ -73,7 +71,6 @@ namespace GUI.UC.QLHH
             txtDonViTinh.Text = "";
             txtGiaNhap.Text = "";
             txtGiaBan.Text = "";
-            txtSLquay.Text = "";
             txtSLkho.Text = "";
             cboQuayMa.Text = "";
             txtmaquay.Text = "";
@@ -157,6 +154,8 @@ namespace GUI.UC.QLHH
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
+            
+
             if (ThemMoi == true)
             {
                 try
@@ -164,19 +163,18 @@ namespace GUI.UC.QLHH
                     decimal a,b;
                     decimal.TryParse(txtGiaBan.Text, out a);
                     decimal.TryParse(txtGiaNhap.Text, out b);
-                    float c, d;
+                    float c;
                     float.TryParse(txtSLkho.Text, out c);
-                    float.TryParse(txtSLquay.Text, out d);
                     mh.Ma = txtMa.Text;
                     mh.Ten = txtTen.Text;
                     mh.Hangsanxuat = txtHangSX.Text;
                     mh.Donvitinh = txtDonViTinh.Text;
                     mh.Giaban = a;
                     mh.Gianhap = b;
-                    mh.Soluongtrongquay = d;
                     mh.Soluongtrongkho = c;
                     mh.Quayma = cboQuayMa.Text;
-                    mh.Them();
+                    DATA.them_mathang(mh.Ma, mh.Ten, mh.Hangsanxuat, mh.Donvitinh, mh.Gianhap, mh.Giaban, mh.Soluongtrongkho, mh.Quayma);
+                    //    mh.Them();
                     MessageBox.Show("Đã thêm thành công!");
                 }
                 catch
@@ -192,24 +190,23 @@ namespace GUI.UC.QLHH
                     decimal a, b;
                     decimal.TryParse(txtGiaBan.Text, out a);
                     decimal.TryParse(txtGiaNhap.Text, out b);
-                    int c, d;
-                    int.TryParse(txtSLkho.Text, out c);
-                    int.TryParse(txtSLquay.Text, out d);
+                    float c;
+                    float.TryParse(txtSLkho.Text, out c);
                     mh.Ma = txtMa.Text;
                     mh.Ten = txtTen.Text;
                     mh.Hangsanxuat = txtHangSX.Text;
                     mh.Donvitinh = txtDonViTinh.Text;
                     mh.Giaban = a;
                     mh.Gianhap = b;
-                    mh.Soluongtrongquay = d;
                     mh.Soluongtrongkho = c;
                     mh.Quayma = cboQuayMa.Text;
+                    // DATA.sua_mathang(mh.Ma, mh.Ten, mh.Hangsanxuat, mh.Donvitinh, mh.Gianhap, mh.Giaban, mh.Soluongtrongkho, mh.Quayma);
                     mh.Sua();
                     MessageBox.Show("Đã sửa thành công!");
                 }
-                catch
+                catch(Exception ex)
                 {
-                    MessageBox.Show("Lỗi!");
+                    MessageBox.Show("Lỗi!"+ ex.ToString());
                     return;
                 }
             }
@@ -291,10 +288,9 @@ namespace GUI.UC.QLHH
                 txtHangSX.Text = dgvMatHang.Rows[Row_Index].Cells[2].Value.ToString();
                 txtDonViTinh.Text = dgvMatHang.Rows[Row_Index].Cells[3].Value.ToString();
                 txtGiaNhap.Text = dgvMatHang.Rows[Row_Index].Cells[4].Value.ToString();
-                txtGiaBan.Text = dgvMatHang.Rows[Row_Index].Cells[5].Value.ToString();
-                txtSLquay.Text = dgvMatHang.Rows[Row_Index].Cells[6].Value.ToString();
-                txtSLkho.Text = dgvMatHang.Rows[Row_Index].Cells[7].Value.ToString();
-                cboQuayMa.Text = dgvMatHang.Rows[Row_Index].Cells[8].Value.ToString();
+                txtGiaBan.Text = dgvMatHang.Rows[Row_Index].Cells[5].Value.ToString();             
+                txtSLkho.Text = dgvMatHang.Rows[Row_Index].Cells[6].Value.ToString();
+                cboQuayMa.Text = dgvMatHang.Rows[Row_Index].Cells[7].Value.ToString();
             }
             catch
             {
@@ -319,12 +315,12 @@ namespace GUI.UC.QLHH
 
         private void txtTen_TextChanged(object sender, EventArgs e)
         {
-            txtMa.Text = ""+DateTime.Now.Day.ToString().Trim()+"" + DateTime.Now.Hour.ToString().Trim() + ""+DateTime.Now.Minute.ToString().Trim()+""+DateTime.Now.Millisecond.ToString().Trim()+"";
+          //  txtMa.Text = ""+DateTime.Now.Day.ToString().Trim()+"" + DateTime.Now.Hour.ToString().Trim() + ""+DateTime.Now.Minute.ToString().Trim()+""+DateTime.Now.Millisecond.ToString().Trim()+"";
         }
 
         private void txtTenquay_TextChanged(object sender, EventArgs e)
         {
-            txtmaquay.Text = "" + DateTime.Now.Day.ToString().Trim() + "" + DateTime.Now.Hour.ToString().Trim() + "" + DateTime.Now.Minute.ToString().Trim() + "" + DateTime.Now.Millisecond.ToString().Trim() + "";
+          //  txtmaquay.Text = "" + DateTime.Now.Day.ToString().Trim() + "" + DateTime.Now.Hour.ToString().Trim() + "" + DateTime.Now.Minute.ToString().Trim() + "" + DateTime.Now.Millisecond.ToString().Trim() + "";
         }
 
         private void txtGiaNhap_KeyPress(object sender, KeyPressEventArgs e)
@@ -338,6 +334,42 @@ namespace GUI.UC.QLHH
         private void txtMa_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnThem_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    SetNull();
+                    if (dgvMatHang.DataSource != null)
+                    {
+                        List<string> list = ((DataTable)dgvMatHang.DataSource).AsEnumerable().Select(x => x.Field<string>(dgvMatHang.Columns[0].Name)).ToList();
+                        if (list.Count > 0) txtMa.Text = string.Format("{0:d10}", int.Parse(list.Max()) + 1);
+                        else txtMa.Text = "0000000001";
+                    }
+                    else txtMa.Text = "0000000001";
+                }
+            }
+        }
+
+        private void btnThemqh_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    SetNull();
+                    if (dgvQuayHang.DataSource != null)
+                    {
+                        List<string> list = ((DataTable)dgvQuayHang.DataSource).AsEnumerable().Select(x => x.Field<string>(dgvQuayHang.Columns[0].Name)).ToList();
+                        if (list.Count > 0) txtmaquay.Text = string.Format("{0:d10}", int.Parse(list.Max()) + 1);
+                        else txtmaquay.Text = "0000000001";
+                    }
+                    else txtmaquay.Text = "0000000001";
+                }
+            }
         }
     }
 }
