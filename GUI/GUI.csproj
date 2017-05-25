@@ -91,6 +91,12 @@
     <Compile Include="UC\QLHH\LayoutQLHH.Designer.cs">
       <DependentUpon>LayoutQLHH.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC\QLNH\ChangeCTnk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC\QLNH\ChangeCTnk.Designer.cs">
+      <DependentUpon>ChangeCTnk.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC\QLNH\changenk.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC\QLHH\LayoutQLHH.resx">
       <DependentUpon>LayoutQLHH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\QLNH\ChangeCTnk.resx">
+      <DependentUpon>ChangeCTnk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC\QLNH\changenk.resx">
       <DependentUpon>changenk.cs</DependentUpon>

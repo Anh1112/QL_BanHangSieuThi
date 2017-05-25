@@ -16,8 +16,8 @@ namespace GUI.UC.QLNH
 
     public partial class changenk : Form
     {
-        public delegate void changesnk();
-        public event changesnk saveclick;
+        public delegate void changeCnk();
+        public event changeCnk saveclick;
         public bool change = false;
         private bool drag = false;
         private Point dragCursor, dragForm;
@@ -28,6 +28,7 @@ namespace GUI.UC.QLNH
             //cbb_nvma.DataSource = dtv.Columns[0];
             cbb_nvma.DropDownStyle = ComboBoxStyle.DropDownList;
             lbl_chedo.Text = "Thêm";
+            txt_ma.Text = layma();
             DataTable dt = new DataTable();
             dt = DBConnect.GetData("select ma from nhanvien");
             if (dt != null)
@@ -41,7 +42,7 @@ namespace GUI.UC.QLNH
             txt_ma.Text = nk.Ma.ToString();
             time_ngaynhap.Value = nk.NgayNhap;
             cbb_nvma.Text = nk.NhanVienMa;
-            txt_money.Text = nk.Tongtien.ToString();
+          //  txt_money.Text = nk.Tongtien.ToString();
             cbb_nvma.Enabled = false;
             lbl_chedo.Text = "Sửa";
             cbb_nvma.Text = nk.NhanVienMa;
@@ -64,7 +65,6 @@ namespace GUI.UC.QLNH
         {
            
                 txt_ma.Enabled = false;
-            txt_ma.Text=layma();
             btn_luu.Click += btncliclk;
         }
 
@@ -73,9 +73,9 @@ namespace GUI.UC.QLNH
             NhapKho nk = new NhapKho();
             nk.Ma = txt_ma.Text;
             nk.NgayNhap = time_ngaynhap.Value;
-            if (txt_money.Text != "")
-                nk.Tongtien = decimal.Parse(txt_money.Text);
-            else
+          //  if (txt_money.Text != "")
+          //      nk.Tongtien = decimal.Parse(txt_money.Text);
+          //  else
                 nk.Tongtien = 0;
             if (cbb_nvma.Text != "")
                 nk.NhanVienMa = cbb_nvma.Text;

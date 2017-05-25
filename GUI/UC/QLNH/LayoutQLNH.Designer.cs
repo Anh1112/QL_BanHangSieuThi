@@ -90,7 +90,6 @@
             this.btnNhapKho.TabStop = false;
             this.btnNhapKho.Text = "Nhập kho";
             this.btnNhapKho.UseActived = true;
-            this.btnNhapKho.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnNhapKho_MouseClick_1);
             // 
             // btnChiTietNhapKho
             // 
@@ -134,6 +133,7 @@
             this.btn_newCTnk.TabStop = false;
             this.btn_newCTnk.Text = "Thêm";
             this.btn_newCTnk.UseActived = true;
+            this.btn_newCTnk.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_newCTnk_MouseClick);
             // 
             // panel1
             // 
@@ -161,6 +161,8 @@
             this.dgv_CTnhapkho.Name = "dgv_CTnhapkho";
             this.dgv_CTnhapkho.Size = new System.Drawing.Size(328, 457);
             this.dgv_CTnhapkho.TabIndex = 0;
+            this.dgv_CTnhapkho.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CTnhapkho_CellDoubleClick);
+            this.dgv_CTnhapkho.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgv_CTnhapkho_KeyUp);
             // 
             // pnl_nhapkho
             // 
