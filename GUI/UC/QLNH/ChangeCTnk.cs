@@ -31,17 +31,19 @@ namespace GUI.UC.QLNH
             ChiTietNhapKho nk = new ChiTietNhapKho();
             string temp="";
             {
-                if((cbb_mahang.SelectedValue!= null))
+                DataTable dt = new DataTable();
+                if(change==false)
+                {
+                    if ((cbb_mahang.SelectedValue != null))
                     {
-                    if (cbb_mahang.SelectedValue.ToString().CompareTo((cbb_mahang.Text)) != 0)
-                    {
-                        temp = "Mặt Hàng";
+                        if (cbb_mahang.SelectedValue.ToString().CompareTo((cbb_mahang.Text)) != 0)
+                        {
+                            temp = "Mặt Hàng";
+                        }
                     }
+                    else
+                        temp = "Mặt Hàng";
                 }
-                else
-                    temp = "Mặt Hàng";
-
-
             }
                 
             

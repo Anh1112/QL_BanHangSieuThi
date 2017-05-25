@@ -179,6 +179,8 @@ namespace GUI.UC.QLNH
                 ChangeCTnk ctnk = new ChangeCTnk(ct);
                 ctnk.change = true;
                 ctnk.ShowDialog();
+                addDLCTNK();
+                adddlnk();
                 //ct.MatHangMa=
             }
         }
