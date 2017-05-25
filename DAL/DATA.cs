@@ -208,9 +208,9 @@ namespace DAL
         #endregion
 
         #region chitietnhapkho
-        public static DataTable laymachuacoCT(string nhapkhoma)
+        public static DataTable giamachuacoCT(string nhapkhoma)
         {
-            return DBConnect.GetData("select ma from mathang where ma not in (select  ma from mathang , chitietnhapkho where mathang.ma= mathangma and nhapkhoma='" + nhapkhoma + "')");
+            return DBConnect.GetData("select ma,gianhap from mathang where ma not in (select  ma from mathang , chitietnhapkho where mathang.ma= mathangma and nhapkhoma='" + nhapkhoma + "')");
         }
         // thong ke luu luong nhap hang cua tat ca cac loai hang hoa
         public static DataTable get_chitietnhapkho(string ma)

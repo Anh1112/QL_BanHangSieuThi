@@ -19,6 +19,7 @@ namespace GUI.UC.QLNH
         private bool drag = false;
         private Point dragCursor, dragForm;
         public delegate void changeCTnk();
+        DataTable giama = new DataTable();
         public event changeCTnk saveCTclick;
         public ChangeCTnk(string nkma)
         {
@@ -76,9 +77,8 @@ namespace GUI.UC.QLNH
                 if (change == false)
                 {
                     nk.them();
-                    DataTable dt = new DataTable();
-                    dt = DATA.laymachuacoCT(txt_mank.Text);
-                    cbb_mahang.DataSource = dt;
+                    giama = DATA.giamachuacoCT(txt_mank.Text);
+                    cbb_mahang.DataSource = giama;
                     cbb_mahang.DisplayMember = "ma";
                     cbb_mahang.ValueMember = "ma";
                 }
@@ -144,13 +144,13 @@ namespace GUI.UC.QLNH
             btn_luu.Click += btncliclk;
             if (change == false)
             {
-                DataTable dt = new DataTable();
-                dt = DATA.laymachuacoCT(txt_mank.Text);
-                cbb_mahang.DataSource = dt;
+                giama = DATA.giamachuacoCT(txt_mank.Text);
+                cbb_mahang.DataSource = giama;
                 cbb_mahang.DisplayMember = "ma";
                 cbb_mahang.ValueMember = "ma";
                 
             }
+            txt_gianhap.Enabled = false;
         }
 
         private void btnSimple1_MouseClick(object sender, MouseEventArgs e)
@@ -166,6 +166,20 @@ namespace GUI.UC.QLNH
         private void btnSimple4_MouseClick(object sender, MouseEventArgs e)
         {
             this.Close();
+        }
+
+        private void cbb_mahang_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string temp="";
+            foreach (DataRow item in giama.Rows)
+            {
+                if(item["ma"].ToString()== cbb_mahang.Text)
+                {
+                    temp = item[1].ToString();
+                }
+            }
+          
+            txt_gianhap.Text = temp;
         }
 
         private void ts_Tick(object sender, EventArgs e)
