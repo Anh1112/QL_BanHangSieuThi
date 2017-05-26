@@ -8,7 +8,7 @@ using DAL;
 
 namespace DTO
 {
-   public class NhapKho
+    public class NhapKho
     {
         private string ma;
         private DateTime ngaynhap;
@@ -67,11 +67,23 @@ namespace DTO
         }
         public void them()
         {
-            DATA.them_nhapkho(ma,ngaynhap, tongtien, nhanvienma);
+            DATA.them_nhapkho(ma, ngaynhap, tongtien, nhanvienma);
         }
         public void sua()
         {
             DATA.sua_nhapkho(ma, ngaynhap, tongtien, nhanvienma);
+        }
+        public static DataTable get_nhapkho()
+        {
+            return DATA.get_nhapkho();
+        }
+        public static void xoa_nhapkho(string ma)
+        {
+            DATA.xoa_nhapkho(ma);
+        }
+        public static DataTable checkmanhapkho(string check)
+        {
+            return DBConnect.GetData("select 1 from nhapkho where ma ='" + check + "'");
         }
     }
 }

@@ -189,7 +189,7 @@ namespace DAL
 
         public static int them_nhapkho(string ma, DateTime ngaynhap, decimal tongtien, string nhanvienma)
         {
-            string temp =ngaynhap.ToShortDateString();
+            string temp = ngaynhap.ToShortDateString();
 
             SqlParameter[] para = new SqlParameter[]
             {
@@ -205,7 +205,7 @@ namespace DAL
         {
             SqlParameter[] para = new SqlParameter[]
             {
-               
+
                  new SqlParameter("@ma",ma),
                 new SqlParameter("@ngayxuat","'"+ngaynhap+"'"),
                 new SqlParameter("@tongtien",(tongtien>0)?(object)tongtien:DBNull.Value),
@@ -242,22 +242,22 @@ namespace DAL
         }
         public static int them_chitietnhapkho(string mamh, string mank, float sl, decimal gn)
         {
-          // DBConnect.GetData("exec them_ChiTietnhapkho '" + mamh + "','" + mank + "'," + sl + "," + gn);
+            // DBConnect.GetData("exec them_ChiTietnhapkho '" + mamh + "','" + mank + "'," + sl + "," + gn);
             SqlParameter[] para = new SqlParameter[]
             {
                 new SqlParameter("@mamh",mamh),
                 new SqlParameter("@maxk",mank),
                 new SqlParameter("@sl",(sl>0)?(object)sl:DBNull.Value),
                 new SqlParameter("@gn",(gn>0 ?(object)gn:DBNull.Value))
-                
+
             };
-          //  return 1;
+            //  return 1;
             return DBConnect.ExecuteNonQuery("them_chitietnhapkho", para);
         }
         public static int sua_chitietnhapkho(string mamh, string mank, float sl, decimal gn)
         {
 
-           // DBConnect.GetData("exec sua_ChiTietnhapkho '" + mamh + "','" + mank + "'," + sl + "," + (int)gn);
+            // DBConnect.GetData("exec sua_ChiTietnhapkho '" + mamh + "','" + mank + "'," + sl + "," + (int)gn);
             SqlParameter[] para = new SqlParameter[]
             {
                 new SqlParameter("@mamh",mamh),
@@ -265,12 +265,12 @@ namespace DAL
                 new SqlParameter("@sl",(sl>0)?(object)sl:DBNull.Value),
                 new SqlParameter("@gn",(gn>0 ?(object)gn:DBNull.Value))
             };
-           // return 1;
-           return DBConnect.ExecuteNonQuery("sua_ChiTietnhapkho", para);
+            // return 1;
+            return DBConnect.ExecuteNonQuery("sua_ChiTietnhapkho", para);
         }
         public static int xoa_chitietnhapkho(string mamh, string mank)
         {
-            
+
             SqlParameter[] para = new SqlParameter[]
            {
                  new SqlParameter("@mamh",mamh),
@@ -334,9 +334,9 @@ namespace DAL
                 new SqlParameter("@donvitinh", donvitinh),
                 new SqlParameter("@gianhap", gianhap),
                 new SqlParameter("@giaban", giaban),
-                new SqlParameter("@soluongtrongkho",(soluongtrongkho>0)?(object)soluongtrongkho:DBNull.Value),             
+                new SqlParameter("@soluongtrongkho",(soluongtrongkho>0)?(object)soluongtrongkho:DBNull.Value),
                 new SqlParameter("@quayma",(quayma!=null && quayma.Trim()!="")?(object)quayma:DBNull.Value)
-               
+
             };
             return DBConnect.ExecuteNonQuery("sua_mathang", para);
         }

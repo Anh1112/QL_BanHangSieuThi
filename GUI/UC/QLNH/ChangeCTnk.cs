@@ -1,4 +1,4 @@
-﻿using DAL;
+﻿
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -30,10 +30,10 @@ namespace GUI.UC.QLNH
         private void btncliclk(object sender, EventArgs e)
         {
             ChiTietNhapKho nk = new ChiTietNhapKho();
-            string temp="";
+            string temp = "";
             {
                 DataTable dt = new DataTable();
-                if(change==false)
+                if (change == false)
                 {
                     if ((cbb_mahang.SelectedValue != null))
                     {
@@ -46,10 +46,10 @@ namespace GUI.UC.QLNH
                         temp = "Mặt Hàng";
                 }
             }
-                
-            
+
+
             float temp2;
-           if( float.TryParse(txt_soluong.Text,out temp2)==false)
+            if (float.TryParse(txt_soluong.Text, out temp2) == false)
             {
                 if (temp == "")
                 {
@@ -68,7 +68,7 @@ namespace GUI.UC.QLNH
                 else
                     temp += ",Giá Bán";
             }
-            if(temp=="")
+            if (temp == "")
             {
                 nk.NhapKhoMa = txt_mank.Text;
                 nk.MatHangMa = cbb_mahang.Text;
@@ -77,7 +77,7 @@ namespace GUI.UC.QLNH
                 if (change == false)
                 {
                     nk.them();
-                    giama = DATA.giamachuacoCT(txt_mank.Text);
+                    giama = ChiTietNhapKho.getmanotinchitiet(txt_mank.Text);
                     cbb_mahang.DataSource = giama;
                     cbb_mahang.DisplayMember = "ma";
                     cbb_mahang.ValueMember = "ma";
@@ -144,11 +144,11 @@ namespace GUI.UC.QLNH
             btn_luu.Click += btncliclk;
             if (change == false)
             {
-                giama = DATA.giamachuacoCT(txt_mank.Text);
+                giama = ChiTietNhapKho.getmanotinchitiet(txt_mank.Text);
                 cbb_mahang.DataSource = giama;
                 cbb_mahang.DisplayMember = "ma";
                 cbb_mahang.ValueMember = "ma";
-                
+
             }
             txt_gianhap.Enabled = false;
         }
@@ -170,15 +170,15 @@ namespace GUI.UC.QLNH
 
         private void cbb_mahang_SelectedValueChanged(object sender, EventArgs e)
         {
-            string temp="";
+            string temp = "";
             foreach (DataRow item in giama.Rows)
             {
-                if(item["ma"].ToString()== cbb_mahang.Text)
+                if (item["ma"].ToString() == cbb_mahang.Text)
                 {
                     temp = item[1].ToString();
                 }
             }
-          
+
             txt_gianhap.Text = temp;
         }
 
