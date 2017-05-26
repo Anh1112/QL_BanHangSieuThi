@@ -194,7 +194,7 @@ namespace GUI.UC.QLNL
         void TimKiem()
         {
             DataTable dt = new DataTable();
-            dt = DAL.DBConnect.GetData(@"select * from nhanvien where ten like '%" + txtSearch.Text.Trim() + "%' or ma like '%" + txtSearch.Text.Trim() + "%'");
+            dt = NhanVien.findnhanvien(txtSearch.Text.Trim());
             dgvNhanVien.DataSource = dt;
         }
 

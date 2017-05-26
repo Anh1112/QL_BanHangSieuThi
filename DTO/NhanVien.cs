@@ -143,5 +143,9 @@ namespace DTO
         {
             return DBConnect.GetData("select ma from nhanvien");
         }
+        public static DataTable findnhanvien (string ma)
+        {
+            return DAL.DBConnect.GetData(@"select * from nhanvien where ten like '%" + ma + "%' or ma like '%" + ma + "%'");
+        }
     }
 }
