@@ -322,6 +322,15 @@ namespace GUI.UC.QLBH
                 load_HoaDon();
             }
         }
+        //---------------------------------------------------------------------------
 
+        private void btnThemKH_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                pnlThemHD.Visible = false;
+                pnlThemKH.Visible = true;
+            }
+        }
     }
 }
