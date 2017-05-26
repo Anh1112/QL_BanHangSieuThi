@@ -11,7 +11,7 @@ namespace DTO
     {
         private string mathangma;
         private string hoadonma;
-        private float soluong;
+        private double soluong;
         private decimal giaban;
 
         public string Mathangma
@@ -40,7 +40,7 @@ namespace DTO
             }
         }
 
-        public float Soluong
+        public double Soluong
         {
             get
             {

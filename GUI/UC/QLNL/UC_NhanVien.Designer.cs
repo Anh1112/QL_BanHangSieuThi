@@ -157,6 +157,7 @@
             this.cboMaQuay.Name = "cboMaQuay";
             this.cboMaQuay.Size = new System.Drawing.Size(200, 21);
             this.cboMaQuay.TabIndex = 36;
+            //this.cboMaQuay.SelectedIndexChanged += new System.EventHandler(this.cboMaQuay_SelectedIndexChanged);
             // 
             // txtMa
             // 
