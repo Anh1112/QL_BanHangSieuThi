@@ -216,6 +216,10 @@ namespace DAL
         #endregion
 
         #region chitietnhapkho
+        public static DataTable giamachuacoCT(string nhapkhoma)
+        {
+            return DBConnect.GetData("select ma,gianhap from mathang where ma not in (select  ma from mathang , chitietnhapkho where mathang.ma= mathangma and nhapkhoma='" + nhapkhoma + "')");
+        }
         // thong ke luu luong nhap hang cua tat ca cac loai hang hoa
         public static DataTable get_chitietnhapkho(string ma)
         {
@@ -230,32 +234,39 @@ namespace DAL
         }
         public static int them_chitietnhapkho(string mamh, string mank, float sl, decimal gn)
         {
+          // DBConnect.GetData("exec them_ChiTietnhapkho '" + mamh + "','" + mank + "'," + sl + "," + gn);
             SqlParameter[] para = new SqlParameter[]
             {
                 new SqlParameter("@mamh",mamh),
-                new SqlParameter("@mank",mank),
+                new SqlParameter("@maxk",mank),
                 new SqlParameter("@sl",(sl>0)?(object)sl:DBNull.Value),
                 new SqlParameter("@gn",(gn>0 ?(object)gn:DBNull.Value))
+                
             };
+          //  return 1;
             return DBConnect.ExecuteNonQuery("them_chitietnhapkho", para);
         }
         public static int sua_chitietnhapkho(string mamh, string mank, float sl, decimal gn)
         {
+
+           // DBConnect.GetData("exec sua_ChiTietnhapkho '" + mamh + "','" + mank + "'," + sl + "," + (int)gn);
             SqlParameter[] para = new SqlParameter[]
             {
                 new SqlParameter("@mamh",mamh),
-                new SqlParameter("@mank",mank),
+                new SqlParameter("@maxk",mank),
                 new SqlParameter("@sl",(sl>0)?(object)sl:DBNull.Value),
                 new SqlParameter("@gn",(gn>0 ?(object)gn:DBNull.Value))
             };
-            return DBConnect.ExecuteNonQuery("sua_chitietnhapkho", para);
+           // return 1;
+           return DBConnect.ExecuteNonQuery("sua_ChiTietnhapkho", para);
         }
         public static int xoa_chitietnhapkho(string mamh, string mank)
         {
+            
             SqlParameter[] para = new SqlParameter[]
            {
                  new SqlParameter("@mamh",mamh),
-                  new SqlParameter("@mank",mank)
+                  new SqlParameter("@maxk",mank)
            };
             return DBConnect.ExecuteNonQuery("xoa_chitietnhapkho", para);
         }

@@ -36,8 +36,6 @@
             this.txt_ma = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txt_money = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lbl_chedo = new System.Windows.Forms.Label();
             this.ts = new System.Windows.Forms.Timer(this.components);
@@ -131,27 +129,9 @@
             this.label2.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label2.Location = new System.Drawing.Point(22, 203);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 17);
+            this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 7;
             this.label2.Text = "Ngày Nhập :";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label3.Location = new System.Drawing.Point(27, 267);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 17);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Tổng Tiền :";
-            // 
-            // txt_money
-            // 
-            this.txt_money.Location = new System.Drawing.Point(116, 266);
-            this.txt_money.Name = "txt_money";
-            this.txt_money.Size = new System.Drawing.Size(181, 20);
-            this.txt_money.TabIndex = 8;
             // 
             // label4
             // 
@@ -182,6 +162,7 @@
             // 
             // time_ngaynhap
             // 
+            this.time_ngaynhap.CustomFormat = "dd/mm/yyyy";
             this.time_ngaynhap.Location = new System.Drawing.Point(116, 203);
             this.time_ngaynhap.Name = "time_ngaynhap";
             this.time_ngaynhap.Size = new System.Drawing.Size(181, 20);
@@ -203,7 +184,7 @@
             this.btn_huy.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
             this.btn_huy.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
             this.btn_huy.ForeColor = System.Drawing.Color.White;
-            this.btn_huy.Location = new System.Drawing.Point(208, 319);
+            this.btn_huy.Location = new System.Drawing.Point(194, 243);
             this.btn_huy.Name = "btn_huy";
             this.btn_huy.Size = new System.Drawing.Size(71, 29);
             this.btn_huy.TabIndex = 15;
@@ -220,7 +201,7 @@
             this.btn_luu.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
             this.btn_luu.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
             this.btn_luu.ForeColor = System.Drawing.Color.White;
-            this.btn_luu.Location = new System.Drawing.Point(307, 319);
+            this.btn_luu.Location = new System.Drawing.Point(293, 243);
             this.btn_luu.Name = "btn_luu";
             this.btn_luu.Size = new System.Drawing.Size(71, 29);
             this.btn_luu.TabIndex = 16;
@@ -233,15 +214,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(390, 360);
+            this.ClientSize = new System.Drawing.Size(390, 290);
             this.Controls.Add(this.btn_luu);
             this.Controls.Add(this.btn_huy);
             this.Controls.Add(this.cbb_nvma);
             this.Controls.Add(this.time_ngaynhap);
             this.Controls.Add(this.lbl_chedo);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txt_money);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_ma);
@@ -269,8 +248,6 @@
         private System.Windows.Forms.TextBox txt_ma;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_money;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbl_chedo;
         private System.Windows.Forms.Timer ts;
