@@ -55,6 +55,9 @@ namespace DTO
         {
             return DATA.xoa_quayhang(ma);
         }
-
+        public static DataTable get_maquayhang()
+        {
+            return DBConnect.GetData(@"Select ma from quayhang");
+        }
     }
 }

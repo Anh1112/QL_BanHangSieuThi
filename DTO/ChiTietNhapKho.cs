@@ -46,9 +46,14 @@ namespace DTO
         {
             DATA.sua_chitietnhapkho(mathangma, nhapkhoma, soluong, giaban);
         }
-        public void xoa()
+
+        public static void xoa(string mathangma,string nhapkhoma)
         {
             DATA.xoa_chitietnhapkho(mathangma, nhapkhoma);
+        }
+        public static DataTable getmanotinchitiet(string ma)
+        {
+            return DATA.giamachuacoCT(ma);
         }
     }
 }

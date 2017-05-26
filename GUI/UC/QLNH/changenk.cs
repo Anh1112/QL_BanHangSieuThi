@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DAL;
 using DTO;
 
 namespace GUI.UC.QLNH
@@ -23,14 +22,14 @@ namespace GUI.UC.QLNH
         private Point dragCursor, dragForm;
         public changenk()
         {
-           // dtv.DataSource = DATA.get_nhanvien();
+            // dtv.DataSource = DATA.get_nhanvien();
             InitializeComponent();
             //cbb_nvma.DataSource = dtv.Columns[0];
             cbb_nvma.DropDownStyle = ComboBoxStyle.DropDownList;
             lbl_chedo.Text = "Thêm";
             txt_ma.Text = layma();
             DataTable dt = new DataTable();
-            dt = DBConnect.GetData("select ma from nhanvien");
+            dt = NhanVien.get_manhanvien();
             if (dt != null)
                 cbb_nvma.DataSource = dt;
             cbb_nvma.DisplayMember = "ma";
@@ -42,11 +41,11 @@ namespace GUI.UC.QLNH
             txt_ma.Text = nk.Ma.ToString();
             time_ngaynhap.Value = nk.NgayNhap;
             cbb_nvma.Text = nk.NhanVienMa;
-          //  txt_money.Text = nk.Tongtien.ToString();
+            //  txt_money.Text = nk.Tongtien.ToString();
             cbb_nvma.Enabled = false;
             lbl_chedo.Text = "Sửa";
             cbb_nvma.Text = nk.NhanVienMa;
-           
+
         }
         private string layma()
         {
@@ -57,14 +56,14 @@ namespace GUI.UC.QLNH
                 Random rd = new Random();
                 int temp = rd.Next(99999999);
                 check = "NK" + temp.ToString();
-                dt = DBConnect.GetData("select 1 from nhapkho where ma ='" + check + "'");
+                dt = NhapKho.checkmanhapkho(check);
             } while (dt == null);
             return check;
         }
         private void changenk_Load(object sender, EventArgs e)
         {
-           
-                txt_ma.Enabled = false;
+
+            txt_ma.Enabled = false;
             btn_luu.Click += btncliclk;
         }
 
@@ -73,10 +72,10 @@ namespace GUI.UC.QLNH
             NhapKho nk = new NhapKho();
             nk.Ma = txt_ma.Text;
             nk.NgayNhap = time_ngaynhap.Value;
-          //  if (txt_money.Text != "")
-          //      nk.Tongtien = decimal.Parse(txt_money.Text);
-          //  else
-                nk.Tongtien = 0;
+            //  if (txt_money.Text != "")
+            //      nk.Tongtien = decimal.Parse(txt_money.Text);
+            //  else
+            nk.Tongtien = 0;
             if (cbb_nvma.Text != "")
                 nk.NhanVienMa = cbb_nvma.Text;
             else
@@ -91,12 +90,12 @@ namespace GUI.UC.QLNH
                 nk.sua();
             }
             btn_luu.Actived = false;
-            if (saveclick!=null)
+            if (saveclick != null)
             {
                 saveclick();
                 txt_ma.Text = layma();
             }
-           
+
         }
 
         private void btnSimple1_MouseClick(object sender, MouseEventArgs e)
@@ -134,11 +133,11 @@ namespace GUI.UC.QLNH
 
         private void ts_Tick(object sender, EventArgs e)
         {
-            if(lbl_chedo.ForeColor == Color.FromName("HOTPINK"))
+            if (lbl_chedo.ForeColor == Color.FromName("HOTPINK"))
             {
                 lbl_chedo.ForeColor = Color.FromName("FUCHSIA");
             }
-            else if(lbl_chedo.ForeColor == Color.FromName("FUCHSIA"))
+            else if (lbl_chedo.ForeColor == Color.FromName("FUCHSIA"))
             {
                 lbl_chedo.ForeColor = Color.FromName("DEEPPINK");
             }

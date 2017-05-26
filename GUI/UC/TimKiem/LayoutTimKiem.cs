@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DAL;
 using DTO;
 
 namespace GUI.UC.TimKiem
@@ -30,55 +29,27 @@ namespace GUI.UC.TimKiem
         void TimKiemTen()
         {
             DataTable dt = new DataTable();
-            dt = DAL.DBConnect.GetData(@"select	ma as [Mã hàng], 
-			ten as [Tên hàng], 
-			hangsanxuat as [Hãng sản xuất],
-			donvitinh as [Đơn vị],
-			gianhap as [Giá nhập],
-			giaban as [Giá bán],
-			soluongtrongkho as [Số lượng trong kho],
-			quayma as [Mã quầy] from mathang where ten like '%" + txtSearch.Text.Trim() + "%'");
+            dt = MatHang.findname(txtSearch.Text.Trim());
             dgvTimKiem.DataSource = dt;      
         }
         void TimKiemHang()
         {
             DataTable dt = new DataTable();
-            dt = DAL.DBConnect.GetData(@"select	ma as [Mã hàng], 
-			ten as [Tên hàng], 
-			hangsanxuat as [Hãng sản xuất],
-			donvitinh as [Đơn vị],
-			gianhap as [Giá nhập],
-			giaban as [Giá bán],
-			soluongtrongkho as [Số lượng trong kho],
-			quayma as [Mã quầy] from mathang where hangsanxuat like '%" + txtSerchhang.Text.Trim() + "%'");
+            dt = MatHang.findhang(txtSerchhang.Text.Trim());
             dgvTimKiem.DataSource = dt;
         }
 
         void TimKiemGia()
         {
             DataTable dt = new DataTable();
-            dt = DAL.DBConnect.GetData(@"select	ma as [Mã hàng], 
-			ten as [Tên hàng], 
-			hangsanxuat as [Hãng sản xuất],
-			donvitinh as [Đơn vị],
-			gianhap as [Giá nhập],
-			giaban as [Giá bán],
-			soluongtrongkho as [Số lượng trong kho],
-			quayma as [Mã quầy] from mathang where giaban like '%" + txtSearchgia.Text.Trim() + "%'");
+            dt = MatHang.findgia(txtSearchgia.Text.Trim());
             dgvTimKiem.DataSource = dt;
         }
 
         void TimKiemGiaNhap()
         {
             DataTable dt = new DataTable();
-            dt = DAL.DBConnect.GetData(@"select	ma as [Mã hàng], 
-			ten as [Tên hàng], 
-			hangsanxuat as [Hãng sản xuất],
-			donvitinh as [Đơn vị],
-			gianhap as [Giá nhập],
-			giaban as [Giá bán],
-			soluongtrongkho as [Số lượng trong kho],
-			quayma as [Mã quầy] from mathang where gianhap like '%" + txtSearchGiaNhap.Text.Trim() + "%'");
+            dt = MatHang.findgianhap(txtSearchGiaNhap.Text.Trim());
             dgvTimKiem.DataSource = dt;
         }
 

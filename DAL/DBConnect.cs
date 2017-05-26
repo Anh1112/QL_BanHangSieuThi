@@ -22,7 +22,8 @@ namespace DAL
             try
             {
                 conn = null;
-                string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strconn + ";Integrated Security=True;Connect Timeout=30";
+                string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\school\QL_Kho\QuanLyKho_\GUI\data\QuanLyKho.mdf;Integrated Security=True;Connect Timeout=30";
+               // string sql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + strconn + ";Integrated Security=True;Connect Timeout=30";
                 SqlConnection con = new SqlConnection(sql);
                 con.Open();
                 conn = con;

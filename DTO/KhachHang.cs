@@ -82,5 +82,9 @@ namespace DTO
         {
             return DATA.xoa_khachhang(ma);
         }
+        public static DataTable findkhachhang(string ma)
+        {
+            return DAL.DBConnect.GetData(@"select ma as [Mã Khách Hàng], ten as [Tên Khách Hàng],  diachi as [Địa Chỉ], sdt as [Số Điện Thoại] from khachhang where ten like '%" + ma + "%' or ma like '%" + ma + "%'");
+        }
     }
 }

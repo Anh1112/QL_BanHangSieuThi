@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO;
-using DAL;
 
 namespace GUI.UC.QLNL
 {
@@ -165,7 +164,7 @@ namespace GUI.UC.QLNL
         void TimKiem()
         {
             DataTable dt = new DataTable();
-            dt = DAL.DBConnect.GetData(@"select ma as [Mã Khách Hàng], ten as [Tên Khách Hàng],  diachi as [Địa Chỉ], sdt as [Số Điện Thoại] from khachhang where ten like '%" + txtSearch.Text.Trim() + "%' or ma like '%" + txtSearch.Text.Trim() + "%'");
+            dt = KhachHang.findkhachhang(txtSearch.Text.Trim());
             dgvKhachHang.DataSource = dt;
         }
 
