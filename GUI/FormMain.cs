@@ -22,7 +22,7 @@ namespace GUI
         {
             DTO.Connect.SetConnectString(Application.StartupPath.Replace(@"bin\Debug", @"data\SieuThi.mdf"));
             while (!DTO.Connect.Open() && MessageBox.Show("Can not connect DataBase", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry) ;
-            MessageBox.Show(DTO.Connect.GetSqlConnection().State.ToString());
+            //MessageBox.Show(DTO.Connect.GetSqlConnection().State.ToString());
             InitializeComponent();
         }
 
@@ -155,6 +155,14 @@ namespace GUI
         private void RenderBody_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        public bool IsMaximize
+        {
+            set
+            {
+                if (value) { MaximizedBounds = Screen.PrimaryScreen.WorkingArea; this.WindowState = FormWindowState.Maximized; btnMaximize.Text = "2"; this.Padding = new Padding(0); }
+            }
         }
     }
 }

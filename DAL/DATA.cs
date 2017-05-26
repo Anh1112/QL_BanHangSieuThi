@@ -48,6 +48,14 @@ namespace DAL
         #endregion
 
         #region hoadon
+        public static DataTable get_hoadon(DateTime tu_ngay, DateTime den_ngay)
+        {
+            return DBConnect.GetData("select hoadon.ma as [Mã hóa đơn], khachhang.ten as [Tên khách hàng], ngaylap as [Ngày lập], tongtien as [Tổng tiền], nhanvienma as [Mã NV bán hàng]  from hoadon join khachhang on hoadon.khachhangma = khachhang.ma where ngaylap >= " + string.Format("'{0}-{1}-{2}'", tu_ngay.Year, tu_ngay.Month, tu_ngay.Day) + " and ngaylap <= " + string.Format("'{0}-{1}-{2}'", den_ngay.Year, den_ngay.Month, den_ngay.Day));
+        }
+        public static DataTable get_mahoadon()
+        {
+            return DBConnect.GetData("select max(ma) from hoadon");
+        }
         public static DataTable get_hoadon()
         {
             return DBConnect.GetData("get_hoadon");
@@ -333,7 +341,7 @@ namespace DAL
         public static int them_chitiethoadon(
             string mathangma,
             string hoadonma,
-            float soluong,
+            double soluong,
             decimal giaban)
         {
             SqlParameter[] para = new SqlParameter[]
@@ -348,7 +356,7 @@ namespace DAL
         public static int sua_chitiethoadon(
             string mathangma,
             string hoadonma,
-            float soluong,
+            double soluong,
             decimal giaban)
         {
             SqlParameter[] para = new SqlParameter[]
