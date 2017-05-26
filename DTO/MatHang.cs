@@ -142,5 +142,10 @@ namespace DTO
         {
             return DATA.xoa_mathang(mamh);
         }
+
+        public static void Update_SoLuongMatHang(string maMH)
+        {
+            DAL.DATA.update_soluongmathang(maMH);
+        }
     }
 }

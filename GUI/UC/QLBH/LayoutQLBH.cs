@@ -35,7 +35,7 @@ namespace GUI.UC.QLBH
             pnlXemHD.Visible = true;
         }
 
-        private void LayoutQLBH_Load(object sender, EventArgs e)
+        private void load_mathang()
         {
             DataTable tb = DTO.MatHang.Get_mathang();
 
@@ -58,11 +58,23 @@ namespace GUI.UC.QLBH
             dgvHangHoa.Columns[0].Width = 50;
         }
 
+        private void LayoutQLBH_Load(object sender, EventArgs e)
+        {
+            load_mathang();
+
+            dtpTuNgay.Value = DateTime.Today;
+            dtpDenNgay.Value = DateTime.Today;
+        }
+
         private void pnlThemHD_VisibleChanged(object sender, EventArgs e)
         {
             if (pnlThemHD.Visible)
             {
+                load_mathang();
+
                 txtMaHD.Text = DTO.HoaDon.Get_maHD();
+                dtpNgayLap.Value = DateTime.Today;
+                txtMaNV.Text = "0000000001";
             }
         }
 
@@ -73,7 +85,7 @@ namespace GUI.UC.QLBH
             {
                 ((DataTable)dgvHangHoa.DataSource).DefaultView.RowFilter = string.Format("([{0}] LIKE '%{2}' OR [{1}] LIKE '%{2}%')", dgvHangHoa.Columns[1].Name, dgvHangHoa.Columns[2].Name, txtSearch.Text);
 
-                dgvHangHoa.Columns[0].DefaultCellStyle = new DataGridViewCellStyle { ForeColor = Color.Green, Alignment = DataGridViewContentAlignment.MiddleCenter };
+                dgvHangHoa.Columns[0].DefaultCellStyle = new DataGridViewCellStyle { ForeColor = Color.Green, SelectionForeColor = Color.Green, SelectionBackColor = Color.White, Alignment = DataGridViewContentAlignment.MiddleCenter };
 
                 foreach (DataGridViewRow row in dgvHangHoa.Rows)
                 {
@@ -85,7 +97,10 @@ namespace GUI.UC.QLBH
             for (int i = 0; i < dgvHangHoa.Rows.Count; i++)
             {
                 if (dgvHangHoa.Rows[i].Cells[5].Value == DBNull.Value || dgvHangHoa.Rows[i].Cells[5].Value == null || (double)dgvHangHoa.Rows[i].Cells[5].Value <= 0)
+                {
                     dgvHangHoa.Rows[i].DefaultCellStyle = new DataGridViewCellStyle { ForeColor = Color.Crimson, SelectionBackColor = Color.Crimson };
+                    dgvHangHoa.Rows[i].Cells[0].Style = new DataGridViewCellStyle { ForeColor = Color.Green, SelectionForeColor = Color.Green, SelectionBackColor = Color.White, Alignment = DataGridViewContentAlignment.MiddleCenter };
+                }
             }
         }
 
@@ -158,8 +173,10 @@ namespace GUI.UC.QLBH
                         TinhTongTien();
 
                         Search();
+                        txtSearch.SelectAll();
                         reset_SoLuong();
 
+                        Console.Beep(658, 125);
                         return;
                     }
                 }
@@ -175,6 +192,8 @@ namespace GUI.UC.QLBH
                 txtSearch.SelectAll();
                 txtSearch.Focus();
                 reset_SoLuong();
+
+                Console.Beep(658, 125);
             }
         }
 
@@ -265,6 +284,7 @@ namespace GUI.UC.QLBH
             }
         }
 
+        //Lưu vào CSDL
         private void btnSave_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -279,30 +299,117 @@ namespace GUI.UC.QLBH
                         Ngaylap = dtpNgayLap.Value,
                         Tongtien = decimal.Parse(labTongTien.Text.Split(' ')[2])
                     };
-                    hoadon.Them();
-
-                    for (int i = 0; i < dgvCTHD.Rows.Count; i++)
+                    if(hoadon.Them() == 1)
                     {
-                        DTO.ChiTietHoaDon chitiet = new DTO.ChiTietHoaDon()
+                        for (int i = 0; i < dgvCTHD.Rows.Count; i++)
                         {
-                            Hoadonma = hoadon.Ma,
-                            Mathangma = dgvCTHD.Rows[i].Cells[0].Value.ToString(),
-                            Soluong = (double)dgvCTHD.Rows[i].Cells[3].Value,
-                            Giaban = (decimal)dgvCTHD.Rows[i].Cells[4].Value
-                        };
-                        chitiet.Them();
+                            DTO.ChiTietHoaDon chitiet = new DTO.ChiTietHoaDon()
+                            {
+                                Hoadonma = hoadon.Ma,
+                                Mathangma = dgvCTHD.Rows[i].Cells[0].Value.ToString(),
+                                Soluong = (double)dgvCTHD.Rows[i].Cells[3].Value,
+                                Giaban = (decimal)dgvCTHD.Rows[i].Cells[4].Value
+                            };
+                            chitiet.Them();
+                            DTO.MatHang.Update_SoLuongMatHang(chitiet.Mathangma);
+                        }
+                        txtMaKH.Text = "";
+                        dgvCTHD.Rows.Clear();
+                        txtSearch.Text = "";
+                        txtMaHD.Text = DTO.HoaDon.Get_maHD();
+
+                        MessageBox.Show("Đã thêm", "", MessageBoxButtons.OK);
                     }
                 }
                 else System.Media.SystemSounds.Beep.Play();
             }
         }
         #endregion
+        
+
+        #region Thêm Khách Hàng
+        private void btnThemKH_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                pnlThemHD.Visible = false;
+                pnlThemKH.Visible = true;
+            }
+        }
+
+        private void pnlThemKH_VisibleChanged(object sender, EventArgs e)
+        {
+            if(pnlThemKH.Visible)
+            {
+                ClearInput_ThemKhachHang();
+                _txtMaKH.Text = DTO.KhachHang.Get_MaKH();
+            }
+        }
+
+        private void ClearInput_ThemKhachHang()
+        {
+            _txtMaKH.Text = "";
+            _txtTenKH.Text = "";
+            _txtSDT.Text = "";
+            _cbxDiaChi.Text = "Hà Nội";
+        }
+
+        private void _btnThoat_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                pnlThemKH.Visible = false;
+                pnlThemHD.Visible = true;
+            }
+        }
+
+        private void _btnThemKH_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                DTO.KhachHang khachhang = new DTO.KhachHang()
+                {
+                    Ma = _txtMaKH.Text,
+                    Ten = _txtTenKH.Text,
+                    Sdt = _txtSDT.Text,
+                    Diachi = _cbxDiaChi.Text
+                };
+                if(khachhang.them() == 1)
+                {
+                    pnlThemKH.Visible = false;
+                    pnlThemHD.Visible = true;
+                    txtMaKH.Text = khachhang.Ma;
+                }
+            }
+        }
+
+        private void txtMaKH_TextChanged(object sender, EventArgs e)
+        {
+            if(txtMaKH.Text.Length == 10)
+            {
+                DataTable tb = DTO.KhachHang.Get_KhachHang(txtMaKH.Text);
+                if (tb.Rows.Count > 0)
+                {
+                    txtTenKH.Text = tb.Rows[0].ItemArray[1].ToString();
+                    txtDiaChi.Text = tb.Rows[0].ItemArray[2].ToString();
+                    labErrMaKH.Text = "";
+                    labErrMaKH.ForeColor = Color.LimeGreen;
+                    return;
+                }
+            }
+            txtTenKH.Text = "";
+            txtDiaChi.Text = "";
+            labErrMaKH.Text = "";
+            labErrMaKH.ForeColor = Color.Red;
+        }
+        #endregion
+
+
 
         //#region Xem Hoa Don
-
-        private void load_HoaDon()
+        private void load_HoaDon(DateTime tu_ngay, DateTime den_ngay)
         {
-            DataTable tb_hoadon = DTO.HoaDon.Get_hoadon(dtpTuNgay.Value, dtpDenNgay.Value);
+            DataTable tb_hoadon = DTO.HoaDon.Get_hoadon(tu_ngay, den_ngay);
             tb_hoadon.Columns.Add("Xoa", typeof(string));
             for (int i = 0; i < tb_hoadon.Rows.Count; i++)
             {
@@ -310,26 +417,74 @@ namespace GUI.UC.QLBH
             }
             dgvXemHD.DataSource = tb_hoadon;
             dgvXemHD.Columns["Xoa"].HeaderText = "";
-            dgvXemHD.Columns["Xoa"].DefaultCellStyle = new DataGridViewCellStyle() { ForeColor = Color.Crimson, SelectionForeColor = Color.Red };
+            dgvXemHD.Columns["Xoa"].DefaultCellStyle = new DataGridViewCellStyle() { ForeColor = Color.Crimson, SelectionForeColor = Color.Crimson, SelectionBackColor = Color.White, Alignment = DataGridViewContentAlignment.MiddleCenter };
             dgvXemHD.Columns["Xoa"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvXemHD.Columns["Xoa"].Width = 50;
+        }
+
+        private void TinhTongTienHoaDon()
+        {
+            decimal tong = 0;
+            for (int i = 0; i < dgvXemHD.Rows.Count; i++)
+            {
+                tong += (decimal)dgvXemHD.Rows[i].Cells[3].Value;
+            }
+            labTongTienHoaDon.Text = "Tổng tiền hóa đơn: " + tong + " VND";
         }
 
         private void pnlXemHD_VisibleChanged(object sender, EventArgs e)
         {
             if (pnlXemHD.Visible)
             {
-                load_HoaDon();
+                if (btnSimple1.BackColor == btnSimple1.ColorMouseDown)
+                {
+                    load_HoaDon(DateTime.Today, DateTime.Today);
+                    TinhTongTienHoaDon();
+                }
+                else
+                {
+                    load_HoaDon(dtpTuNgay.Value, dtpDenNgay.Value);
+                    labTongTienHoaDon.Text = "Tổng tiền hóa đơn: ";
+                }
             }
         }
-        //---------------------------------------------------------------------------
 
-        private void btnThemKH_MouseClick(object sender, MouseEventArgs e)
+        private void DateTimeSearch_ValueChanged(object sender, EventArgs e)
+        {
+            if (pnlXemHD.Visible)
+            {
+                load_HoaDon(dtpTuNgay.Value, dtpDenNgay.Value);
+                btnSimple1.Actived = false;
+                labTongTienHoaDon.Text = "Tổng tiền hóa đơn: ";
+            }
+        }
+
+        private void btnSimple1_MouseClick(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)
             {
-                pnlThemHD.Visible = false;
-                pnlThemKH.Visible = true;
+                load_HoaDon(DateTime.Today, DateTime.Today);
+                TinhTongTienHoaDon();
+            }
+        }
+
+        private void dgvXemHD_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left && e.ColumnIndex == 5)
+            {
+                if (MessageBox.Show("Xác nhận xóa?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    DataTable tb_chitietHD = DTO.ChiTietHoaDon.Get_chitiethoadon(dgvXemHD.CurrentRow.Cells[0].Value.ToString());
+                    DTO.HoaDon.Xoa(dgvXemHD.CurrentRow.Cells[0].Value.ToString());
+                    for (int i = 0; i < tb_chitietHD.Rows.Count; i++)
+                    {
+                        DTO.MatHang.Update_SoLuongMatHang(tb_chitietHD.Rows[i].ItemArray[0].ToString());
+                    }
+                    if (btnSimple1.BackColor == btnSimple1.ColorMouseDown)
+                        load_HoaDon(DateTime.Today, DateTime.Today);
+                    else
+                        load_HoaDon(dtpTuNgay.Value, dtpDenNgay.Value);
+                }
             }
         }
     }

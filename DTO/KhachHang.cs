@@ -82,5 +82,20 @@ namespace DTO
         {
             return DATA.xoa_khachhang(ma);
         }
+
+        public static string Get_MaKH()
+        {
+            int i;
+            string ma = "";
+            DataTable tb = DAL.DATA.get_makhachhang();
+            if (tb.Rows.Count == 1 && int.TryParse(tb.Rows[0].ItemArray[0].ToString(), out i)) ma = string.Format("{0:d10}", i + 1);
+            if (ma == "") ma = "0000000001";
+            return ma;
+        }
+
+        public static DataTable Get_KhachHang(string ma)
+        {
+            return DAL.DATA.get_khachhang(ma);
+        }
     }
 }

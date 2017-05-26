@@ -11,6 +11,14 @@ namespace DAL
     public class DATA
     {
         #region khachhang
+        public static DataTable get_khachhang(string ma)
+        {
+            return DBConnect.GetData("select ma, ten, diachi, sdt from khachhang where ma = '" + ma + "'");
+        }
+        public static DataTable get_makhachhang()
+        {
+            return DBConnect.GetData("select max(ma) from khachhang");
+        }
         public static DataTable get_khachhang()
         {
             return DBConnect.GetData("get_khachhang");
@@ -273,6 +281,10 @@ namespace DAL
         #endregion
 
         #region mathang
+        public static void update_soluongmathang(string ma_mathang)
+        {
+            DBConnect.GetData(string.Format("declare @soluong float select @soluong = SUM(soluong) from chitietnhapkho where mathangma = '{0}' if exists (select * from chitiethoadon where mathangma = '{0}') select @soluong = @soluong - SUM(soluong) from chitiethoadon where mathangma = '{0}' update mathang set soluongtrongkho = @soluong where ma = '{0}'", ma_mathang));
+        }
         public static DataTable get_mathang()
         {
             return DBConnect.GetData("get_mathang");
