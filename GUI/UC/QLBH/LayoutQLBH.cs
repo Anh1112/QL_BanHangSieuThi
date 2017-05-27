@@ -12,6 +12,8 @@ namespace GUI.UC.QLBH
 {
     public partial class LayoutQLBH : UserControl
     {
+        DataTable tb_chitietcu;
+
         public LayoutQLBH()
         {
             InitializeComponent();
@@ -19,17 +21,23 @@ namespace GUI.UC.QLBH
 
         private void btnHoaDon_MouseClick(object sender, MouseEventArgs e)
         {
-            Control ctrl = this.Parent;
-            while ((ctrl as Form) == null)
+            if (pnlThemHD.Visible)
             {
-                ctrl = ctrl.Parent;
+                if (MessageBox.Show("Xác nhận hủy sửa.", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    pnlThemHD.Visible = false;
+                }
+                else
+                {
+                    btnXemHD.Actived = true;
+                    return;
+                }
             }
-            ((FormMain)ctrl).IsMaximize = true;
             pnlXemHD.Visible = false;
             pnlThemHD.Visible = true;
         }
 
-        private void btnChiTietHoaDon_MouseClick(object sender, MouseEventArgs e)
+        private void btnXemHD_MouseClick(object sender, MouseEventArgs e)
         {
             pnlThemHD.Visible = false;
             pnlXemHD.Visible = true;
@@ -66,19 +74,39 @@ namespace GUI.UC.QLBH
             dtpDenNgay.Value = DateTime.Today;
         }
 
+
+        #region Them Hoa Don
         private void pnlThemHD_VisibleChanged(object sender, EventArgs e)
         {
             if (pnlThemHD.Visible)
             {
+                Control ctrl = this.Parent;
+                while ((ctrl as Form) == null)
+                {
+                    ctrl = ctrl.Parent;
+                }
+                ((FormMain)ctrl).IsMaximize = true;
+
                 load_mathang();
 
-                txtMaHD.Text = DTO.HoaDon.Get_maHD();
+                btnHuy.Visible = false;
+                btnSave.Text = "Thêm hóa đơn";
+                txtMaKH.Enabled = true;
+                Clear_InputHoaDon();
                 dtpNgayLap.Value = DateTime.Today;
                 txtMaNV.Text = "0000000001";
             }
         }
 
-        #region Them Hoa Don
+        private void Clear_InputHoaDon()
+        {
+            txtMaKH.Text = "";
+            dgvCTHD.Rows.Clear();
+            txtSearch.Text = "";
+            labTongTien.Text = "Tổng tiền: ";
+            txtMaHD.Text = DTO.HoaDon.Get_maHD();
+        }
+
         private void Search()
         {
             if (txtSearch.Text.Replace("0", "") != "")
@@ -165,7 +193,7 @@ namespace GUI.UC.QLBH
                 //thêm hàng đã tồn tại trong chi tiết hóa đơn
                 for (int i = 0; i < dgvCTHD.Rows.Count; i++)
                 {
-                    if (dgvCTHD.Rows[i].Cells[0].Value == dgvHangHoa.CurrentRow.Cells[1].Value)
+                    if (dgvCTHD.Rows[i].Cells[0].Value.ToString() == dgvHangHoa.CurrentRow.Cells[1].Value.ToString())
                     {
                         dgvCTHD.Rows[i].Cells[3].Value = (double)dgvCTHD.Rows[i].Cells[3].Value + soluong;
                         dgvCTHD.Rows[i].Cells[5].Value = (decimal)((double)(dgvCTHD.Rows[i].Cells[3].Value)) * dongia;
@@ -284,6 +312,102 @@ namespace GUI.UC.QLBH
             }
         }
 
+        private void ThemHoaDon()
+        {
+            DTO.HoaDon hoadon = new DTO.HoaDon()
+            {
+                Ma = txtMaHD.Text,
+                Khachhangma = txtMaKH.Text,
+                Nhanvienma = txtMaNV.Text,
+                Ngaylap = dtpNgayLap.Value,
+                Tongtien = decimal.Parse(labTongTien.Text.Split(' ')[2])
+            };
+            if (hoadon.Them() == 1)
+            {
+                for (int i = 0; i < dgvCTHD.Rows.Count; i++)
+                {
+                    DTO.ChiTietHoaDon chitiet = new DTO.ChiTietHoaDon()
+                    {
+                        Hoadonma = hoadon.Ma,
+                        Mathangma = dgvCTHD.Rows[i].Cells[0].Value.ToString(),
+                        Soluong = (double)dgvCTHD.Rows[i].Cells[3].Value,
+                        Giaban = (decimal)dgvCTHD.Rows[i].Cells[4].Value
+                    };
+                    chitiet.Them();
+                    DTO.MatHang.Update_SoLuongMatHang(chitiet.Mathangma);
+                }
+
+                Clear_InputHoaDon();
+
+                MessageBox.Show("Đã thêm", "", MessageBoxButtons.OK);
+            }
+        }
+
+        private void SuaHoaDon()
+        {
+            DTO.HoaDon hoadon = new DTO.HoaDon()
+            {
+                Ma = txtMaHD.Text,
+                Khachhangma = txtMaKH.Text,
+                Nhanvienma = txtMaNV.Text,
+                Ngaylap = dtpNgayLap.Value,
+                Tongtien = decimal.Parse(labTongTien.Text.Split(' ')[2])
+            };
+            if (hoadon.Sua() == 1)
+            {
+                //them sua chi tiet
+                for (int i = 0; i < dgvCTHD.Rows.Count; i++)
+                {
+                    DTO.ChiTietHoaDon chitiet = new DTO.ChiTietHoaDon()
+                    {
+                        Hoadonma = hoadon.Ma,
+                        Mathangma = dgvCTHD.Rows[i].Cells[0].Value.ToString(),
+                        Soluong = (double)dgvCTHD.Rows[i].Cells[3].Value,
+                        Giaban = (decimal)dgvCTHD.Rows[i].Cells[4].Value
+                    };
+
+                    DataRow[] rows = tb_chitietcu.Select(string.Format("[Mã mặt hàng] = '{0}'", dgvCTHD.Rows[i].Cells[0].Value.ToString()));
+
+                    if (rows.Length > 0)
+                    {
+                        if ((double)rows[0].ItemArray[4] != chitiet.Soluong)
+                            chitiet.Sua();
+                    }
+                    else
+                        chitiet.Them();
+
+                    DTO.MatHang.Update_SoLuongMatHang(chitiet.Mathangma);
+                }
+
+                //xoa chi tiet
+                bool xoa;
+                for (int i = 0; i < tb_chitietcu.Rows.Count; i++)
+                {
+                    xoa = true;
+                    for (int j = 0; j < dgvCTHD.Rows.Count; j++)
+                    {
+                        if (dgvCTHD.Rows[j].Cells[0].Value.ToString() == tb_chitietcu.Rows[i].ItemArray[0].ToString())
+                        {
+                            xoa = false;
+                            break;
+                        }
+                    }
+                    if (xoa)
+                    {
+                        DTO.ChiTietHoaDon.Xoa(tb_chitietcu.Rows[i].ItemArray[0].ToString(), txtMaHD.Text);
+                        DTO.MatHang.Update_SoLuongMatHang(tb_chitietcu.Rows[i].ItemArray[0].ToString());
+                    }
+                }
+
+                Clear_InputHoaDon();
+
+                MessageBox.Show("Đã sửa", "", MessageBoxButtons.OK);
+
+                pnlThemHD.Visible = false;
+                pnlXemHD.Visible = true;
+            }
+        }
+
         //Lưu vào CSDL
         private void btnSave_MouseClick(object sender, MouseEventArgs e)
         {
@@ -291,55 +415,35 @@ namespace GUI.UC.QLBH
             {
                 if (txtMaKH.Text != "" && txtMaNV.Text != "" && dgvCTHD.Rows.Count > 0)
                 {
-                    DTO.HoaDon hoadon = new DTO.HoaDon()
-                    {
-                        Ma = txtMaHD.Text,
-                        Khachhangma = txtMaKH.Text,
-                        Nhanvienma = txtMaNV.Text,
-                        Ngaylap = dtpNgayLap.Value,
-                        Tongtien = decimal.Parse(labTongTien.Text.Split(' ')[2])
-                    };
-                    if(hoadon.Them() == 1)
-                    {
-                        for (int i = 0; i < dgvCTHD.Rows.Count; i++)
-                        {
-                            DTO.ChiTietHoaDon chitiet = new DTO.ChiTietHoaDon()
-                            {
-                                Hoadonma = hoadon.Ma,
-                                Mathangma = dgvCTHD.Rows[i].Cells[0].Value.ToString(),
-                                Soluong = (double)dgvCTHD.Rows[i].Cells[3].Value,
-                                Giaban = (decimal)dgvCTHD.Rows[i].Cells[4].Value
-                            };
-                            chitiet.Them();
-                            DTO.MatHang.Update_SoLuongMatHang(chitiet.Mathangma);
-                        }
-                        txtMaKH.Text = "";
-                        dgvCTHD.Rows.Clear();
-                        txtSearch.Text = "";
-                        txtMaHD.Text = DTO.HoaDon.Get_maHD();
-
-                        MessageBox.Show("Đã thêm", "", MessageBoxButtons.OK);
-                    }
+                    if (btnSave.Text == "Thêm hóa đơn")
+                        ThemHoaDon();
+                    else
+                        SuaHoaDon();
                 }
-                else System.Media.SystemSounds.Beep.Play();
             }
+            else System.Media.SystemSounds.Beep.Play();
         }
         #endregion
-        
+
 
         #region Thêm Khách Hàng
         private void btnThemKH_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
-                pnlThemHD.Visible = false;
-                pnlThemKH.Visible = true;
+                if (txtMaKH.Enabled)
+                {
+                    pnlThemHD.Visible = false;
+                    pnlThemKH.Visible = true;
+                }
+                else
+                    System.Media.SystemSounds.Beep.Play();
             }
         }
 
         private void pnlThemKH_VisibleChanged(object sender, EventArgs e)
         {
-            if(pnlThemKH.Visible)
+            if (pnlThemKH.Visible)
             {
                 ClearInput_ThemKhachHang();
                 _txtMaKH.Text = DTO.KhachHang.Get_MaKH();
@@ -356,7 +460,7 @@ namespace GUI.UC.QLBH
 
         private void _btnThoat_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 pnlThemKH.Visible = false;
                 pnlThemHD.Visible = true;
@@ -374,7 +478,7 @@ namespace GUI.UC.QLBH
                     Sdt = _txtSDT.Text,
                     Diachi = _cbxDiaChi.Text
                 };
-                if(khachhang.them() == 1)
+                if (khachhang.them() == 1)
                 {
                     pnlThemKH.Visible = false;
                     pnlThemHD.Visible = true;
@@ -385,7 +489,7 @@ namespace GUI.UC.QLBH
 
         private void txtMaKH_TextChanged(object sender, EventArgs e)
         {
-            if(txtMaKH.Text.Length == 10)
+            if (txtMaKH.Text.Length == 10)
             {
                 DataTable tb = DTO.KhachHang.Get_KhachHang(txtMaKH.Text);
                 if (tb.Rows.Count > 0)
@@ -410,12 +514,26 @@ namespace GUI.UC.QLBH
         private void load_HoaDon(DateTime tu_ngay, DateTime den_ngay)
         {
             DataTable tb_hoadon = DTO.HoaDon.Get_hoadon(tu_ngay, den_ngay);
+
+            tb_hoadon.Columns.Add("Sua", typeof(string));
+            for (int i = 0; i < tb_hoadon.Rows.Count; i++)
+            {
+                tb_hoadon.Rows[i].SetField("Sua", "sửa");
+            }
+
             tb_hoadon.Columns.Add("Xoa", typeof(string));
             for (int i = 0; i < tb_hoadon.Rows.Count; i++)
             {
                 tb_hoadon.Rows[i].SetField("Xoa", "xóa");
             }
+
             dgvXemHD.DataSource = tb_hoadon;
+
+            dgvXemHD.Columns["Sua"].HeaderText = "";
+            dgvXemHD.Columns["Sua"].DefaultCellStyle = new DataGridViewCellStyle() { ForeColor = Color.Orange, SelectionForeColor = Color.Orange, SelectionBackColor = Color.White, Alignment = DataGridViewContentAlignment.MiddleCenter };
+            dgvXemHD.Columns["Sua"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvXemHD.Columns["Sua"].Width = 50;
+
             dgvXemHD.Columns["Xoa"].HeaderText = "";
             dgvXemHD.Columns["Xoa"].DefaultCellStyle = new DataGridViewCellStyle() { ForeColor = Color.Crimson, SelectionForeColor = Color.Crimson, SelectionBackColor = Color.White, Alignment = DataGridViewContentAlignment.MiddleCenter };
             dgvXemHD.Columns["Xoa"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -427,7 +545,7 @@ namespace GUI.UC.QLBH
             decimal tong = 0;
             for (int i = 0; i < dgvXemHD.Rows.Count; i++)
             {
-                tong += (decimal)dgvXemHD.Rows[i].Cells[3].Value;
+                tong += (decimal)dgvXemHD.Rows[i].Cells[4].Value;
             }
             labTongTienHoaDon.Text = "Tổng tiền hóa đơn: " + tong + " VND";
         }
@@ -461,7 +579,7 @@ namespace GUI.UC.QLBH
 
         private void btnSimple1_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 load_HoaDon(DateTime.Today, DateTime.Today);
                 TinhTongTienHoaDon();
@@ -470,20 +588,107 @@ namespace GUI.UC.QLBH
 
         private void dgvXemHD_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left && e.ColumnIndex == 5)
+            if (e.Button == MouseButtons.Left)
             {
-                if (MessageBox.Show("Xác nhận xóa?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (e.ColumnIndex == 8)
                 {
-                    DataTable tb_chitietHD = DTO.ChiTietHoaDon.Get_chitiethoadon(dgvXemHD.CurrentRow.Cells[0].Value.ToString());
-                    DTO.HoaDon.Xoa(dgvXemHD.CurrentRow.Cells[0].Value.ToString());
-                    for (int i = 0; i < tb_chitietHD.Rows.Count; i++)
+                    if (MessageBox.Show("Xác nhận xóa?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                     {
-                        DTO.MatHang.Update_SoLuongMatHang(tb_chitietHD.Rows[i].ItemArray[0].ToString());
+                        DataTable tb_chitietHD = DTO.ChiTietHoaDon.Get_chitiethoadon(dgvXemHD.CurrentRow.Cells[0].Value.ToString());
+                        DTO.HoaDon.Xoa(dgvXemHD.CurrentRow.Cells[0].Value.ToString());
+                        for (int i = 0; i < tb_chitietHD.Rows.Count; i++)
+                        {
+                            DTO.MatHang.Update_SoLuongMatHang(tb_chitietHD.Rows[i].ItemArray[0].ToString());
+                        }
+                        if (btnSimple1.BackColor == btnSimple1.ColorMouseDown)
+                            load_HoaDon(DateTime.Today, DateTime.Today);
+                        else
+                            load_HoaDon(dtpTuNgay.Value, dtpDenNgay.Value);
                     }
-                    if (btnSimple1.BackColor == btnSimple1.ColorMouseDown)
-                        load_HoaDon(DateTime.Today, DateTime.Today);
+                }
+                else if (e.ColumnIndex == 7)
+                {
+                    DateTime date_now = DateTime.Today;
+                    DateTime date_lap = (DateTime)dgvXemHD.CurrentRow.Cells[3].Value;
+                    if (date_lap.Day == date_now.Day && date_lap.Month == date_now.Month && date_lap.Year == date_now.Year)
+                    {
+                        if (MessageBox.Show("Xác nhận sửa?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                        {
+                            pnlXemHD.Visible = false;
+
+                            Load_ChiTietHoaDonCu();
+                        }
+                    }
                     else
-                        load_HoaDon(dtpTuNgay.Value, dtpDenNgay.Value);
+                        MessageBox.Show("Chỉ được sửa hóa đơn hôm nay.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void Load_ChiTietHoaDonCu()
+        {
+            pnlThemHD.Visible = true;
+
+            btnHuy.Visible = true;
+            txtMaHD.Text = dgvXemHD.CurrentRow.Cells[0].Value.ToString();
+            txtMaKH.Enabled = false;
+            txtMaKH.Text = dgvXemHD.CurrentRow.Cells[1].Value.ToString();
+            dtpNgayLap.Value = DateTime.Today;
+            txtMaNV.Text = dgvXemHD.CurrentRow.Cells[5].Value.ToString();
+
+            tb_chitietcu = DTO.ChiTietHoaDon.Get_chitiethoadon(txtMaHD.Text);
+
+            double soluong;
+            decimal dongia, thanhtien;
+            for (int i = 0; i < tb_chitietcu.Rows.Count; i++)
+            {
+                soluong = (double)tb_chitietcu.Rows[i].ItemArray[4];
+                dongia = (decimal)tb_chitietcu.Rows[i].ItemArray[5];
+                thanhtien = dongia * (decimal)soluong;
+
+                dgvCTHD.Rows.Add(tb_chitietcu.Rows[i].ItemArray[0], tb_chitietcu.Rows[i].ItemArray[1], tb_chitietcu.Rows[i].ItemArray[3], soluong, dongia, thanhtien, "X");
+                dgvCTHD.Rows[dgvCTHD.Rows.Count - 1].Cells[4].Style = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleRight, Format = "#.0000" };
+                dgvCTHD.Rows[dgvCTHD.Rows.Count - 1].Cells[5].Style = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleRight, Format = "#.0000" };
+            }
+
+            TinhTongTien();
+
+            btnSave.Text = "Sửa hóa đơn";
+        }
+
+        private void btnRefesh_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (btnSave.Text == "Thêm hóa đơn")
+                    Clear_InputHoaDon();
+                else
+                {
+                    pnlThemHD.Visible = false;
+                    Load_ChiTietHoaDonCu();
+                }
+            }
+        }
+
+        private void txtSearchHD_TextChanged(object sender, EventArgs e)
+        {
+            ((DataTable)dgvXemHD.DataSource).DefaultView.RowFilter = string.Format("[{1}] LIKE '%{0}' OR [{2}] LIKE '%{0}%'", txtSearchHD.Text, dgvXemHD.Columns[0].Name, dgvXemHD.Columns[2].Name);
+            if (txtSearchHD.Text != "" && txtSearchHD.Text.Trim() != "")
+            {
+                labTongTienHoaDon.Text = "Tổng tiền hóa đơn: ";
+            }
+            else
+                TinhTongTienHoaDon();
+        }
+
+        private void btnHuy_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                if (MessageBox.Show("Xác nhận hủy sửa.", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    pnlThemHD.Visible = false;
+                    pnlXemHD.Visible = true;
                 }
             }
         }

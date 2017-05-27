@@ -58,7 +58,7 @@ namespace DAL
         #region hoadon
         public static DataTable get_hoadon(DateTime tu_ngay, DateTime den_ngay)
         {
-            return DBConnect.GetData("select hoadon.ma as [Mã hóa đơn], khachhang.ten as [Tên khách hàng], ngaylap as [Ngày lập], tongtien as [Tổng tiền], nhanvienma as [Mã NV bán hàng]  from hoadon join khachhang on hoadon.khachhangma = khachhang.ma where ngaylap >= " + string.Format("'{0}-{1}-{2}'", tu_ngay.Year, tu_ngay.Month, tu_ngay.Day) + " and ngaylap <= " + string.Format("'{0}-{1}-{2}'", den_ngay.Year, den_ngay.Month, den_ngay.Day));
+            return DBConnect.GetData("select hoadon.ma as [Mã hóa đơn], khachhang.ma as [Mã khách hàng], khachhang.ten as [Tên khách hàng], ngaylap as [Ngày lập], tongtien as [Tổng tiền], nhanvienma as [Mã NV bán hàng], nhanvien.ten as [Tên nhân viên]  from hoadon join khachhang on hoadon.khachhangma = khachhang.ma join nhanvien on hoadon.nhanvienma = nhanvien.ma where ngaylap >= " + string.Format("'{0}-{1}-{2}'", tu_ngay.Year, tu_ngay.Month, tu_ngay.Day) + " and ngaylap <= " + string.Format("'{0}-{1}-{2}'", den_ngay.Year, den_ngay.Month, den_ngay.Day));
         }
         public static DataTable get_mahoadon()
         {

@@ -82,9 +82,9 @@ namespace DTO
         {
             return DAL.DATA.sua_chitiethoadon(mathangma, hoadonma, soluong, giaban);
         }
-        public int Xoa()
+        public static int Xoa(string ma_mathang, string ma_hoadon)
         {
-            return DAL.DATA.xoa_chitiethoadon(mathangma, hoadonma);
+            return DAL.DATA.xoa_chitiethoadon(ma_mathang, ma_hoadon);
         }
     }
 }
