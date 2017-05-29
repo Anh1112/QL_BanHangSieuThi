@@ -36,8 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ToolBar = new System.Windows.Forms.Panel();
-            this.btnXemHD = new GUI.Class.btnSimple();
-            this.btnHoaDon = new GUI.Class.btnSimple();
             this.pnlNull = new System.Windows.Forms.Panel();
             this.pnlThemHD = new System.Windows.Forms.Panel();
             this.tbpnlHoaDon = new System.Windows.Forms.TableLayoutPanel();
@@ -63,12 +61,8 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.btnHuy = new GUI.Class.btnSimple();
-            this.btnRefesh = new GUI.Class.btnSimple();
-            this.btnSave = new GUI.Class.btnSimple();
             this.labTongTien = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnThemKH = new GUI.Class.btnSimple();
             this.labErrMaKH = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
@@ -92,7 +86,6 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.labSearch = new System.Windows.Forms.Label();
             this.txtSearchHD = new System.Windows.Forms.TextBox();
-            this.btnSimple1 = new GUI.Class.btnSimple();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dtpDenNgay = new System.Windows.Forms.DateTimePicker();
@@ -101,8 +94,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel11 = new System.Windows.Forms.Panel();
             this._cbxDiaChi = new System.Windows.Forms.ComboBox();
-            this._btnThoat = new GUI.Class.btnSimple();
-            this._btnThemKH = new GUI.Class.btnSimple();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this._txtSDT = new System.Windows.Forms.TextBox();
@@ -112,6 +103,15 @@
             this._txtMaKH = new System.Windows.Forms.TextBox();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnXemHD = new GUI.Class.btnSimple();
+            this.btnHoaDon = new GUI.Class.btnSimple();
+            this._btnThoat = new GUI.Class.btnSimple();
+            this._btnThemKH = new GUI.Class.btnSimple();
+            this.btnHuy = new GUI.Class.btnSimple();
+            this.btnRefesh = new GUI.Class.btnSimple();
+            this.btnSave = new GUI.Class.btnSimple();
+            this.btnThemKH = new GUI.Class.btnSimple();
+            this.btnSimple1 = new GUI.Class.btnSimple();
             this.ToolBar.SuspendLayout();
             this.pnlThemHD.SuspendLayout();
             this.tbpnlHoaDon.SuspendLayout();
@@ -145,42 +145,6 @@
             this.ToolBar.Name = "ToolBar";
             this.ToolBar.Size = new System.Drawing.Size(769, 30);
             this.ToolBar.TabIndex = 1;
-            // 
-            // btnXemHD
-            // 
-            this.btnXemHD.Alignment = System.Drawing.StringAlignment.Center;
-            this.btnXemHD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnXemHD.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this.btnXemHD.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this.btnXemHD.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnXemHD.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnXemHD.ForeColor = System.Drawing.Color.White;
-            this.btnXemHD.Location = new System.Drawing.Point(100, 0);
-            this.btnXemHD.Name = "btnXemHD";
-            this.btnXemHD.Size = new System.Drawing.Size(100, 30);
-            this.btnXemHD.TabIndex = 0;
-            this.btnXemHD.TabStop = false;
-            this.btnXemHD.Text = "Xem hóa đơn";
-            this.btnXemHD.UseActived = true;
-            this.btnXemHD.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnXemHD_MouseClick);
-            // 
-            // btnHoaDon
-            // 
-            this.btnHoaDon.Alignment = System.Drawing.StringAlignment.Center;
-            this.btnHoaDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnHoaDon.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this.btnHoaDon.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this.btnHoaDon.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnHoaDon.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnHoaDon.ForeColor = System.Drawing.Color.White;
-            this.btnHoaDon.Location = new System.Drawing.Point(0, 0);
-            this.btnHoaDon.Name = "btnHoaDon";
-            this.btnHoaDon.Size = new System.Drawing.Size(100, 30);
-            this.btnHoaDon.TabIndex = 0;
-            this.btnHoaDon.TabStop = false;
-            this.btnHoaDon.Text = "Thêm hóa đơn";
-            this.btnHoaDon.UseActived = true;
-            this.btnHoaDon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnHoaDon_MouseClick);
             // 
             // pnlNull
             // 
@@ -506,61 +470,6 @@
             this.panel10.Size = new System.Drawing.Size(455, 36);
             this.panel10.TabIndex = 15;
             // 
-            // btnHuy
-            // 
-            this.btnHuy.Alignment = System.Drawing.StringAlignment.Center;
-            this.btnHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnHuy.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this.btnHuy.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this.btnHuy.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnHuy.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Location = new System.Drawing.Point(220, 6);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(52, 23);
-            this.btnHuy.TabIndex = 25;
-            this.btnHuy.TabStop = false;
-            this.btnHuy.Text = "Hủy";
-            this.btnHuy.UseActived = false;
-            this.btnHuy.Visible = false;
-            this.btnHuy.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnHuy_MouseClick);
-            // 
-            // btnRefesh
-            // 
-            this.btnRefesh.Alignment = System.Drawing.StringAlignment.Center;
-            this.btnRefesh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefesh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnRefesh.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this.btnRefesh.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this.btnRefesh.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnRefesh.ForeColor = System.Drawing.Color.White;
-            this.btnRefesh.Location = new System.Drawing.Point(292, 6);
-            this.btnRefesh.Name = "btnRefesh";
-            this.btnRefesh.Size = new System.Drawing.Size(52, 23);
-            this.btnRefesh.TabIndex = 24;
-            this.btnRefesh.TabStop = false;
-            this.btnRefesh.Text = "Refresh";
-            this.btnRefesh.UseActived = false;
-            this.btnRefesh.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnRefesh_MouseClick);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Alignment = System.Drawing.StringAlignment.Center;
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnSave.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this.btnSave.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this.btnSave.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(360, 6);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(89, 23);
-            this.btnSave.TabIndex = 16;
-            this.btnSave.TabStop = false;
-            this.btnSave.Text = "Thêm hóa đơn";
-            this.btnSave.UseActived = false;
-            this.btnSave.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSave_MouseClick);
-            // 
             // labTongTien
             // 
             this.labTongTien.AutoSize = true;
@@ -592,23 +501,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(455, 152);
             this.panel1.TabIndex = 9;
-            // 
-            // btnThemKH
-            // 
-            this.btnThemKH.Alignment = System.Drawing.StringAlignment.Center;
-            this.btnThemKH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnThemKH.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this.btnThemKH.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this.btnThemKH.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnThemKH.ForeColor = System.Drawing.Color.White;
-            this.btnThemKH.Location = new System.Drawing.Point(382, 25);
-            this.btnThemKH.Name = "btnThemKH";
-            this.btnThemKH.Size = new System.Drawing.Size(24, 20);
-            this.btnThemKH.TabIndex = 23;
-            this.btnThemKH.TabStop = false;
-            this.btnThemKH.Text = "+";
-            this.btnThemKH.UseActived = false;
-            this.btnThemKH.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnThemKH_MouseClick);
             // 
             // labErrMaKH
             // 
@@ -854,23 +746,6 @@
             this.txtSearchHD.TabStop = false;
             this.txtSearchHD.TextChanged += new System.EventHandler(this.txtSearchHD_TextChanged);
             // 
-            // btnSimple1
-            // 
-            this.btnSimple1.Alignment = System.Drawing.StringAlignment.Center;
-            this.btnSimple1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnSimple1.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this.btnSimple1.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this.btnSimple1.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this.btnSimple1.ForeColor = System.Drawing.Color.White;
-            this.btnSimple1.Location = new System.Drawing.Point(6, 8);
-            this.btnSimple1.Name = "btnSimple1";
-            this.btnSimple1.Size = new System.Drawing.Size(94, 23);
-            this.btnSimple1.TabIndex = 4;
-            this.btnSimple1.TabStop = false;
-            this.btnSimple1.Text = "Hóa đơn hôm nay";
-            this.btnSimple1.UseActived = true;
-            this.btnSimple1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSimple1_MouseClick);
-            // 
             // label8
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -967,7 +842,7 @@
             // 
             // _cbxDiaChi
             // 
-            this._cbxDiaChi.DropDownHeight = 50;
+            this._cbxDiaChi.DropDownHeight = 150;
             this._cbxDiaChi.FormattingEnabled = true;
             this._cbxDiaChi.IntegralHeight = false;
             this._cbxDiaChi.Items.AddRange(new object[] {
@@ -1010,40 +885,6 @@
             this._cbxDiaChi.Name = "_cbxDiaChi";
             this._cbxDiaChi.Size = new System.Drawing.Size(239, 21);
             this._cbxDiaChi.TabIndex = 11;
-            // 
-            // _btnThoat
-            // 
-            this._btnThoat.Alignment = System.Drawing.StringAlignment.Center;
-            this._btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this._btnThoat.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this._btnThoat.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this._btnThoat.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this._btnThoat.ForeColor = System.Drawing.Color.White;
-            this._btnThoat.Location = new System.Drawing.Point(31, 251);
-            this._btnThoat.Name = "_btnThoat";
-            this._btnThoat.Size = new System.Drawing.Size(100, 30);
-            this._btnThoat.TabIndex = 10;
-            this._btnThoat.TabStop = false;
-            this._btnThoat.Text = "Thoát";
-            this._btnThoat.UseActived = false;
-            this._btnThoat.MouseClick += new System.Windows.Forms.MouseEventHandler(this._btnThoat_MouseClick);
-            // 
-            // _btnThemKH
-            // 
-            this._btnThemKH.Alignment = System.Drawing.StringAlignment.Center;
-            this._btnThemKH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this._btnThemKH.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
-            this._btnThemKH.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
-            this._btnThemKH.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
-            this._btnThemKH.ForeColor = System.Drawing.Color.White;
-            this._btnThemKH.Location = new System.Drawing.Point(170, 251);
-            this._btnThemKH.Name = "_btnThemKH";
-            this._btnThemKH.Size = new System.Drawing.Size(100, 30);
-            this._btnThemKH.TabIndex = 9;
-            this._btnThemKH.TabStop = false;
-            this._btnThemKH.Text = "Thêm";
-            this._btnThemKH.UseActived = false;
-            this._btnThemKH.MouseClick += new System.Windows.Forms.MouseEventHandler(this._btnThemKH_MouseClick);
             // 
             // label15
             // 
@@ -1124,6 +965,165 @@
             this.label11.Size = new System.Drawing.Size(94, 13);
             this.label11.TabIndex = 0;
             this.label11.Text = "Thêm khách hàng";
+            // 
+            // btnXemHD
+            // 
+            this.btnXemHD.Alignment = System.Drawing.StringAlignment.Center;
+            this.btnXemHD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnXemHD.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
+            this.btnXemHD.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
+            this.btnXemHD.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnXemHD.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnXemHD.ForeColor = System.Drawing.Color.White;
+            this.btnXemHD.Location = new System.Drawing.Point(100, 0);
+            this.btnXemHD.Name = "btnXemHD";
+            this.btnXemHD.Size = new System.Drawing.Size(100, 30);
+            this.btnXemHD.TabIndex = 0;
+            this.btnXemHD.TabStop = false;
+            this.btnXemHD.Text = "Xem hóa đơn";
+            this.btnXemHD.UseActived = true;
+            this.btnXemHD.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnXemHD_MouseClick);
+            // 
+            // btnHoaDon
+            // 
+            this.btnHoaDon.Alignment = System.Drawing.StringAlignment.Center;
+            this.btnHoaDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnHoaDon.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
+            this.btnHoaDon.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
+            this.btnHoaDon.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnHoaDon.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnHoaDon.ForeColor = System.Drawing.Color.White;
+            this.btnHoaDon.Location = new System.Drawing.Point(0, 0);
+            this.btnHoaDon.Name = "btnHoaDon";
+            this.btnHoaDon.Size = new System.Drawing.Size(100, 30);
+            this.btnHoaDon.TabIndex = 0;
+            this.btnHoaDon.TabStop = false;
+            this.btnHoaDon.Text = "Thêm hóa đơn";
+            this.btnHoaDon.UseActived = true;
+            this.btnHoaDon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnHoaDon_MouseClick);
+            // 
+            // _btnThoat
+            // 
+            this._btnThoat.Alignment = System.Drawing.StringAlignment.Center;
+            this._btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this._btnThoat.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
+            this._btnThoat.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
+            this._btnThoat.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this._btnThoat.ForeColor = System.Drawing.Color.White;
+            this._btnThoat.Location = new System.Drawing.Point(31, 251);
+            this._btnThoat.Name = "_btnThoat";
+            this._btnThoat.Size = new System.Drawing.Size(100, 30);
+            this._btnThoat.TabIndex = 10;
+            this._btnThoat.TabStop = false;
+            this._btnThoat.Text = "Thoát";
+            this._btnThoat.UseActived = false;
+            this._btnThoat.MouseClick += new System.Windows.Forms.MouseEventHandler(this._btnThoat_MouseClick);
+            // 
+            // _btnThemKH
+            // 
+            this._btnThemKH.Alignment = System.Drawing.StringAlignment.Center;
+            this._btnThemKH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this._btnThemKH.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
+            this._btnThemKH.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
+            this._btnThemKH.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this._btnThemKH.ForeColor = System.Drawing.Color.White;
+            this._btnThemKH.Location = new System.Drawing.Point(170, 251);
+            this._btnThemKH.Name = "_btnThemKH";
+            this._btnThemKH.Size = new System.Drawing.Size(100, 30);
+            this._btnThemKH.TabIndex = 9;
+            this._btnThemKH.TabStop = false;
+            this._btnThemKH.Text = "Thêm";
+            this._btnThemKH.UseActived = false;
+            this._btnThemKH.MouseClick += new System.Windows.Forms.MouseEventHandler(this._btnThemKH_MouseClick);
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Alignment = System.Drawing.StringAlignment.Center;
+            this.btnHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnHuy.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
+            this.btnHuy.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
+            this.btnHuy.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnHuy.ForeColor = System.Drawing.Color.White;
+            this.btnHuy.Location = new System.Drawing.Point(220, 6);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(52, 23);
+            this.btnHuy.TabIndex = 25;
+            this.btnHuy.TabStop = false;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseActived = false;
+            this.btnHuy.Visible = false;
+            this.btnHuy.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnHuy_MouseClick);
+            // 
+            // btnRefesh
+            // 
+            this.btnRefesh.Alignment = System.Drawing.StringAlignment.Center;
+            this.btnRefesh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefesh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnRefesh.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
+            this.btnRefesh.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
+            this.btnRefesh.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnRefesh.ForeColor = System.Drawing.Color.White;
+            this.btnRefesh.Location = new System.Drawing.Point(292, 6);
+            this.btnRefesh.Name = "btnRefesh";
+            this.btnRefesh.Size = new System.Drawing.Size(52, 23);
+            this.btnRefesh.TabIndex = 24;
+            this.btnRefesh.TabStop = false;
+            this.btnRefesh.Text = "Refresh";
+            this.btnRefesh.UseActived = false;
+            this.btnRefesh.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnRefesh_MouseClick);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Alignment = System.Drawing.StringAlignment.Center;
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnSave.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
+            this.btnSave.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
+            this.btnSave.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(360, 6);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(89, 23);
+            this.btnSave.TabIndex = 16;
+            this.btnSave.TabStop = false;
+            this.btnSave.Text = "Thêm hóa đơn";
+            this.btnSave.UseActived = false;
+            this.btnSave.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSave_MouseClick);
+            // 
+            // btnThemKH
+            // 
+            this.btnThemKH.Alignment = System.Drawing.StringAlignment.Center;
+            this.btnThemKH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnThemKH.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
+            this.btnThemKH.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
+            this.btnThemKH.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnThemKH.ForeColor = System.Drawing.Color.White;
+            this.btnThemKH.Location = new System.Drawing.Point(382, 25);
+            this.btnThemKH.Name = "btnThemKH";
+            this.btnThemKH.Size = new System.Drawing.Size(24, 20);
+            this.btnThemKH.TabIndex = 23;
+            this.btnThemKH.TabStop = false;
+            this.btnThemKH.Text = "+";
+            this.btnThemKH.UseActived = false;
+            this.btnThemKH.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnThemKH_MouseClick);
+            // 
+            // btnSimple1
+            // 
+            this.btnSimple1.Alignment = System.Drawing.StringAlignment.Center;
+            this.btnSimple1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnSimple1.ColorMouseDown = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(135)))), ((int)(((byte)(139)))));
+            this.btnSimple1.ColorMouseEnter = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(198)))), ((int)(((byte)(168)))));
+            this.btnSimple1.ColorMouseLeave = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(162)))), ((int)(((byte)(151)))));
+            this.btnSimple1.ForeColor = System.Drawing.Color.White;
+            this.btnSimple1.Location = new System.Drawing.Point(6, 8);
+            this.btnSimple1.Name = "btnSimple1";
+            this.btnSimple1.Size = new System.Drawing.Size(94, 23);
+            this.btnSimple1.TabIndex = 4;
+            this.btnSimple1.TabStop = false;
+            this.btnSimple1.Text = "Hóa đơn hôm nay";
+            this.btnSimple1.UseActived = true;
+            this.btnSimple1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSimple1_MouseClick);
             // 
             // LayoutQLBH
             // 

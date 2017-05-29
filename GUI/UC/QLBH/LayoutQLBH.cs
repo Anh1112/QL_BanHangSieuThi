@@ -661,7 +661,10 @@ namespace GUI.UC.QLBH
             if (e.Button == MouseButtons.Left)
             {
                 if (btnSave.Text == "Thêm hóa đơn")
+                {
+                    load_mathang();
                     Clear_InputHoaDon();
+                }
                 else
                 {
                     pnlThemHD.Visible = false;
