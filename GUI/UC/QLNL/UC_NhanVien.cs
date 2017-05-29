@@ -179,10 +179,10 @@ namespace GUI.UC.QLNL
                 int Row_Index = e.RowIndex;
                 txtMa.Text = dgvNhanVien.Rows[Row_Index].Cells[0].Value.ToString();
                 txtTen.Text = dgvNhanVien.Rows[Row_Index].Cells[1].Value.ToString();
-                dtpNgaySinh.Text = dgvNhanVien.Rows[Row_Index].Cells[2].Value.ToString();
+                cboDiaChi.Text = dgvNhanVien.Rows[Row_Index].Cells[2].Value.ToString();
                 txtSDT.Text = dgvNhanVien.Rows[Row_Index].Cells[3].Value.ToString();
-                cboDiaChi.Text = dgvNhanVien.Rows[Row_Index].Cells[4].Value.ToString();
-                cboChucVu.Text = dgvNhanVien.Rows[Row_Index].Cells[5].Value.ToString();
+                cboChucVu.Text = dgvNhanVien.Rows[Row_Index].Cells[4].Value.ToString();
+                dtpNgaySinh.Text = dgvNhanVien.Rows[Row_Index].Cells[5].Value.ToString();   
                 txtLuong.Text = dgvNhanVien.Rows[Row_Index].Cells[6].Value.ToString();
                 cboMaQuay.Text = dgvNhanVien.Rows[Row_Index].Cells[7].Value.ToString();
             }
