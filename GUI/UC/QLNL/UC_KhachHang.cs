@@ -69,6 +69,18 @@ namespace GUI.UC.QLNL
         {
             MoDieuKhien();
             SetNull();
+            txtMa.Text = null;
+            DataTable dt = kh.get_khachhang();
+            if (dt != null)
+
+            {
+                List<string> list = ((DataTable)dt).AsEnumerable().Select(x => x.Field<string>(dt.Columns[0])).ToList();
+                if (list.Count > 0) txtMa.Text = string.Format("{0:d4}", int.Parse(list.Max()) + 1);
+                else
+                    txtMa.Text = "0001";
+            }
+            else
+                txtMa.Text = "0001";
             ThemMoi = true;
         }
 
@@ -180,7 +192,7 @@ namespace GUI.UC.QLNL
 
         private void txtTen_TextChanged(object sender, EventArgs e)
         {
-            txtMa.Text = "" + DateTime.Now.Day.ToString().Trim() + "" + DateTime.Now.Hour.ToString().Trim() + "" + DateTime.Now.Minute.ToString().Trim() + "" + DateTime.Now.Millisecond.ToString().Trim() + "";
+            //txtMa.Text = "" + DateTime.Now.Day.ToString().Trim() + "" + DateTime.Now.Hour.ToString().Trim() + "" + DateTime.Now.Minute.ToString().Trim() + "" + DateTime.Now.Millisecond.ToString().Trim() + "";
         }
     }
 }
