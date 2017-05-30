@@ -159,6 +159,7 @@
             this.cbb_mahang.Name = "cbb_mahang";
             this.cbb_mahang.Size = new System.Drawing.Size(167, 21);
             this.cbb_mahang.TabIndex = 11;
+            this.cbb_mahang.SelectedValueChanged += new System.EventHandler(this.cbb_mahang_SelectedValueChanged);
             // 
             // txt_soluong
             // 

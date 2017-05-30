@@ -1,4 +1,4 @@
-﻿using DAL;
+﻿
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -19,6 +19,7 @@ namespace GUI.UC.QLNH
         private bool drag = false;
         private Point dragCursor, dragForm;
         public delegate void changeCTnk();
+        DataTable giama = new DataTable();
         public event changeCTnk saveCTclick;
         public ChangeCTnk(string nkma)
         {
@@ -29,24 +30,26 @@ namespace GUI.UC.QLNH
         private void btncliclk(object sender, EventArgs e)
         {
             ChiTietNhapKho nk = new ChiTietNhapKho();
-            string temp="";
+            string temp = "";
             {
-                if((cbb_mahang.SelectedValue!= null))
+                DataTable dt = new DataTable();
+                if (change == false)
+                {
+                    if ((cbb_mahang.SelectedValue != null))
                     {
-                    if (cbb_mahang.SelectedValue.ToString().CompareTo((cbb_mahang.Text)) != 0)
-                    {
-                        temp = "Mặt Hàng";
+                        if (cbb_mahang.SelectedValue.ToString().CompareTo((cbb_mahang.Text)) != 0)
+                        {
+                            temp = "Mặt Hàng";
+                        }
                     }
+                    else
+                        temp = "Mặt Hàng";
                 }
-                else
-                    temp = "Mặt Hàng";
-
-
             }
-                
-            
+
+
             float temp2;
-           if( float.TryParse(txt_soluong.Text,out temp2)==false)
+            if (float.TryParse(txt_soluong.Text, out temp2) == false)
             {
                 if (temp == "")
                 {
@@ -65,7 +68,7 @@ namespace GUI.UC.QLNH
                 else
                     temp += ",Giá Bán";
             }
-            if(temp=="")
+            if (temp == "")
             {
                 nk.NhapKhoMa = txt_mank.Text;
                 nk.MatHangMa = cbb_mahang.Text;
@@ -74,9 +77,8 @@ namespace GUI.UC.QLNH
                 if (change == false)
                 {
                     nk.them();
-                    DataTable dt = new DataTable();
-                    dt = DATA.laymachuacoCT(txt_mank.Text);
-                    cbb_mahang.DataSource = dt;
+                    giama = ChiTietNhapKho.getmanotinchitiet(txt_mank.Text);
+                    cbb_mahang.DataSource = giama;
                     cbb_mahang.DisplayMember = "ma";
                     cbb_mahang.ValueMember = "ma";
                 }
@@ -142,13 +144,13 @@ namespace GUI.UC.QLNH
             btn_luu.Click += btncliclk;
             if (change == false)
             {
-                DataTable dt = new DataTable();
-                dt = DATA.laymachuacoCT(txt_mank.Text);
-                cbb_mahang.DataSource = dt;
+                giama = ChiTietNhapKho.getmanotinchitiet(txt_mank.Text);
+                cbb_mahang.DataSource = giama;
                 cbb_mahang.DisplayMember = "ma";
                 cbb_mahang.ValueMember = "ma";
-                
+
             }
+            txt_gianhap.Enabled = false;
         }
 
         private void btnSimple1_MouseClick(object sender, MouseEventArgs e)
@@ -164,6 +166,20 @@ namespace GUI.UC.QLNH
         private void btnSimple4_MouseClick(object sender, MouseEventArgs e)
         {
             this.Close();
+        }
+
+        private void cbb_mahang_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string temp = "";
+            foreach (DataRow item in giama.Rows)
+            {
+                if (item["ma"].ToString() == cbb_mahang.Text)
+                {
+                    temp = item[1].ToString();
+                }
+            }
+
+            txt_gianhap.Text = temp;
         }
 
         private void ts_Tick(object sender, EventArgs e)

@@ -33,9 +33,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DTO">
-      <HintPath>..\DTO\bin\Debug\DTO.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -261,9 +258,9 @@
     <None Include="Resources\help2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{2fa5dcce-72f3-4f5b-a093-f54f84633ca2}</Project>
-      <Name>DAL</Name>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{e1d2924a-c992-4b47-b269-72ab0da1a9ed}</Project>
+      <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

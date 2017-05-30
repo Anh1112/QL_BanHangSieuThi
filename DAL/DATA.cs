@@ -11,6 +11,14 @@ namespace DAL
     public class DATA
     {
         #region khachhang
+        public static DataTable get_khachhang(string ma)
+        {
+            return DBConnect.GetData("select ma, ten, diachi, sdt from khachhang where ma = '" + ma + "'");
+        }
+        public static DataTable get_makhachhang()
+        {
+            return DBConnect.GetData("select max(ma) from khachhang");
+        }
         public static DataTable get_khachhang()
         {
             return DBConnect.GetData("get_khachhang");
@@ -48,6 +56,14 @@ namespace DAL
         #endregion
 
         #region hoadon
+        public static DataTable get_hoadon(DateTime tu_ngay, DateTime den_ngay)
+        {
+            return DBConnect.GetData("select hoadon.ma as [Mã hóa đơn], khachhang.ma as [Mã khách hàng], khachhang.ten as [Tên khách hàng], ngaylap as [Ngày lập], tongtien as [Tổng tiền], nhanvienma as [Mã NV bán hàng], nhanvien.ten as [Tên nhân viên]  from hoadon join khachhang on hoadon.khachhangma = khachhang.ma join nhanvien on hoadon.nhanvienma = nhanvien.ma where ngaylap >= " + string.Format("'{0}-{1}-{2}'", tu_ngay.Year, tu_ngay.Month, tu_ngay.Day) + " and ngaylap <= " + string.Format("'{0}-{1}-{2}'", den_ngay.Year, den_ngay.Month, den_ngay.Day));
+        }
+        public static DataTable get_mahoadon()
+        {
+            return DBConnect.GetData("select max(ma) from hoadon");
+        }
         public static DataTable get_hoadon()
         {
             return DBConnect.GetData("get_hoadon");
@@ -173,7 +189,7 @@ namespace DAL
 
         public static int them_nhapkho(string ma, DateTime ngaynhap, decimal tongtien, string nhanvienma)
         {
-            string temp =ngaynhap.ToShortDateString();
+            string temp = ngaynhap.ToShortDateString();
 
             SqlParameter[] para = new SqlParameter[]
             {
@@ -189,7 +205,7 @@ namespace DAL
         {
             SqlParameter[] para = new SqlParameter[]
             {
-               
+
                  new SqlParameter("@ma",ma),
                 new SqlParameter("@ngayxuat","'"+ngaynhap+"'"),
                 new SqlParameter("@tongtien",(tongtien>0)?(object)tongtien:DBNull.Value),
@@ -208,9 +224,9 @@ namespace DAL
         #endregion
 
         #region chitietnhapkho
-        public static DataTable laymachuacoCT(string nhapkhoma)
+        public static DataTable giamachuacoCT(string nhapkhoma)
         {
-            return DBConnect.GetData("select ma from mathang where ma not in (select  ma from mathang , chitietnhapkho where mathang.ma= mathangma and nhapkhoma='" + nhapkhoma + "')");
+            return DBConnect.GetData("select ma,gianhap from mathang where ma not in (select  ma from mathang , chitietnhapkho where mathang.ma= mathangma and nhapkhoma='" + nhapkhoma + "')");
         }
         // thong ke luu luong nhap hang cua tat ca cac loai hang hoa
         public static DataTable get_chitietnhapkho(string ma)
@@ -226,22 +242,22 @@ namespace DAL
         }
         public static int them_chitietnhapkho(string mamh, string mank, float sl, decimal gn)
         {
-          // DBConnect.GetData("exec them_ChiTietnhapkho '" + mamh + "','" + mank + "'," + sl + "," + gn);
+            // DBConnect.GetData("exec them_ChiTietnhapkho '" + mamh + "','" + mank + "'," + sl + "," + gn);
             SqlParameter[] para = new SqlParameter[]
             {
                 new SqlParameter("@mamh",mamh),
                 new SqlParameter("@maxk",mank),
                 new SqlParameter("@sl",(sl>0)?(object)sl:DBNull.Value),
                 new SqlParameter("@gn",(gn>0 ?(object)gn:DBNull.Value))
-                
+
             };
-          //  return 1;
+            //  return 1;
             return DBConnect.ExecuteNonQuery("them_chitietnhapkho", para);
         }
         public static int sua_chitietnhapkho(string mamh, string mank, float sl, decimal gn)
         {
 
-           // DBConnect.GetData("exec sua_ChiTietnhapkho '" + mamh + "','" + mank + "'," + sl + "," + (int)gn);
+            // DBConnect.GetData("exec sua_ChiTietnhapkho '" + mamh + "','" + mank + "'," + sl + "," + (int)gn);
             SqlParameter[] para = new SqlParameter[]
             {
                 new SqlParameter("@mamh",mamh),
@@ -249,12 +265,12 @@ namespace DAL
                 new SqlParameter("@sl",(sl>0)?(object)sl:DBNull.Value),
                 new SqlParameter("@gn",(gn>0 ?(object)gn:DBNull.Value))
             };
-           // return 1;
-           return DBConnect.ExecuteNonQuery("sua_ChiTietnhapkho", para);
+            // return 1;
+            return DBConnect.ExecuteNonQuery("sua_ChiTietnhapkho", para);
         }
         public static int xoa_chitietnhapkho(string mamh, string mank)
         {
-            
+
             SqlParameter[] para = new SqlParameter[]
            {
                  new SqlParameter("@mamh",mamh),
@@ -265,6 +281,10 @@ namespace DAL
         #endregion
 
         #region mathang
+        public static void update_soluongmathang(string ma_mathang)
+        {
+            DBConnect.GetData(string.Format("declare @soluong float select @soluong = SUM(soluong) from chitietnhapkho where mathangma = '{0}' if exists (select * from chitiethoadon where mathangma = '{0}') select @soluong = @soluong - SUM(soluong) from chitiethoadon where mathangma = '{0}' update mathang set soluongtrongkho = @soluong where ma = '{0}'", ma_mathang));
+        }
         public static DataTable get_mathang()
         {
             return DBConnect.GetData("get_mathang");
@@ -314,9 +334,9 @@ namespace DAL
                 new SqlParameter("@donvitinh", donvitinh),
                 new SqlParameter("@gianhap", gianhap),
                 new SqlParameter("@giaban", giaban),
-                new SqlParameter("@soluongtrongkho",(soluongtrongkho>0)?(object)soluongtrongkho:DBNull.Value),             
+                new SqlParameter("@soluongtrongkho",(soluongtrongkho>0)?(object)soluongtrongkho:DBNull.Value),
                 new SqlParameter("@quayma",(quayma!=null && quayma.Trim()!="")?(object)quayma:DBNull.Value)
-               
+
             };
             return DBConnect.ExecuteNonQuery("sua_mathang", para);
         }
@@ -344,7 +364,7 @@ namespace DAL
         public static int them_chitiethoadon(
             string mathangma,
             string hoadonma,
-            float soluong,
+            double soluong,
             decimal giaban)
         {
             SqlParameter[] para = new SqlParameter[]
@@ -359,7 +379,7 @@ namespace DAL
         public static int sua_chitiethoadon(
             string mathangma,
             string hoadonma,
-            float soluong,
+            double soluong,
             decimal giaban)
         {
             SqlParameter[] para = new SqlParameter[]

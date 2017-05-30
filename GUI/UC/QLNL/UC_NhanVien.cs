@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DAL;
 using DTO;
 
 namespace GUI.UC.QLNL
@@ -71,7 +70,7 @@ namespace GUI.UC.QLNL
         {
 
             DataTable dt = new DataTable();
-            dt = DBConnect.GetData(@"Select ma from quayhang");
+            dt = QuayHang.get_maquayhang();
             cboMaQuay.DataSource = dt;
             cboMaQuay.DisplayMember = "ma";
             cboMaQuay.ValueMember = "ma";
@@ -195,7 +194,7 @@ namespace GUI.UC.QLNL
         void TimKiem()
         {
             DataTable dt = new DataTable();
-            dt = DAL.DBConnect.GetData(@"select * from nhanvien where ten like '%" + txtSearch.Text.Trim() + "%' or ma like '%" + txtSearch.Text.Trim() + "%'");
+            dt = NhanVien.findnhanvien(txtSearch.Text.Trim());
             dgvNhanVien.DataSource = dt;
         }
 

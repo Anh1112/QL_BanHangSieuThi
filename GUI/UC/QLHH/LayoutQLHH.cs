@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DAL;
 using DTO;
 
 namespace GUI.UC.QLHH
@@ -81,7 +80,7 @@ namespace GUI.UC.QLHH
         {
 
             DataTable dt = new DataTable();
-            dt = DBConnect.GetData(@"Select ma from quayhang");
+            dt = QuayHang.get_maquayhang();
             cboQuayMa.DataSource = dt;
             cboQuayMa.DisplayMember = "ma";
             cboQuayMa.ValueMember = "ma";
@@ -173,7 +172,7 @@ namespace GUI.UC.QLHH
                     mh.Gianhap = b;
                     mh.Soluongtrongkho = c;
                     mh.Quayma = cboQuayMa.Text;
-                    DATA.them_mathang(mh.Ma, mh.Ten, mh.Hangsanxuat, mh.Donvitinh, mh.Gianhap, mh.Giaban, mh.Soluongtrongkho, mh.Quayma);
+                    mh.Them();
                     //    mh.Them();
                     MessageBox.Show("Đã thêm thành công!");
                 }

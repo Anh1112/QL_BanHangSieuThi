@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DAL;
 using DTO;
 namespace GUI.UC.QLNH
 {
@@ -17,8 +16,8 @@ namespace GUI.UC.QLNH
         private int rowindex;
         private void fulltableCT()
         {
-            
-            if(fullCT==false)
+
+            if (fullCT == false)
             {
                 pnl_nhapkho.Visible = false;
                 pnl_CTnhapkho.Dock = DockStyle.Fill;
@@ -40,7 +39,7 @@ namespace GUI.UC.QLNH
         private void adddlnk()
         {
             DataTable dt = new DataTable();
-            dt = DATA.get_nhapkho();
+            dt = NhapKho.Get_nhapkho();
 
             if (dt != null)
             {
@@ -67,7 +66,7 @@ namespace GUI.UC.QLNH
         private void LayoutQLNH_Load(object sender, EventArgs e)
         {
             btn_newCTnk.Visible = false;
-           adddlnk();
+            adddlnk();
         }
 
         private void _saveclick()
@@ -79,7 +78,7 @@ namespace GUI.UC.QLNH
         {
             string[] name = { "Mã mặt hàng", "Tên mặt hàng", "Ngày nhập", "Đơn vị", "Số lượng", "Giá Bán", "Tổng tiền" };
             string ma = dgv_nhapkho.CurrentRow.Cells[0].Value.ToString();
-            dgv_CTnhapkho.DataSource = DATA.get_chitietnhapkho(ma);
+            dgv_CTnhapkho.DataSource = ChiTietNhapKho.Get_chitietnhapkho(ma);
             dgv_CTnhapkho.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgv_CTnhapkho.Columns[1].Visible = false;
             dgv_CTnhapkho.Columns[0].Width = 130;
@@ -96,7 +95,7 @@ namespace GUI.UC.QLNH
         }
         private void dgv_nhapkho_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgv_nhapkho.CurrentRow.Cells[0].Value.ToString()!="")
+            if (dgv_nhapkho.CurrentRow.Cells[0].Value.ToString() != "")
             {
                 btn_newCTnk.Visible = true;
                 addDLCTNK();
@@ -118,8 +117,8 @@ namespace GUI.UC.QLNH
             NhapKho nk = new NhapKho();
             nk.Ma = dgv_nhapkho.CurrentRow.Cells[0].Value.ToString();
             nk.NgayNhap = DateTime.Parse(dgv_nhapkho.CurrentRow.Cells[1].Value.ToString());
-            if(dgv_nhapkho.CurrentRow.Cells[2].Value.ToString()!="")
-            nk.Tongtien = decimal.Parse(dgv_nhapkho.CurrentRow.Cells[2].Value.ToString());
+            if (dgv_nhapkho.CurrentRow.Cells[2].Value.ToString() != "")
+                nk.Tongtien = decimal.Parse(dgv_nhapkho.CurrentRow.Cells[2].Value.ToString());
             if (dgv_nhapkho.CurrentRow.Cells[3].Value.ToString() != "")
             {
                 nk.NhanVienMa = dgv_nhapkho.CurrentRow.Cells[3].Value.ToString();
@@ -128,7 +127,7 @@ namespace GUI.UC.QLNH
         }
         private void dgv_nhapkho_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex!=-1)
+            if (e.RowIndex != -1)
             {
                 if (dgv_nhapkho.Rows[e.RowIndex].Cells[0].Value != null && dgv_nhapkho.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
                 {
@@ -141,7 +140,7 @@ namespace GUI.UC.QLNH
                 rowindex = e.RowIndex;
             }
 
-       
+
         }
         private void btn_newnk_MouseClick(object sender, MouseEventArgs e)
         {
@@ -154,14 +153,14 @@ namespace GUI.UC.QLNH
 
         private void dgv_nhapkho_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode==Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 var result = MessageBox.Show("Bạn thật sự muốn xóa", "",
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question);
-                if(result== DialogResult.Yes)
+                if (result == DialogResult.Yes)
                 {
-                    DATA.xoa_nhapkho(dgv_nhapkho.CurrentRow.Cells[0].Value.ToString());
+                    NhapKho.xoa_nhapkho(dgv_nhapkho.CurrentRow.Cells[0].Value.ToString());
                     adddlnk();
                 }
             }
@@ -169,7 +168,7 @@ namespace GUI.UC.QLNH
 
         private void dgv_CTnhapkho_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dgv_CTnhapkho.CurrentRow.Cells[0].Value.ToString()!=null)
+            if (dgv_CTnhapkho.CurrentRow.Cells[0].Value.ToString() != null)
             {
                 ChiTietNhapKho ct = new ChiTietNhapKho();
                 ct.MatHangMa = dgv_CTnhapkho.CurrentRow.Cells[0].Value.ToString();
@@ -179,13 +178,15 @@ namespace GUI.UC.QLNH
                 ChangeCTnk ctnk = new ChangeCTnk(ct);
                 ctnk.change = true;
                 ctnk.ShowDialog();
+                addDLCTNK();
+                adddlnk();
                 //ct.MatHangMa=
             }
         }
 
         private void btn_newCTnk_MouseClick(object sender, MouseEventArgs e)
         {
-            if(dgv_nhapkho.CurrentRow.ToString()!="")
+            if (dgv_nhapkho.CurrentRow.ToString() != "")
             {
                 ChangeCTnk ct = new ChangeCTnk(dgv_nhapkho.CurrentRow.Cells[0].Value.ToString());
                 ct.saveCTclick += _saveCTclick;
@@ -193,7 +194,7 @@ namespace GUI.UC.QLNH
                 ct.ShowDialog();
                 btn_newCTnk.Actived = false;
             }
-         
+
         }
 
         private void _saveCTclick()
@@ -214,7 +215,7 @@ namespace GUI.UC.QLNH
                                     MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        DATA.xoa_chitietnhapkho( dgv_CTnhapkho.CurrentRow.Cells[0].Value.ToString(),dgv_nhapkho.CurrentRow.Cells[0].Value.ToString());
+                        ChiTietNhapKho.xoa(dgv_CTnhapkho.CurrentRow.Cells[0].Value.ToString(), dgv_nhapkho.CurrentRow.Cells[0].Value.ToString());
                         addDLCTNK();
                         adddlnk();
                     }

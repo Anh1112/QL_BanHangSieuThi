@@ -142,5 +142,54 @@ namespace DTO
         {
             return DATA.xoa_mathang(mamh);
         }
+        public static DataTable findname(string ma)
+        {
+            return DAL.DBConnect.GetData(@"select	ma as [Mã hàng], 
+			ten as [Tên hàng], 
+			hangsanxuat as [Hãng sản xuất],
+			donvitinh as [Đơn vị],
+			gianhap as [Giá nhập],
+			giaban as [Giá bán],
+			soluongtrongkho as [Số lượng trong kho],
+			quayma as [Mã quầy] from mathang where ten like '%" + ma + "%'");
+        }
+        public static DataTable findhang(string ma)
+        {
+            return DAL.DBConnect.GetData(@"select	ma as [Mã hàng], 
+			ten as [Tên hàng], 
+			hangsanxuat as [Hãng sản xuất],
+			donvitinh as [Đơn vị],
+			gianhap as [Giá nhập],
+			giaban as [Giá bán],
+			soluongtrongkho as [Số lượng trong kho],
+			quayma as [Mã quầy] from mathang where hangsanxuat like '%" + ma + "%'");
+        }
+        public static DataTable findgia(string ma)
+        {
+            return DAL.DBConnect.GetData(@"select	ma as [Mã hàng], 
+			ten as [Tên hàng], 
+			hangsanxuat as [Hãng sản xuất],
+			donvitinh as [Đơn vị],
+			gianhap as [Giá nhập],
+			giaban as [Giá bán],
+			soluongtrongkho as [Số lượng trong kho],
+			quayma as [Mã quầy] from mathang where giaban like '%" + ma + "%'");
+        }
+        public static DataTable findgianhap(string ma)
+        {
+            return DAL.DBConnect.GetData(@"select	ma as [Mã hàng], 
+			ten as [Tên hàng], 
+			hangsanxuat as [Hãng sản xuất],
+			donvitinh as [Đơn vị],
+			gianhap as [Giá nhập],
+			giaban as [Giá bán],
+			soluongtrongkho as [Số lượng trong kho],
+			quayma as [Mã quầy] from mathang where gianhap like '%" + ma + "%'");
+        }
+
+        public static void Update_SoLuongMatHang(string maMH)
+        {
+            DAL.DATA.update_soluongmathang(maMH);
+        }
     }
 }
