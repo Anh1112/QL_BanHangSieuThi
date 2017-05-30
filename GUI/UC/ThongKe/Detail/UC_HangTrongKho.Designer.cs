@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.ChartHangTrongKho = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -45,6 +46,7 @@
             // 
             // ChartHangTrongKho
             // 
+            chartArea1.AxisX.Interval = 1D;
             chartArea1.Name = "ChartArea1";
             this.ChartHangTrongKho.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
@@ -56,6 +58,7 @@
             series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             series1.Legend = "Legend1";
             series1.Name = "Mặt hàng";
+            series1.Points.Add(dataPoint1);
             series1.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ChartHangTrongKho.Series.Add(series1);
             this.ChartHangTrongKho.Size = new System.Drawing.Size(354, 369);
@@ -81,7 +84,7 @@
             this.dgvCTHangTrongKho.AllowDrop = true;
             this.dgvCTHangTrongKho.AllowUserToOrderColumns = true;
             this.dgvCTHangTrongKho.AllowUserToResizeColumns = false;
-            this.dgvCTHangTrongKho.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvCTHangTrongKho.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dgvCTHangTrongKho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCTHangTrongKho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCTHangTrongKho.Location = new System.Drawing.Point(0, 0);

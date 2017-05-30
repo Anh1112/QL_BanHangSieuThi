@@ -224,6 +224,11 @@ namespace DAL
         #endregion
 
         #region chitietnhapkho
+
+        public static DataTable get_luuluongnhap_theongay(DateTime @tungay, DateTime @denngay)
+        {
+            return DBConnect.GetData("get_luuluongnhap_theongay '" + @tungay + "'" + ",'" + @denngay + "'");
+        }
         public static DataTable giamachuacoCT(string nhapkhoma)
         {
             return DBConnect.GetData("select ma,gianhap from mathang where ma not in (select  ma from mathang , chitietnhapkho where mathang.ma= mathangma and nhapkhoma='" + nhapkhoma + "')");
@@ -234,7 +239,7 @@ namespace DAL
             return DBConnect.GetData("get_chitietnhapkho '" + ma + "'");
         }
 
-
+        
         // thong ke luu luong nhap cua tung hang hoa
         public static DataTable get_chitietnhapsanpham(string nhapkhoma, string mathangma)
         {
@@ -351,6 +356,14 @@ namespace DAL
         #endregion
 
         #region chitiethoadon
+        public static DataTable get_muctieuthu_theongay(DateTime @tungay, DateTime  @denngay)
+        {
+            return DBConnect.GetData("get_muctieuthu_theongay '" +@tungay+"'"+",'" + @denngay+"'");
+        }
+        public static DataTable get_muctieuthu()
+        {
+            return DBConnect.GetData("get_muctieuthu");
+        }
         // thong ke luong hang ban ra cua moi mot san pham nhat dinh
         public static DataTable get_chitietbansanpham(string mahoadon, string mathangma)
         {

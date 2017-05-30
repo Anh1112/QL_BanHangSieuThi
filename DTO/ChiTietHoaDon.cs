@@ -66,6 +66,14 @@ namespace DTO
             }
         }
 
+        public static DataTable Get_muctieuthu_theongay(DateTime tungay, DateTime denngay)
+        {
+            return DAL.DATA.get_muctieuthu_theongay(tungay,denngay);
+        }
+        public static DataTable Get_muctieuthu()
+        {
+            return DAL.DATA.get_muctieuthu();
+        }
         public static DataTable Get_chitietbansanpham(string maHD, string mhma)
         {
             return DAL.DATA.get_chitietbansanpham(maHD, mhma);

@@ -62,6 +62,9 @@
     <Compile Include="Class\Panel_Simple.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Class\txtboxSearch.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Class\User32.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -182,7 +185,6 @@
   <ItemGroup>
     <Folder Include="UC\QLBH\Detail\" />
     <Folder Include="UC\QLHH\Detail\" />
-    <Folder Include="UC\QLNH\Detail\" />
     <Folder Include="UC\TimKiem\Detail\" />
   </ItemGroup>
   <ItemGroup>
@@ -258,10 +260,20 @@
     <None Include="Resources\help2.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{2fa5dcce-72f3-4f5b-a093-f54f84633ca2}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{e1d2924a-c992-4b47-b269-72ab0da1a9ed}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\phan-mem-quan-ly-ban-hang-trong-sieu-thi.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

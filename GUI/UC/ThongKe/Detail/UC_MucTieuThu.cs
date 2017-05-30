@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace GUI.UC.ThongKe.Detail
 {
     public partial class UC_MucTieuThu : UserControl
     {
+       
         public UC_MucTieuThu()
         {
             InitializeComponent();
@@ -19,18 +21,14 @@ namespace GUI.UC.ThongKe.Detail
 
         private void UC_MucTieuThu_Load(object sender, EventArgs e)
         {
-            cbbHoaDon.DataSource = DTO.HoaDon.Get_hoadon();
-            cbbHoaDon.DisplayMember = "Mã";
-            cbbHoaDon.ValueMember = "Mã";
-            dgvMucTieuThu.DataSource = DTO.ChiTietHoaDon.Get_chitiethoadon(cbbHoaDon.Text);
-        }
+            dgvMucTieuThu.DataSource = DTO.ChiTietHoaDon.Get_muctieuthu_theongay (dtpTuNgay.Value , dtpDenNgay.Value);
 
-        private void btnLoad_MouseClick(object sender, MouseEventArgs e)
+        }
+        private void button1_Click(object sender, EventArgs e)
         {
-            this.chartMucTieuThu.Series["Mặt hàng"].XValueMember = "ten";
-            this.chartMucTieuThu.Series["Mặt hàng"].YValueMembers = "soluong";
-            chartMucTieuThu.DataSource = DTO.ChiTietHoaDon.Get_chitiethoadon(cbbHoaDon.Text);
-            chartMucTieuThu.DataBind();
+            UC_MucTieuThu_Load(sender, e);
         }
     }
 }
+
+

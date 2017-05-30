@@ -157,6 +157,52 @@ namespace GUI
 
         }
 
+        public void check (bool check)
+        {
+            btnMenu.Enabled = check;
+            btnTimKiem.Enabled = check;
+            btnQLHH.Enabled = check;
+            btnQLNH.Enabled = check;
+            btnQLBH.Enabled = check;
+            btnQLNL.Enabled = check;
+            btnTK.Enabled = check;
+            btnTroGiup.Enabled = check;
+        }
+
+        public bool check1 = false;
+
+        private void btnSignIn_MouseClick(object sender, MouseEventArgs e)
+        {
+            bool check1;
+            if (txtUsername.Text == "" || txtPassword.Text == "")
+            {
+                check1 = false;
+                check(check1);
+                erpSignIn.SetError(btnSignIn, "Chưa nhập tài khoản hoặc mật khẩu");
+            }
+            else if (txtUsername.Text == "admin" && txtPassword.Text == "admin")
+            {
+                erpSignIn.Clear();
+                lblTryAgain.Visible = false;
+                check1 = true;
+                check(check1);
+                pnlLogin.Dispose();
+                btnLogin.Visible = false;
+            }
+            else
+            {
+                check1 = false;
+                erpSignIn.Clear();
+                lblTryAgain.Visible = true;
+                check(check1);
+            }
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
         public bool IsMaximize
         {
             set

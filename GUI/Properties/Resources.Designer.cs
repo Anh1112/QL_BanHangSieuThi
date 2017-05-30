@@ -93,9 +93,29 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap images {
+            get {
+                object obj = ResourceManager.GetObject("images", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap OpenProj_App_Icon_by_marc2o {
             get {
                 object obj = ResourceManager.GetObject("OpenProj_App_Icon_by_marc2o", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap phan_mem_quan_ly_ban_hang_trong_sieu_thi {
+            get {
+                object obj = ResourceManager.GetObject("phan-mem-quan-ly-ban-hang-trong-sieu-thi", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

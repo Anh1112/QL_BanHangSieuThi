@@ -21,20 +21,27 @@ namespace GUI.UC.ThongKe.Detail
         //
         private void UC_LuuLuongNhap_Load(object sender, EventArgs e)
         {
-            //dgvCTHangTrongKho.DataSource = DTO.MatHang.Get_mathang();
-            cbbMaNhapKho.DataSource = DTO.NhapKho.Get_nhapkho();
-            cbbMaNhapKho.DisplayMember = "Mã";
-            cbbMaNhapKho.ValueMember = "Mã";
-            dgvLuuLuongNhapHang.DataSource = DTO.ChiTietNhapKho.Get_chitietnhapkho(cbbMaNhapKho.Text);            
+            
         }
-     //   MatHang mathang = new MatHang();
+        //   MatHang mathang = new MatHang();
         private void btnLoad_MouseClick(object sender, MouseEventArgs e)
         {
-            this.ChartHangTrongKho.Series["Mặt hàng"].XValueMember = "ten";
-            this.ChartHangTrongKho.Series["Mặt hàng"].YValueMembers = "soluongtrongkho";
-            //  ChartHangTrongKho.DataSource = mathang.Get_mathang();
-            ChartHangTrongKho.DataSource = DTO.MatHang.Get_mathang1(cbbMaNhapKho.Text);
-            ChartHangTrongKho.DataBind();
+            try
+            {
+                ChartHangTrongKho.Visible = true;
+                dgvLuuLuongNhapHang.Visible = true;
+                dgvLuuLuongNhapHang.DataSource = DTO.ChiTietNhapKho.Get_luuluongnhap_theongay(dtpTuNgay.Value, dtpDenNgay.Value);
+                ChartHangTrongKho.DataSource = DTO.ChiTietNhapKho.Get_luuluongnhap_theongay(dtpTuNgay.Value, dtpDenNgay.Value);
+                this.ChartHangTrongKho.Series["Mặt hàng"].XValueMember = "Sản phẩm";
+                this.ChartHangTrongKho.Series["Mặt hàng"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+                this.ChartHangTrongKho.Series["Mặt hàng"].YValueMembers = "SL";
+                this.ChartHangTrongKho.Series["Mặt hàng"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+                ChartHangTrongKho.DataBind();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không có thông tin nhập hàng");
+            }
         }
     }
 }

@@ -30,6 +30,12 @@ namespace DTO
         public float soLuong { get { return soluong; } set {soluong=value; } }
         public decimal Giaban { get { return giaban; } set { giaban = value; } }
 
+
+        public static DataTable Get_luuluongnhap_theongay(DateTime tungay, DateTime denngay)
+        {
+            return DAL.DATA.get_luuluongnhap_theongay(tungay, denngay);
+        }
+        
         public static DataTable Get_chitietnhapkho(string ma)
         {
             return DAL.DATA.get_chitietnhapkho(ma);
