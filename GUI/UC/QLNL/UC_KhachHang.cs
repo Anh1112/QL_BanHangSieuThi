@@ -71,16 +71,9 @@ namespace GUI.UC.QLNL
             SetNull();
             txtMa.Text = null;
             DataTable dt = kh.get_khachhang();
-            if (dt != null)
 
-            {
-                List<string> list = ((DataTable)dt).AsEnumerable().Select(x => x.Field<string>(dt.Columns[0])).ToList();
-                if (list.Count > 0) txtMa.Text = string.Format("{0:d4}", int.Parse(list.Max()) + 1);
-                else
-                    txtMa.Text = "0001";
-            }
-            else
-                txtMa.Text = "0001";
+            txtMa.Text = DTO.KhachHang.Get_MaKH();
+
             ThemMoi = true;
         }
 

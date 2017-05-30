@@ -210,13 +210,5 @@ namespace GUI
                 if (value) { MaximizedBounds = Screen.PrimaryScreen.WorkingArea; this.WindowState = FormWindowState.Maximized; btnMaximize.Text = "2"; this.Padding = new Padding(0); }
             }
         }
-
-        public bool IsMaximize
-        {
-            set
-            {
-                if (value) { MaximizedBounds = Screen.PrimaryScreen.WorkingArea; this.WindowState = FormWindowState.Maximized; btnMaximize.Text = "2"; this.Padding = new Padding(0); }
-            }
-        }
     }
 }
