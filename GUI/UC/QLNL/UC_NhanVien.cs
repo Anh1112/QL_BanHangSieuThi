@@ -79,6 +79,18 @@ namespace GUI.UC.QLNL
         {
             MoDieuKhien();
             SetNull();
+            txtMa.Text = null;
+            DataTable dt = nv.get_nhanvien();
+            if (dt != null)
+
+            {
+                List<string> list = ((DataTable)dt).AsEnumerable().Select(x => x.Field<string>(dt.Columns[0])).ToList();
+                if (list.Count > 0) txtMa.Text = string.Format("{0:d4}", int.Parse(list.Max()) + 1);
+                else
+                    txtMa.Text = "0001";
+            }
+            else
+                txtMa.Text = "0001";
             ThemMoi = true;
         }
 
@@ -179,10 +191,10 @@ namespace GUI.UC.QLNL
                 int Row_Index = e.RowIndex;
                 txtMa.Text = dgvNhanVien.Rows[Row_Index].Cells[0].Value.ToString();
                 txtTen.Text = dgvNhanVien.Rows[Row_Index].Cells[1].Value.ToString();
-                dtpNgaySinh.Text = dgvNhanVien.Rows[Row_Index].Cells[2].Value.ToString();
+                cboDiaChi.Text = dgvNhanVien.Rows[Row_Index].Cells[2].Value.ToString();
                 txtSDT.Text = dgvNhanVien.Rows[Row_Index].Cells[3].Value.ToString();
-                cboDiaChi.Text = dgvNhanVien.Rows[Row_Index].Cells[4].Value.ToString();
-                cboChucVu.Text = dgvNhanVien.Rows[Row_Index].Cells[5].Value.ToString();
+                cboChucVu.Text = dgvNhanVien.Rows[Row_Index].Cells[4].Value.ToString();
+                dtpNgaySinh.Text = dgvNhanVien.Rows[Row_Index].Cells[5].Value.ToString();   
                 txtLuong.Text = dgvNhanVien.Rows[Row_Index].Cells[6].Value.ToString();
                 cboMaQuay.Text = dgvNhanVien.Rows[Row_Index].Cells[7].Value.ToString();
             }
@@ -205,7 +217,7 @@ namespace GUI.UC.QLNL
 
         private void txtTen_TextChanged(object sender, EventArgs e)
         {
-            txtMa.Text = "" + DateTime.Now.Day.ToString().Trim() + "" + DateTime.Now.Hour.ToString().Trim() + "" + DateTime.Now.Minute.ToString().Trim() + "" + DateTime.Now.Millisecond.ToString().Trim() + "";
+            //txtMa.Text = "" + DateTime.Now.Day.ToString().Trim() + "" + DateTime.Now.Hour.ToString().Trim() + "" + DateTime.Now.Minute.ToString().Trim() + "" + DateTime.Now.Millisecond.ToString().Trim() + "";
 
         }
     }
