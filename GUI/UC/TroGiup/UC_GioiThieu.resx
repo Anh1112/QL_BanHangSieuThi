@@ -117,6 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblThongKe.Text" xml:space="preserve">
+    <value>Thống kê số lượng hàng hóa có trong kho, lưu lượng nhập hàng và mức tiêu thụ trong siêu thị.
+- Mục hàng hóa trong kho : Đưa ra biểu đồ cùng danh sách số lượng cùng thông tin của tất cả các hàng hóa
+có trong kho
+- Mục lưu lượng nhập hàng : Đưa ra biểu đồ cùng danh sách số lượng hàng hóa đã được nhập trong khoảng 
+thời gian được chọn
+- Mục mức tiêu thụ  : Đưa ra biểu đồ cùng danh sách số lượng hàng hóa đã bán được trong khoảng thời gian 
+được chọn.</value>
+  </data>
+  <data name="lblQLNS.Text" xml:space="preserve">
+    <value>Quản lí nhân viên cùng khách hàng của siêu thị
+- Mục nhân viên bao gồm thêm, sửa, xóa thông tin của nhân viên.
+Đưa ra danh sách thông tin của nhân viên.
+- Mục khách hàng bao gồm thêm, sửa, xóa thông tin của khách hàng. 
+Cập nhật thông tin của khách hàng được thêm mới tại mục QLBH.
+Đưa ra danh sách thông tin của khách hàng</value>
+  </data>
+  <data name="lblQLBH.Text" xml:space="preserve">
+    <value>Quản lí quá trình bán hàng trong siêu thị.
+* Thêm hóa đơn
+Nhân viên bán hàng cần thực hiện như sau :
+- Vào mục QLBH ( Quản lí bán hàng )
+- Chọn Thêm hóa đơn.
+Tại đây nhân viên yêu cầu khách hàng cung cấp mã khách hàng mà khách hàng đã có.
+Nếu khách hàng chưa có mã thì thêm mới thông tin khách hàng.
+- Di chuyển sang mục Thêm hàng hóa.
+Tại đây nhân viên tìm kiếm hàng hóa và số lượng mà khách hàng yêu cầu và thêm vào hóa đơn.
+- Kết thúc nhấn Thêm hóa đơn.
+* Khi được khách hàng yêu cầu sửa hóa đơn, Nhân viên cần thực hiện như sau :
+- Vào mục Xem hóa đơn.
+- Chọn ngày tháng muốn xem hóa đơn.
+- Chọn hóa đơn của khách hàng.
+- Chọn sửa và xác nhận</value>
+  </data>
+  <data name="lblQLNH.Text" xml:space="preserve">
+    <value>Quản lí việc nhập thêm hàng hóa vào kho cho siêu thị.
+Nhân viên nhập kho cần thực hiện như sau :
+- Vào mục QLNH ( Quản lí nhập hàng )
+- Chọn Thêm tại phần Nhập Kho để thêm phiếu nhập kho.
+- Chọn phiếu nhập kho vừa tạo mới và chuyển sang phần Chi tiết nhập kho
+để lựa chọn thông tin và số lượng các mặt hàng cần nhập.
+ + Khi hàng hóa cần nhập chưa hề có thông tin trong kho, cần vào Quản lí hàng hóa 
+để thêm mới hàng hóa và quay lại QLNH tiếp tục thao tác.</value>
+  </data>
+  <data name="lblQLHH.Text" xml:space="preserve">
+    <value>Bao gồm quản lí hàng hóa trong siêu thị và quản lí quầy hàng. 
+- Mục hàng hóa có vai trò thêm, sửa, xóa thông tin một mặt hàng bất kì có trong siêu thị.
+Đưa ra thông tin của các mặt hàng.
+Mục quầy hàng có vai trò thêm, sửa, xóa thông tin một quầy hàng bất kì có trong siêu thị.
+Đưa ra thông tin của các quầy hàng
+</value>
+  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>LHAProject là phần mềm ứng dụng hỗ trợ quản lý bán hàng trong siêu thị, quản lý nhân lực,
 quản lý kho hàng cho các đơn vị hoạt động kinh doanh trong lĩnh vực thương mại và dịch vụ. 

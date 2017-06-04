@@ -127,12 +127,6 @@
     <Compile Include="UC\QLNL\UC_NhanVien.Designer.cs">
       <DependentUpon>UC_NhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC\ThongKe\Detail\UC_ChiTietLLNhap.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC\ThongKe\Detail\UC_ChiTietLLNhap.Designer.cs">
-      <DependentUpon>UC_ChiTietLLNhap.cs</DependentUpon>
-    </Compile>
     <Compile Include="UC\ThongKe\Detail\UC_HangTrongKho.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -218,9 +212,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC\QLNL\UC_NhanVien.resx">
       <DependentUpon>UC_NhanVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC\ThongKe\Detail\UC_ChiTietLLNhap.resx">
-      <DependentUpon>UC_ChiTietLLNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC\ThongKe\Detail\UC_HangTrongKho.resx">
       <DependentUpon>UC_HangTrongKho.cs</DependentUpon>

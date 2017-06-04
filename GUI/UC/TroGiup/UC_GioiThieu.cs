@@ -22,6 +22,49 @@ namespace GUI.UC.TroGiup
 
         }
 
-        
+        private void llbQLHH_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            lblQLHH.Visible = true;
+            lblThongKe.Visible = false;
+            lblQLNS.Visible = false;
+            lblQLNH.Visible = false;
+            lblQLBH.Visible = false;
+        }
+
+        private void llbQLNH_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            lblQLNH.Visible = true;
+            lblQLBH.Visible = false;
+            lblQLHH.Visible = false;
+            lblThongKe.Visible = false;
+            lblQLNS.Visible = false;
+        }
+
+        private void llbQLBH_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            lblQLBH.Visible = true;
+            lblQLHH.Visible = false;
+            lblThongKe.Visible = false;
+            lblQLNS.Visible = false;
+            lblQLNH.Visible = false;
+        }
+
+        private void llbQLNS_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            lblQLNS.Visible = true;
+            lblQLBH.Visible = false;
+            lblQLHH.Visible = false;
+            lblThongKe.Visible = false;
+            lblQLNH.Visible = false;
+        }
+
+        private void llbThongKe_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            lblThongKe.Visible = true;
+            lblQLNS.Visible = false;
+            lblQLBH.Visible = false;
+            lblQLHH.Visible = false;
+            lblQLNH.Visible = false;
+        }
     }
 }

@@ -51,6 +51,7 @@
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.RenderBody = new System.Windows.Forms.Panel();
             this.pnlLogin = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblTryAgain = new System.Windows.Forms.Label();
@@ -66,7 +67,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.erpSignIn = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panel5 = new System.Windows.Forms.Panel();
             this.ToolBar.SuspendLayout();
             this.pnlLeft.SuspendLayout();
             this.pnlMenu.SuspendLayout();
@@ -497,6 +497,15 @@
             this.pnlLogin.Size = new System.Drawing.Size(769, 510);
             this.pnlLogin.TabIndex = 0;
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(769, 10);
+            this.panel5.TabIndex = 8;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Turquoise;
@@ -657,15 +666,6 @@
             // erpSignIn
             // 
             this.erpSignIn.ContainerControl = this;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(769, 10);
-            this.panel5.TabIndex = 8;
             // 
             // FormMain
             // 

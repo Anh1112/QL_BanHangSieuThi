@@ -53,13 +53,5 @@ namespace GUI.UC.ThongKe
                 AddControl(new UC.ThongKe.Detail.UC_LuuLuongNhap());
             }
         }
-
-        private void btnChiTietLLNhap_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                AddControl(new UC.ThongKe.Detail.UC_ChiTietLLNhap());
-            }
-        }
     }
 }
